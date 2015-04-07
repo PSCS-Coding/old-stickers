@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
 <?php
 $init = 0;
 if ($init){
@@ -34,3 +39,4 @@ foreach($classesresult as $class){
 </tr>
 <?php
 }
+?> </html>

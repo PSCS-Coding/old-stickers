@@ -1,0 +1,23 @@
+table,td,th {
+border: 1px solid black;
+border-spacing: 0;
+margin: none;
+}
+
+table {
+margin:auto;
+}
+
+tr:nth-child(odd) {
+background-color:#ADCCED;
+opacity:0.9;
+}
+
+tr:nth-child(even) {
+background-color:#CCDCED;
+opacity:0.9;
+}
+
+html {
+background-color:#C4C9CF;
+}

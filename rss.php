@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="stickers.css">
+</head>
 <?php
 
 include_once("connection.php");
@@ -7,12 +13,13 @@ $rssInfo = getRss();
 foreach ($rssInfo as $class) {
 	echo "<pre>";
 	print_r($class);
-	//echo $class['title'] . " " . $class[''] . "<br />";
 	echo "</pre>";
+	/*
 	$stmt = $db_stickers->prepare("INSERT INTO classes (classname) VALUES (?)");
     $stmt->bind_param('s', $class['title']);
     $stmt->execute();
     $stmt->close();
+	*/
 
 }
 
@@ -49,3 +56,5 @@ $rss_tags = array(
 return $rssfeed;
 }
 ?>
+
+</html>

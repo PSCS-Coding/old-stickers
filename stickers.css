@@ -6,6 +6,12 @@ margin: none;
 
 table {
 margin:auto;
+width:80%;
+}
+
+tr {
+margin:auto;
+width:auto;
 }
 
 tr:nth-child(odd) {

@@ -24,6 +24,7 @@ while ($data_result = $result->fetch_assoc()) {
 <th> class </th>
 <th> facilitator </th>
 <th> block </th>
+<th> description </th>
 <th> black stickers </th>
 <th> grey stickers </th>
 <th> white stickers </th>
@@ -34,6 +35,7 @@ foreach($classesresult as $class){
 <td> <?php echo $class['classname']; ?> </td>
 <td> <?php echo $class['facilitatorid']; ?> </td>
 <td> <?php echo $class['block']; ?> </td>
+<td> <?php echo $class['description']; ?> </td>
 <td> <?php echo $class['blackstickers']; ?> </td>
 <td> <?php echo $class['greystickers']; ?> </td>
 <td> <?php echo $class['whitestickers']; ?> </td>

@@ -15,7 +15,7 @@ foreach ($rssInfo as $class) {
 	print_r($class);
 	echo "</pre>";
 
-	$stmt = $db_stickers->prepare("INSERT INTO classes (classname,description) VALUES (?,?)");
+	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,description) VALUES (?,?)");
     $stmt->bind_param('ss', $class['title'], $class['description']);
     $stmt->execute();
     $stmt->close();

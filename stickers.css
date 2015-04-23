@@ -24,6 +24,12 @@ background-color:#CCDCED;
 opacity:0.9;
 }
 
-html {
+body {
 background-color:#C4C9CF;
+}
+
+.classdata {
+width:50%;
+margin:auto;
+background-color:#FFFFFF;
 }

@@ -14,16 +14,31 @@ if(!empty($_GET['classid'])){
 	echo "A class has not been chosen";
 }
 $classid = $_SESSION['classid'];
+
+include_once("connection.php");
+
+$classquery = $db_stickers->query("SELECT * FROM offerings WHERE classid=$classid");
+$classresult = array();
+while ($data_result = $classquery->fetch_assoc()) {
+	array_push($classresult, $data_result);
+}
+
 ?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="stickers.css">
-<title>Class Info For:<?php echo $classid; ?></title>
+<title><?php echo $classresult[0]['classname']; ?></title>
 </head>
 <body>
 
 <div class="classdata">
-<a href="index.php">Back</a>
+<a class="back" href="index.php">Back</a>
+<h2><?php echo $classresult[0]['classname']; ?></h2>
+<p>
+<?php echo $classresult[0]['description']; ?>
+
+
+</p>
 </div>
 
 

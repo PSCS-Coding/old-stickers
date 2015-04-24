@@ -10,8 +10,8 @@ width:80%;
 }
 
 tr {
-margin:auto;
 width:auto;
+margin:auto;
 }
 
 tr:nth-child(odd) {
@@ -32,4 +32,18 @@ background-color:#C4C9CF;
 width:50%;
 margin:auto;
 background-color:#FFFFFF;
+}
+
+p {
+margin:30px;
+}
+
+.back {
+float:right;
+margin:5px;
+}
+
+h2 {
+margin:5px;
+text-align:center;
 }

@@ -37,19 +37,8 @@ while ($data_result = $classquery->fetch_assoc()) {
 <p>
 <?php echo $classresult[0]['description']; ?>
 
-
 </p>
 </div>
 
-
-<?php
-
-
-
-
-
-
-
-?>
 </body>
 </html>

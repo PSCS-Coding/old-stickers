@@ -21,7 +21,7 @@ while ($data_result = $result->fetch_assoc()) {
 }
 
 //query stickers
-$facget = $db_attendance->query("SELECT * FROM facilitators ORDER BY facilitatorname ASC");
+$facget = $db_attendance->query("SELECT facilitatorname, facilitatorid FROM facilitators ORDER BY facilitatorname ASC");
 
 $facilitators = array();
 	while ($fac_row = $facget->fetch_row()) {
@@ -30,10 +30,10 @@ $facilitators = array();
 	
 ?>
 <!-- render table -->
-<h2> Offerings </h2>
+<h2> PSCS Class Offerings </h2>
 <table>
 <tr>
-<th> Class Name</th>
+<th> Title</th>
 <th> Facilitator </th>
 <th> Block </th>
 <th class="stickerheader"> Black stickers </th>
@@ -46,18 +46,22 @@ foreach($classesresult as $class){
 <td> 
 <a href="class.php?classid=<?php echo $class['classid'];?>" > <?php echo $class['classname']; ?> </a> </td>
 <td> <?php echo $class['facilitatorid']; ?> </td>
-<td> <?php 
+<td> 
+
+<?php 
 if($class['block']==0){
 	echo "Non-Block";
 } else {
 	echo "Block";
 }
 
-?> </td>
+?> 
+
+</td>
 <!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
-<td> <?php echo $class['blackstickers']; ?> </td>
-<td> <?php echo $class['greystickers']; ?> </td>
-<td> <?php echo $class['whitestickers']; ?> </td>
+<td style="background-color:#5F5959;"> <?php echo $class['blackstickers']; ?> </td>
+<td style="background-color:#A69E9E;"> <?php echo $class['greystickers']; ?> </td>
+<td style="background-color:#FFFFFF;"> <?php echo $class['whitestickers']; ?> </td>
 </tr>
 <?php
 }

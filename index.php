@@ -13,32 +13,47 @@ include_once("rss.php");
 
 include_once("connection.php");
 
+// query offerings
 $result = $db_stickers->query("SELECT * FROM offerings");
 $classesresult = array();
 while ($data_result = $result->fetch_assoc()) {
 	array_push($classesresult, $data_result);
 }
+
+//query stickers
+$facget = $db_attendance->query("SELECT * FROM facilitators ORDER BY facilitatorname ASC");
+
+$facilitators = array();
+	while ($fac_row = $facget->fetch_row()) {
+		array_push ($facilitators, $fac_row[0]);
+	}
 	
 ?>
+<!-- render table -->
 <h2> Offerings </h2>
 <table>
 <tr>
 <th> Class Name</th>
 <th> Facilitator </th>
 <th> Block </th>
-<!-- <th> Description </th> -->
-<th> Black stickers </th>
-<th> Grey stickers </th>
-<th> White stickers </th>
+<th class="stickerheader"> Black stickers </th>
+<th class="stickerheader"> Grey stickers </th>
+<th class="stickerheader"> White stickers </th>
 </tr>
 <?php
 foreach($classesresult as $class){
 ?> <tr>
 <td> 
-<a href="class.php?classid=<?php echo $class['classid'];?>" > <?php echo $class['classname']; ?> </a>
-</td>
+<a href="class.php?classid=<?php echo $class['classid'];?>" > <?php echo $class['classname']; ?> </a> </td>
 <td> <?php echo $class['facilitatorid']; ?> </td>
-<td> <?php echo $class['block']; ?> </td>
+<td> <?php 
+if($class['block']==0){
+	echo "Non-Block";
+} else {
+	echo "Block";
+}
+
+?> </td>
 <!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
 <td> <?php echo $class['blackstickers']; ?> </td>
 <td> <?php echo $class['greystickers']; ?> </td>

@@ -1,12 +1,22 @@
+* {
+text-decoration:none;
+}
+
+
 table,td,th {
 border: 1px solid black;
 border-spacing: 0;
-margin: none;
+margin: 5px;
+}
+
+.stickerheader {
+width:8%;
 }
 
 table {
 margin:auto;
 width:80%;
+font-size:20px;
 }
 
 tr {
@@ -36,6 +46,7 @@ background-color:#FFFFFF;
 
 p {
 margin:30px;
+padding-bottom:20px;
 }
 
 .back {

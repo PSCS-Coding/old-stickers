@@ -5,10 +5,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="stickers.css">
 </head>
+<h2> PSCS Class Offerings </h2>
 <?php
-$init = 0;
+if(!empty($_GET['reset'])){
+	if($_GET['reset=1']){
+		$init = 1;
+	} else {
+		$init = 0;
+	}
+} else {
+	$init = 0;
+}
+
 if ($init){
-include_once("rss.php");
+include_once("reset.php");
 }
 
 include_once("connection.php");
@@ -19,6 +29,9 @@ $classesresult = array();
 while ($data_result = $result->fetch_assoc()) {
 	array_push($classesresult, $data_result);
 }
+if(count($classesresult==0)){
+	echo "<p style='text-align:center;'> Sorry, Class offerings could not be retrieved at this time </p>";
+} else {
 
 //query stickers
 $facget = $db_attendance->query("SELECT facilitatorname, facilitatorid FROM facilitators ORDER BY facilitatorname ASC");
@@ -30,7 +43,6 @@ $facilitators = array();
 	
 ?>
 <!-- render table -->
-<h2> PSCS Class Offerings </h2>
 <table>
 <tr>
 <th> Title</th>
@@ -64,5 +76,6 @@ if($class['block']==0){
 <td style="background-color:#FFFFFF;"> <?php echo $class['whitestickers']; ?> </td>
 </tr>
 <?php
+}
 }
 ?> </html>

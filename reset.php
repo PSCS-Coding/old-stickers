@@ -8,12 +8,10 @@
 
 include_once("connection.php");
 
+$db_stickers->query("truncate offerings");
 $rssInfo = getRss();
 
 foreach ($rssInfo as $class) {
-	echo "<pre>";
-	print_r($class);
-	echo "</pre>";
 
 	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,description) VALUES (?,?)");
     $stmt->bind_param('ss', $class['title'], $class['description']);

@@ -29,7 +29,7 @@ $classesresult = array();
 while ($data_result = $result->fetch_assoc()) {
 	array_push($classesresult, $data_result);
 }
-echo count($classesresult);
+
 if(count($classesresult)==0){
 	echo "<p style='text-align:center;'> Sorry, Class offerings could not be retrieved at this time </p>";
 } else {

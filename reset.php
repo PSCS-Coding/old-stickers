@@ -9,17 +9,6 @@
 include_once("connection.php");
 
 $db_stickers->query("truncate offerings");
-$rssInfo = getRss();
-
-foreach ($rssInfo as $class) {
-
-	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,description) VALUES (?,?)");
-    $stmt->bind_param('ss', $class['title'], $class['description']);
-    $stmt->execute();
-    $stmt->close();
-
-}
-
 
 function rss_to_array($tag, $array, $url) {
 		$doc = new DOMdocument();
@@ -52,6 +41,18 @@ $rss_tags = array(
 
 return $rssfeed;
 }
+
+$rssInfo = getRss();
+
+foreach ($rssInfo as $class) {
+
+	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,description) VALUES (?,?)");
+    $stmt->bind_param('ss', $class['title'], $class['description']);
+    $stmt->execute();
+    $stmt->close();
+
+}
+
 ?>
 
 </html>

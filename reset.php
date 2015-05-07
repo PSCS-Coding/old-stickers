@@ -10,49 +10,37 @@ include_once("connection.php");
 
 $db_stickers->query("truncate offerings");
 
-function rss_to_array($tag, $array, $url) {
-		$doc = new DOMdocument();
-		$doc->load($url);
-		$rss_array = array();
-		$items = array();
-		foreach($doc->getElementsByTagName($tag) AS $node) {	
-			foreach($array AS $key => $value) {
-				$items[$value] = $node->getElementsByTagName($value)->item(0)->nodeValue;
-			}
-			array_push($rss_array, $items);
-		}
-		return $rss_array;
-	}
-	
-function getRss(){
-$rss_tags = array(
-		'title',
-		'link',
-		'guid',
-		'comments',
-		'description',
-		'pubDate',
-		'category',
-	);
-	$rss_item_tag = 'item';
-	$rss_url = 'http://classes.pscs.org/feed';
-	
-	$rssfeed = rss_to_array($rss_item_tag,$rss_tags,$rss_url);
-
-return $rssfeed;
+$rss = new DOMDocument();
+$rss->load('http://classes.pscs.org/feed/');
+$feed = array();
+foreach ($rss->getElementsByTagName('item') as $node) {
+    $item = array (
+        'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
+		'category' => $node->getElementsByTagName('category')->item(0)->nodeValue,
+        'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
+        'creator' => $node->getElementsByTagName('creator')->item(0)->nodeValue,
+        'content' => $node->getElementsByTagName('encoded')->item(0)->nodeValue,
+        'desc' => $node->getElementsByTagName('description')->item(0)->nodeValue,
+        'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
+        );
+    array_push($feed, $item);
+}
+foreach($feed as &$k){
+    $img = $k['content'];
+    if (preg_match('/src="(.*?)"/', $img, $matches)) {
+            $src = $matches[1];
+            $k['content'] = $src;
+    }
 }
 
-$rssInfo = getRss();
+foreach ($feed as $class) {
 
-foreach ($rssInfo as $class) {
-
-	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,description) VALUES (?,?)");
-    $stmt->bind_param('ss', $class['title'], $class['description']);
+	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,facilitator,category,description) VALUES (?,?,?,?)");
+    $stmt->bind_param('ssss', $class['title'], $class['creator'], $class['category'], $class['desc']);
     $stmt->execute();
     $stmt->close();
 
 }
-
 ?>
 
 </html>

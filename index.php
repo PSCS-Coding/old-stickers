@@ -58,7 +58,7 @@ foreach($classesresult as $class){
 ?> <tr>
 <td> 
 <a href="class.php?classid=<?php echo $class['classid'];?>" > <?php echo $class['classname']; ?> </a> </td>
-<td> <?php echo $class['facilitatorid']; ?> </td>
+<td> <?php echo $class['facilitator']; ?> </td>
 <td> 
 
 <?php 

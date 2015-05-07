@@ -22,7 +22,6 @@ foreach ($rss->getElementsByTagName('item') as $node) {
         'content' => $node->getElementsByTagName('encoded')->item(0)->nodeValue,
         'desc' => $node->getElementsByTagName('description')->item(0)->nodeValue,
         'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
-        'date' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
         );
     array_push($feed, $item);
 }
@@ -34,14 +33,10 @@ foreach($feed as &$k){
     }
 }
 
-echo "<pre>";
-print_r($feed);
-echo "</pre>";
-
 foreach ($feed as $class) {
 
 	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,facilitator,category,description) VALUES (?,?,?,?)");
-    $stmt->bind_param('ssss', $class['title'], $class['facilitator'], $class['category'], $class['description']);
+    $stmt->bind_param('ssss', $class['title'], $class['creator'], $class['category'], $class['desc']);
     $stmt->execute();
     $stmt->close();
 

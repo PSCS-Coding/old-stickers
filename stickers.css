@@ -54,6 +54,13 @@ float:right;
 margin:5px;
 }
 
+.start {
+float:right;
+margin-top:-35px;
+margin-right:20%;
+}
+
 h2,h3 {
 text-align:center;
+margin-bottom: 15px;
 }

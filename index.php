@@ -6,9 +6,10 @@
 <link rel="stylesheet" type="text/css" href="stickers.css">
 </head>
 <h2> PSCS Class Offerings </h2>
+<a class='start' href='student.php'>Start</a>
 <?php
 if(!empty($_GET['reset'])){
-	if($_GET['reset=1']){
+	if($_GET['reset']==1){
 		$init = 1;
 	} else {
 		$init = 0;

@@ -14,11 +14,32 @@
 	
 	if(!empty($_SESSION['id'])){
 		echo "<a class='name'>" . idToName($_SESSION['id']) . "</a>";
+	?><div class='stickerlist'>
+	<?php
+	$studentid = $_SESSION['id'];
+	$querystickers = $db_stickers->query("SELECT * FROM usedstickers WHERE studentid=$studentid");
+	$usedstickers = array();
+	while ($data_result = $querystickers->fetch_assoc()) {
+		array_push($usedstickers, $data_result);
+	}
+	
+	for($i = $usedstickers[0]['blackstickers']; $i>0; $i--){
+		echo "<div class='blackstickers'>blacksticker</div>";
+	}
+	
+	for($i = $usedstickers[0]['greystickers']; $i>0; $i--){
+		echo "<div class='greystickers'>greysticker</div>";
+	}
+	
+	for($i = $usedstickers[0]['whitestickers']; $i>0; $i--){
+		echo "<div class='whitestickers'>whitesticker</div>";
+	}
+	?>
+	<div> <?php
 	} else {
 		echo "<a class='name'>Please Sign In</a>";
 	}
 	?>
-
 <?php
 if(!empty($_GET['reset'])){
 	if($_GET['reset']==1){

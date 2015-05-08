@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,16 +6,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="stickers.css">
 </head>
+
+<body>
+<header>
 <h2> PSCS Class Offerings </h2>
 <a class='start' href='student.php'>change user / login</a>
+
 <?php
-	session_start();
 	include_once("connection.php");
 	include_once("function.php");
 	
 	if(!empty($_SESSION['id'])){
 		echo "<a class='name'>" . idToName($_SESSION['id']) . "</a>";
-	?><div class='stickerlist'>
+	?></header><div class='stickerlist'>
 	<?php
 	$studentid = $_SESSION['id'];
 	$querystickers = $db_stickers->query("SELECT * FROM usedstickers WHERE studentid=$studentid");
@@ -111,4 +115,6 @@ if($class['block']==0){
 <?php
 }
 }
-?> </html>
+?>
+</body>
+</html>

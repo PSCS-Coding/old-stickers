@@ -19,6 +19,7 @@ margin:auto;
 margin-top:-27%;
 width:80%;
 font-size:20px;
+opacity: 0.9;
 }
 
 tr {
@@ -36,9 +37,20 @@ background-color:#CCDCED;
 opacity:0.9;
 }
 
+
 body {
-background-color:#C4C9CF;
+position:relative;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+background-color:dimgrey;
+
+background-image: url('mobius-transparent.png');
+background-repeat: no-repeat;
+background-position: center 100px;
+background-attachment: fixed;
 }
+
+
+
 
 .classdata {
 width:50%;
@@ -74,26 +86,27 @@ margin-bottom: 15px;
 }
 
 .whitestickers {
-	border-radius: 7px;
 	background-color: white;
-	margin:5px;
-	width:8%;
-	text-align: center;
+	color: black;
 }
 
 .greystickers {
-	border-radius: 7px;
 	background-color: gray;
-	margin:5px;
-	width:8%;
-	text-align: center;
 }
 
 .blackstickers {
-	border-radius: 7px;
 	background-color: black;
+	color:white;
+}
+
+
+.whitestickers,
+.greystickers,
+.blackstickers {
+	border-radius: 7px;
 	color:white;
 	margin:5px;
 	width:8%;
 	text-align: center;
+	opacity: 0.8;
 }

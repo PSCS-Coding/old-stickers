@@ -1,5 +1,6 @@
 * {
 text-decoration:none;
+font-family: sans-serif;
 }
 
 
@@ -15,6 +16,7 @@ width:8%;
 
 table {
 margin:auto;
+margin-top:-27%;
 width:80%;
 font-size:20px;
 }
@@ -69,4 +71,29 @@ margin-left:20%;
 h2,h3 {
 text-align:center;
 margin-bottom: 15px;
+}
+
+.whitestickers {
+	border-radius: 7px;
+	background-color: white;
+	margin:5px;
+	width:8%;
+	text-align: center;
+}
+
+.greystickers {
+	border-radius: 7px;
+	background-color: gray;
+	margin:5px;
+	width:8%;
+	text-align: center;
+}
+
+.blackstickers {
+	border-radius: 7px;
+	background-color: black;
+	color:white;
+	margin:5px;
+	width:8%;
+	text-align: center;
 }

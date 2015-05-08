@@ -1,3 +1,6 @@
+<?php	
+session_start(); 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +11,6 @@
 <h2> PSCS Class Offerings </h2>
 <a class='start' href='student.php'>change user / login</a>
 <?php
-	session_start();
 	include_once("connection.php");
 	include_once("function.php");
 	

@@ -8,6 +8,18 @@
 <h2> PSCS Class Offerings </h2>
 <a class='start' href='student.php'>change user / login</a>
 <?php
+	session_start();
+	include_once("connection.php");
+	include_once("function.php");
+	
+	if(!empty($_SESSION['id'])){
+		echo "<a class='name'>" . idToName($_SESSION['id']) . "</a>";
+	} else {
+		echo "<a class='name'>Please Sign In</a>";
+	}
+	?>
+
+<?php
 if(!empty($_GET['reset'])){
 	if($_GET['reset']==1){
 		$init = 1;
@@ -21,8 +33,6 @@ if(!empty($_GET['reset'])){
 if ($init){
 include_once("reset.php");
 }
-
-include_once("connection.php");
 
 // query offerings
 $result = $db_stickers->query("SELECT * FROM offerings");

@@ -60,6 +60,12 @@ margin-top:-35px;
 margin-right:20%;
 }
 
+.name {
+float:left;
+margin-top:-35px;
+margin-left:20%;
+}
+
 h2,h3 {
 text-align:center;
 margin-bottom: 15px;

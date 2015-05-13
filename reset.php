@@ -45,11 +45,11 @@ foreach ($feed as $class) {
 
 $db_stickers->query("truncate usedstickers");
 
-$getallotedstickers = $db_stickers->query("SELECT * FROM alottedstickers");
-$allotedstickers = $getallotedstickers->fetch_row();
+$getallottedstickers = $db_stickers->query("SELECT * FROM alottedstickers");
+$allottedstickers = $getallottedstickers->fetch_row();
 
 echo "<pre>";;
-print_r($allotedstickers);
+print_r($allottedstickers);
 echo "</pre>";
 
 $getstudents = $db_attendance->query("SELECT * FROM studentdata WHERE current=1");
@@ -62,7 +62,7 @@ $studentinfo = array();
 foreach($studentinfo as $student){
     
     $stmt = $db_stickers->prepare("INSERT INTO usedstickers (studentid,blackstickers,greystickers,whitestickers) VALUES (?,?,?,?)");
-    $stmt->bind_param('iiii', $student['studentid'], $allotedstickers[0], $allotedstickers[1], $allotedstickers[2]);
+    $stmt->bind_param('iiii', $student['studentid'], $allottedstickers[0], $allottedstickers[1], $allottedstickers[2]);
     $stmt->execute();
     $stmt->close();
     

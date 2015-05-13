@@ -34,7 +34,6 @@ foreach($feed as &$k){
 }
 
 foreach ($feed as $class) {
-echo $class['content'];
 	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,facilitator,category,description,image) VALUES (?,?,?,?,?)");
     $stmt->bind_param('sssss', $class['title'], $class['creator'], $class['category'], $class['desc'], $class['content']);
     $stmt->execute();
@@ -46,11 +45,12 @@ echo $class['content'];
 
 $db_stickers->query("truncate usedstickers");
 
-$getallotedstickers = $db_stickers->query("SELECT * FROM allotedstickers");
-$allotedstickers = array();
-	while ($stickerdata = $getallotedstickers->fetch_assoc()) {
-		array_push($allotedstickers, $stickerdata);
-	}
+$getallotedstickers = $db_stickers->query("SELECT * FROM alottedstickers");
+$allotedstickers = $getallotedstickers->fetch_row();
+
+echo "<pre>";;
+print_r($allotedstickers);
+echo "</pre>";
 
 $getstudents = $db_attendance->query("SELECT * FROM studentdata WHERE current=1");
 $studentinfo = array();
@@ -58,6 +58,15 @@ $studentinfo = array();
 		array_push($studentinfo, $student_data);
 	}
 
+
+foreach($studentinfo as $student){
+    
+    $stmt = $db_stickers->prepare("INSERT INTO usedstickers (studentid,blackstickers,greystickers,whitestickers) VALUES (?,?,?,?)");
+    $stmt->bind_param('iiii', $student['studentid'], $allotedstickers[0], $allotedstickers[1], $allotedstickers[2]);
+    $stmt->execute();
+    $stmt->close();
+    
+}
 
 ?>
 

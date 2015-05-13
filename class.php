@@ -1,7 +1,7 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <?php // init
-session_start();
 
 include_once("connection.php");
 

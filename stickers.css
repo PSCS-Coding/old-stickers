@@ -5,7 +5,7 @@ font-family: sans-serif;
 
 
 table,td,th {
-border: 1px solid black;
+border: 1px solid #424242;
 border-spacing: 0;
 margin: 5px;
 }
@@ -25,15 +25,28 @@ opacity: 0.9;
 tr {
 width:auto;
 margin:auto;
+font-size: 0.8em;
+}
+
+tr a, tr a:visited {
+color: #585858;
+}
+
+tr a:hover {
+color: #848484;
+}
+
+td {
+padding: 5px;
 }
 
 tr:nth-child(odd) {
-background-color:#ADCCED;
+background-color:#9a9a9a;
 opacity:0.9;
 }
 
 tr:nth-child(even) {
-background-color:#CCDCED;
+background-color:#ddd;
 opacity:0.9;
 }
 
@@ -85,6 +98,17 @@ text-align:center;
 margin-bottom: 15px;
 }
 
+.whitestickers,
+.greystickers,
+.blackstickers {
+	border-radius: 7px;
+	color:white;
+	margin:5px;
+	width:8%;
+	text-align: center;
+	opacity: 0.8;
+}
+
 .whitestickers {
 	background-color: white;
 	color: black;
@@ -97,16 +121,4 @@ margin-bottom: 15px;
 .blackstickers {
 	background-color: black;
 	color:white;
-}
-
-
-.whitestickers,
-.greystickers,
-.blackstickers {
-	border-radius: 7px;
-	color:white;
-	margin:5px;
-	width:8%;
-	text-align: center;
-	opacity: 0.8;
 }

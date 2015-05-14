@@ -5,7 +5,7 @@ font-family: sans-serif;
 
 
 table,td,th {
-border: 1px solid black;
+border: 1px solid #424242;
 border-spacing: 0;
 margin: 5px;
 }
@@ -19,26 +19,52 @@ margin:auto;
 margin-top:-27%;
 width:80%;
 font-size:20px;
+opacity: 0.9;
 }
 
 tr {
 width:auto;
 margin:auto;
+font-size: 0.8em;
+}
+
+tr a, tr a:visited {
+color: #424242;
+}
+
+tr a:hover {
+color: #848484;
+}
+
+td {
+padding: 5px;
+color: #424242;
 }
 
 tr:nth-child(odd) {
-background-color:#ADCCED;
+background-color:#9a9a9a;
 opacity:0.9;
 }
 
 tr:nth-child(even) {
-background-color:#CCDCED;
+background-color:#ddd;
 opacity:0.9;
 }
 
+
 body {
-background-color:#C4C9CF;
+position:relative;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+background-color:dimgrey;
+
+background-image: url('mobius-transparent.png');
+background-repeat: no-repeat;
+background-position: center 100px;
+background-attachment: fixed;
 }
+
+
+
 
 .classdata {
 width:50%;
@@ -73,27 +99,34 @@ text-align:center;
 margin-bottom: 15px;
 }
 
-.whitestickers {
+.sticker {
 	border-radius: 7px;
-	background-color: white;
-	margin:5px;
-	width:8%;
-	text-align: center;
-}
-
-.greystickers {
-	border-radius: 7px;
-	background-color: gray;
-	margin:5px;
-	width:8%;
-	text-align: center;
-}
-
-.blackstickers {
-	border-radius: 7px;
-	background-color: black;
 	color:white;
 	margin:5px;
+	width:100px;
+	text-align: center;
+	opacity: 0.8;
+	height: 20px;
+	z-index: 1;
+}
+
+.white {
+	background-color: white;
+	color: black;
+}
+
+.grey {
+	background-color: gray;
+}
+
+.black {
+	background-color: black;
+	color:white;
+<<<<<<< HEAD
+	margin:5px;
 	width:8%;
 	text-align: center;
 }
+=======
+}
+>>>>>>> styles

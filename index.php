@@ -7,6 +7,20 @@ session_start();
 <title> Class View </title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="stickers.css">
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script>
+	$(function() {
+		$('.sticker').draggable();
+	});
+</script>
+
+	
 </head>
 
 <body>
@@ -30,15 +44,15 @@ session_start();
 	}
 	
 	for($i = $usedstickers[0]['blackstickers']; $i>0; $i--){
-		echo "<div class='blackstickers'>blacksticker</div>";
+		echo "<div class='sticker black'>blacksticker</div>";
 	}
 	
 	for($i = $usedstickers[0]['greystickers']; $i>0; $i--){
-		echo "<div class='greystickers'>greysticker</div>";
+		echo "<div class='sticker grey'>greysticker</div>";
 	}
 	
 	for($i = $usedstickers[0]['whitestickers']; $i>0; $i--){
-		echo "<div class='whitestickers'>whitesticker</div>";
+		echo "<div class='sticker white'>whitesticker</div>";
 	}
 	?>
 	<div> <?php
@@ -110,9 +124,9 @@ if($class['block']==0){
 
 </td>
 <!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
-<td style="background-color:#5F5959;"> <?php echo $class['blackstickers']; ?> </td>
-<td style="background-color:#A69E9E;"> <?php echo $class['greystickers']; ?> </td>
-<td style="background-color:#FFFFFF;"> <?php echo $class['whitestickers']; ?> </td>
+<td class="sticker-container" style="background-color:#5F5959;"> <?php echo $class['blackstickers']; ?> </td>
+<td class="sticker-container" style="background-color:#A69E9E;"> <?php echo $class['greystickers']; ?> </td>
+<td class="sticker-container" style="background-color:#FFFFFF;"> <?php echo $class['whitestickers']; ?> </td>
 </tr>
 <?php
 }

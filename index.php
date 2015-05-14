@@ -16,7 +16,7 @@ session_start();
 	
 	if(!empty($_SESSION['id'])){
 		echo "<a class='name'>" . idToName($_SESSION['id']) . "</a>";
-	?><div class='stickerlist'>
+	?><!<div class='stickerlist'>
 	<?php
 	$studentid = $_SESSION['id'];
 	$querystickers = $db_stickers->query("SELECT * FROM usedstickers WHERE studentid=$studentid");
@@ -106,9 +106,9 @@ if($class['block']==0){
 
 </td>
 <!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
-<td style="background-color:#5F5959;"> <?php echo $class['blackstickers']; ?> </td>
-<td style="background-color:#A69E9E;"> <?php echo $class['greystickers']; ?> </td>
-<td style="background-color:#FFFFFF;"> <?php echo $class['whitestickers']; ?> </td>
+<td style="background-color:#5F5959;"> <input type="submit" value="Check"> <?php echo $class['blackstickers']; ?> </td>
+<td style="background-color:#A69E9E;"> <input type="submit" value="Check"> <?php echo $class['greystickers']; ?> </td>
+<td style="background-color:#FFFFFF;"> <input type="submit" value="Check"> <?php echo $class['whitestickers']; ?> </td>
 </tr>
 <?php
 }

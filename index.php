@@ -83,6 +83,7 @@ $facilitators = array();
 <th> Title</th>
 <th> Facilitator </th>
 <th> Block </th>
+<th> Category </th>
 <th class="stickerheader"> Black stickers </th>
 <th class="stickerheader"> Grey stickers </th>
 <th class="stickerheader"> White stickers </th>
@@ -106,6 +107,7 @@ if($class['block']==0){
 
 </td>
 <!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
+<td > <?php echo $class['category']; ?> </td>
 <td style="background-color:#5F5959;"> <?php echo $class['blackstickers']; ?> </td>
 <td style="background-color:#A69E9E;"> <?php echo $class['greystickers']; ?> </td>
 <td style="background-color:#FFFFFF;"> <?php echo $class['whitestickers']; ?> </td>

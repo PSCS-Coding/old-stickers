@@ -45,7 +45,7 @@ foreach ($feed as $class) {
 
 $db_stickers->query("truncate usedstickers");
 
-$getallottedstickers = $db_stickers->query("SELECT * FROM alottedstickers");
+$getallottedstickers = $db_stickers->query("SELECT * FROM allottedstickers");
 $allottedstickers = $getallottedstickers->fetch_row();
 
 echo "<pre>";;

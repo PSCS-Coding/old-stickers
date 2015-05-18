@@ -37,7 +37,13 @@ while ($data_result = $classquery->fetch_assoc()) {
 <a class="back" href="index.php">Back</a>
 <h3><?php echo $classresult[0]['classname'] . ", taught by " . $classresult[0]['facilitator']; ?></h3>
 <p>
-<?php echo $classresult[0]['description']; ?>
+<?php echo $classresult[0]['description'];
+if (preg_match('/<p/',$classresult[0]["image"])){
+} else {
+	?><img src='<?php echo $classresult[0]["image"]; ?>'>
+<?php	
+}
+?>
 
 </p>
 </div>

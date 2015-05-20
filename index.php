@@ -14,28 +14,35 @@
             include_once("connection.php");
             include_once("function.php");
             
+			//get id from session
             if(!empty($_SESSION['id'])) {
                 echo "<a class='name'>". idToName($_SESSION['id']) . "</a>";
-            }
-	    else {
-		echo "<a class='name'>Please Sign In</a>";
-	    }
-        ?>
-	<?php
+            } else {
+				echo "<a class='name'>Please Sign In</a>";
+	    	}
+		
+		//if reset is true
 		if(!empty($_GET['reset'])) {
 			if($_GET['reset'] == 1) {
 				$init = 1;
-			}
-			else {
+			} else {
 				$init = 0;
 			}
-		}
-		else {
+		} else {
 			$init = 0;
 		}
 		
 		if($init) {
 			include_once("reset.php");
+		}
+		
+		//insert stickers
+		echo "<pre>";
+		print_r($_POST);
+		echo "</pre>";
+		
+		if(!empty($_POST[''])){
+			echo "test";
 		}
 		
 		// QUERY OFFERINGS
@@ -47,11 +54,11 @@
 		
 		if(count($classesresult) == 0) {
 			echo "<p style='text-align: center'>Sorry, Class offerings could not be retrieved at this time</p>";
-		}
-		else {
-			// QUERY STICKERS
+		} else {
+			// QUERY FACILITATORS
 			$facget = $db_attendance->query("SELECT facilitatorname, facilitatorid FROM facilitators ORDER BY facilitatorname ASC");
 			$facilitators = array();
+			
 			while($fac_row = $facget->fetch_row()) {
 				array_push($facilitators, $fac_row[0]);
 			}
@@ -87,9 +94,9 @@
 				?>
 			</td>
 			<!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
-			<td style="background-color:#5F5959;"> <input type="submit" value="Check"> <?php echo $class['blackstickers']; ?> </td>
-			<td style="background-color:#A69E9E;"> <input type="submit" value="Check"> <?php echo $class['greystickers']; ?> </td>
-			<td style="background-color:#FFFFFF;"> <input type="submit" value="Check"> <?php echo $class['whitestickers']; ?> </td>
+			<td style="background-color:#5F5959;"> <input type="submit" name = "<?php echo 'black' . $class['classid']; ?>" value="Check"> <?php echo $class['blackstickers']; ?> </td>
+			<td style="background-color:#A69E9E;"> <input type="submit" name = "<?php echo 'grey' . $class['classid']; ?>" value="Check"> <?php echo $class['greystickers']; ?> </td>
+			<td style="background-color:#FFFFFF;"> <input type="submit" name = "<?php echo 'white' . $class['classid']; ?>" value="Check"> <?php echo $class['whitestickers']; ?> </td>
 		</tr>
 		<?php
 			}

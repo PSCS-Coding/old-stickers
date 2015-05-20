@@ -37,13 +37,9 @@
 		}
 		
 		//insert stickers
-		echo "<pre>";
-		print_r($_POST);
-		echo "</pre>";
-		
-		if(!empty($_POST[''])){
-			echo "test";
-		}
+			echo "<pre>";
+			print_r($_GET);
+			echo "</pre>";
 		
 		// QUERY OFFERINGS
 		$result = $db_stickers->query("SELECT * FROM offerings");
@@ -67,6 +63,7 @@
 	
 	<!-- RENDER TABLE -->
 	<table>
+	<form method='get' action='<?php echo basename($_SERVER['PHP_SELF']); ?>' id='main'>
 		<tr>
 			<th>Title</th>
 			<th>Facilitator</th>
@@ -94,13 +91,14 @@
 				?>
 			</td>
 			<!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
-			<td style="background-color:#5F5959;"> <input type="submit" name = "<?php echo 'black' . $class['classid']; ?>" value="Check"> <?php echo $class['blackstickers']; ?> </td>
-			<td style="background-color:#A69E9E;"> <input type="submit" name = "<?php echo 'grey' . $class['classid']; ?>" value="Check"> <?php echo $class['greystickers']; ?> </td>
-			<td style="background-color:#FFFFFF;"> <input type="submit" name = "<?php echo 'white' . $class['classid']; ?>" value="Check"> <?php echo $class['whitestickers']; ?> </td>
+			<td style="background-color:#5F5959;"> <input type="submit" name = "<?php echo 'black ' . $class['classid']; ?>" value="Check"> <?php echo $class['blackstickers']; ?> </td>
+			<td style="background-color:#A69E9E;"> <input type="submit" name = "<?php echo 'grey ' . $class['classid']; ?>" value="Check"> <?php echo $class['greystickers']; ?> </td>
+			<td style="background-color:#FFFFFF;"> <input type="submit" name = "<?php echo 'white ' . $class['classid']; ?>" value="Check"> <?php echo $class['whitestickers']; ?> </td>
 		</tr>
 		<?php
 			}
 		?>
+	</form>
 	</table>
     </body>
 </html>

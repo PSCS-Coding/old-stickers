@@ -20,10 +20,16 @@ function addsticker($studentid,$classid,$stickertype){
 		$stmt->bind_param('s', $studentid);
 		$stmt->execute();
 		
+	} elseif(strpos($cell,$studentid . ",") OR strpos($cell,"," . $studentid)){
+		echo $studentid . " is alread in there";
+		
 	} elseif(strpos($cell,",")) {
 		echo "explode implode";
 		$cellarray = explode(",",$cell);
 		
+	}  elseif($cell == $studentid) {
+		echo "thats the only student in there";
+	
 	} else {
 		echo "theres only one value";
 		
@@ -32,10 +38,7 @@ function addsticker($studentid,$classid,$stickertype){
 		$stmt->bind_param('s', $updatedstudentid);
 		$stmt->execute();
 	}
-		
-	echo "<pre>";
-	print_r($stickersresult);
-	echo "</pre>";
+
 }
 
 ?>

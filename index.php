@@ -39,16 +39,20 @@
 			include_once("reset.php");
 		}
 		
-		//insert stickers
-			echo "<pre>";
-			print_r($_POST);
-			echo "</pre>";
-		
 		// QUERY OFFERINGS
 		$result = $db_stickers->query("SELECT * FROM offerings");
 		$classesresult = array();
 		while($data_result = $result->fetch_assoc()) {
 			array_push($classesresult, $data_result);
+		}
+		
+		//insert stickers
+		
+		foreach($classesresult as $class){
+			if(!empty($_POST[$class['classid']])){
+				echo $_POST[$class['classid']] . " was selected for class id " . $class['classid'];
+				addsticker($_SESSION['id'], $class['classid'], $_POST[$class['classid']]);
+			}
 		}
 		
 		if(count($classesresult) == 0) {
@@ -61,6 +65,12 @@
 			while($fac_row = $facget->fetch_row()) {
 				array_push($facilitators, $fac_row[0]);
 			}
+		}
+		// REQUERY OFFERINGS FOR TABLE
+		$result = $db_stickers->query("SELECT * FROM offerings");
+		$classesresult = array();
+		while($data_result = $result->fetch_assoc()) {
+			array_push($classesresult, $data_result);
 		}
 	?>
 	

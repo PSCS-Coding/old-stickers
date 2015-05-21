@@ -14,17 +14,17 @@ function addsticker($studentid,$classid,$stickertype){
 	$cell = $stickersresult[0][$stickertype];
 	
 	if($cell == "0"){
-		echo "there are not stickers so just add";
+		// "there are not stickers so just add";
 		
 		$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
 		$stmt->bind_param('s', $studentid);
 		$stmt->execute();
 		
 	} elseif(strpos($cell,$studentid . ",") OR strpos($cell,"," . $studentid)){
-		echo $studentid . " is alread in there";
+		// $studentid . " is alread in there";
 		
 	} elseif(strpos($cell,",")) {
-		echo "explode implode";
+		// "explode implode";
 		$cellarray = explode(",",$cell);
 		
 		if(!in_array($studentid,$cellarray)){	
@@ -37,10 +37,10 @@ function addsticker($studentid,$classid,$stickertype){
 		}
 		
 	}  elseif($cell == $studentid) {
-		echo "thats the only student in there";
+		// "thats the only student in there";
 	
 	} else {
-		echo "theres only one value";
+		// "theres only one value";
 		
 		$updatedstudentid = $cell . "," . $studentid;
 		$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");

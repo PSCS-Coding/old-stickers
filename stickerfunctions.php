@@ -27,6 +27,15 @@ function addsticker($studentid,$classid,$stickertype){
 		echo "explode implode";
 		$cellarray = explode(",",$cell);
 		
+		if(!in_array($studentid,$cellarray)){	
+			
+			array_push($cellarray,$studentid);
+			$celldata = implode(",",$cellarray);
+			$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
+			$stmt->bind_param('s', $celldata);
+			$stmt->execute();
+		}
+		
 	}  elseif($cell == $studentid) {
 		echo "thats the only student in there";
 	

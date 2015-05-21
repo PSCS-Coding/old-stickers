@@ -6,13 +6,16 @@
         <link rel="stylesheet" type="text/css" href="stickers.css">        
     </head>
     <body>
+		<form method='post' action='<?php echo basename($_SERVER['PHP_SELF']); ?>' id='main'>
         <header>
             <h2>PSCS Class Offerings</h2>
             <a class="start" href="student.php">change user / login</a>
+			<input type="submit" name="submit" value="Submit">
         </header>
         <?php
             include_once("connection.php");
             include_once("function.php");
+			include_once("stickerfunctions.php");
             
 			//get id from session
             if(!empty($_SESSION['id'])) {
@@ -38,7 +41,7 @@
 		
 		//insert stickers
 			echo "<pre>";
-			print_r($_GET);
+			print_r($_POST);
 			echo "</pre>";
 		
 		// QUERY OFFERINGS
@@ -63,7 +66,6 @@
 	
 	<!-- RENDER TABLE -->
 	<table>
-	<form method='get' action='<?php echo basename($_SERVER['PHP_SELF']); ?>' id='main'>
 		<tr>
 			<th>Title</th>
 			<th>Facilitator</th>
@@ -91,9 +93,9 @@
 				?>
 			</td>
 			<!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
-			<td style="background-color:#5F5959;"> <input type="submit" name = "<?php echo 'black ' . $class['classid']; ?>" value="Check"> <?php echo $class['blackstickers']; ?> </td>
-			<td style="background-color:#A69E9E;"> <input type="submit" name = "<?php echo 'grey ' . $class['classid']; ?>" value="Check"> <?php echo $class['greystickers']; ?> </td>
-			<td style="background-color:#FFFFFF;"> <input type="submit" name = "<?php echo 'white ' . $class['classid']; ?>" value="Check"> <?php echo $class['whitestickers']; ?> </td>
+			<td style="background-color:#5F5959;"> <input type="checkbox" name = "<?php echo $class['classid']; ?>" value="<?php echo 'black' ?>"> <?php echo $class['blackstickers']; ?> </td>
+			<td style="background-color:#A69E9E;"> <input type="checkbox" name = "<?php echo $class['classid']; ?>" value="<?php echo 'grey' ?>"> <?php echo $class['greystickers']; ?> </td>
+			<td style="background-color:#FFFFFF;"> <input type="checkbox" name = "<?php echo $class['classid']; ?>" value="<?php echo 'white' ?>"> <?php echo $class['whitestickers']; ?> </td>
 		</tr>
 		<?php
 			}

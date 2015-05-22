@@ -50,7 +50,6 @@
 		
 		foreach($classesresult as $class){
 			if(!empty($_POST[$class['classid']])){
-				echo $_POST[$class['classid']] . " was selected for class id " . $class['classid'];
 				addsticker($_SESSION['id'], $class['classid'], $_POST[$class['classid']]);
 			}
 		}

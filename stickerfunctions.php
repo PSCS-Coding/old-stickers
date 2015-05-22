@@ -4,13 +4,22 @@ function addsticker($studentid,$classid,$stickertype){
 	global $db_stickers;
 	
 	$stickertype = $stickertype . "stickers";
+	//get all stickers for that class
+	$getallstickers = $db_stickers->query("SELECT blackstickers,greystickers,whitestickers FROM offerings WHERE classid=$classid");
 	
+			$stickersresult = array();
+		while($data_result = $getstickers->fetch_assoc()) {
+			array_push($stickersresult, $data_result);
+		}
+	
+	//get stickers in that classes cell
 	$getstickers = $db_stickers->query("SELECT $stickertype FROM offerings WHERE classid=$classid");
 	
 		$stickersresult = array();
 		while($data_result = $getstickers->fetch_assoc()) {
 			array_push($stickersresult, $data_result);
 		}
+		
 	$cell = $stickersresult[0][$stickertype];
 	
 	if($cell == "0"){

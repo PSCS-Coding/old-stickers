@@ -8,7 +8,7 @@ function addsticker($studentid,$classid,$stickertype){
 	$getallstickers = $db_stickers->query("SELECT blackstickers,greystickers,whitestickers FROM offerings WHERE classid=$classid");
 	
 			$stickersresult = array();
-		while($data_result = $getstickers->fetch_assoc()) {
+		while($data_result = $getallstickers->fetch_assoc()) {
 			array_push($stickersresult, $data_result);
 		}
 	

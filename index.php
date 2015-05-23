@@ -11,7 +11,7 @@
 					stickercolor = "black";
 				} else if (color == 2) {
 					stickercolor = "grey";
-				} else {
+				} else  if (color == 3){
 					stickercolor = "white";
 				}
 				document.getElementById(classid + "-" + color).innerHTML = '✓';
@@ -123,8 +123,8 @@
 			</td>
 			<!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
 			<?php echo '<td id="' . $class["classid"] . '-1" style="background-color:#5F5959;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',1)"></td>'; ?>
-			<td style="background-color:#A69E9E;"> <input type="checkbox" name = "<?php echo $class['classid']; ?>" value="<?php echo 'grey' ?>"> <?php echo $class['greystickers']; ?> </td>
-			<td style="background-color:#FFFFFF;"> <input type="checkbox" name = "<?php echo $class['classid']; ?>" value="<?php echo 'white' ?>"> <?php echo $class['whitestickers']; ?> </td>
+			<?php echo '<td id="' . $class["classid"] . '-2" style="background-color:#A69E9E;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',2)"></td>'; ?>
+			<?php echo '<td id="' . $class["classid"] . '-3" style="background-color:#FFFFFF;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',3)"></td>'; ?>
 		</tr>
 		<?php
 			}

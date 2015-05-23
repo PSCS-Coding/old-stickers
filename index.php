@@ -19,7 +19,7 @@
 				console.log(classid);
 				console.log(stickercolor);
 				 var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "jsget.php", false );
+    xmlHttp.open( "GET", "jsget.php?studentid=" + studentid + "&classid=" + classid + "&stickercolor=" + stickercolor, false );
     xmlHttp.send( null );
     console.log(xmlHttp.responseText);
 			}

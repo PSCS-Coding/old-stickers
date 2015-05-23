@@ -3,7 +3,15 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="stickers.css">        
+        <link rel="stylesheet" type="text/css" href="stickers.css">    
+		<script>
+			
+			function updateStickers (studentid, classid, color) {
+				console.log(studentid);
+				console.log(classid);
+				console.log(color);
+			}
+			</script>
     </head>
     <body>
 		<form method='post' action='<?php echo basename($_SERVER['PHP_SELF']); ?>' id='main'>
@@ -102,7 +110,7 @@
 				?>
 			</td>
 			<!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
-			<td style="background-color:#5F5959;"> <input type="checkbox" name = "<?php echo $class['classid']; ?>" value="<?php echo 'black' ?>"> <?php echo $class['blackstickers']; ?> </td>
+			<?php echo '<td style="background-color:#5F5959;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',1)"></td>'; ?>
 			<td style="background-color:#A69E9E;"> <input type="checkbox" name = "<?php echo $class['classid']; ?>" value="<?php echo 'grey' ?>"> <?php echo $class['greystickers']; ?> </td>
 			<td style="background-color:#FFFFFF;"> <input type="checkbox" name = "<?php echo $class['classid']; ?>" value="<?php echo 'white' ?>"> <?php echo $class['whitestickers']; ?> </td>
 		</tr>

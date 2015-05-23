@@ -7,9 +7,17 @@
 		<script>
 			
 			function updateStickers (studentid, classid, color) {
+				if (color == 1) {
+					stickercolor = "black";
+				} else if (color == 2) {
+					stickercolor = "grey";
+				} else {
+					stickercolor = "white";
+				}
+				document.getElementById(classid + "-" + color).innerHTML = '✓';
 				console.log(studentid);
 				console.log(classid);
-				console.log(color);
+				console.log(stickercolor);
 			}
 			</script>
     </head>
@@ -110,7 +118,7 @@
 				?>
 			</td>
 			<!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
-			<?php echo '<td style="background-color:#5F5959;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',1)"></td>'; ?>
+			<?php echo '<td id="' . $class["classid"] . '-1" style="background-color:#5F5959;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',1)"></td>'; ?>
 			<td style="background-color:#A69E9E;"> <input type="checkbox" name = "<?php echo $class['classid']; ?>" value="<?php echo 'grey' ?>"> <?php echo $class['greystickers']; ?> </td>
 			<td style="background-color:#FFFFFF;"> <input type="checkbox" name = "<?php echo $class['classid']; ?>" value="<?php echo 'white' ?>"> <?php echo $class['whitestickers']; ?> </td>
 		</tr>

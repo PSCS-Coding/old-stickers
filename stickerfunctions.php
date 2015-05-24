@@ -51,8 +51,7 @@ function addsticker($studentid,$classid,$stickertype){
 					$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
 					$stmt->bind_param('s', $zero);
 					$stmt->execute();
-					//return "unstickered";
-					updateused($studentid,$stickertype,"add");
+					return "unstickered";
 				} else {
 					// " already stickered in different color";
 					break;
@@ -65,8 +64,7 @@ function addsticker($studentid,$classid,$stickertype){
 					$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
 					$stmt->bind_param('s', $studentid);
 					$stmt->execute();
-					//return "stickered";
-					updateused($studentid,$stickertype,"remove");
+					return "stickered";
 				}
 			} elseif(strpos($rowresult[0][$color],",")) {
 				$celldata = explode(",",$rowresult[0][$color]); 
@@ -80,8 +78,7 @@ function addsticker($studentid,$classid,$stickertype){
 						$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
 						$stmt->bind_param('s', $celldata);
 						$stmt->execute();
-						//return "unstickered";
-						updateused($studentid,$stickertype,"add");
+						return "unstickered";
 					}
 				} else {
 					if($color == $stickertype){
@@ -91,8 +88,7 @@ function addsticker($studentid,$classid,$stickertype){
 						$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
 						$stmt->bind_param('s', $celldata);
 						$stmt->execute();
-						//return "stickered";
-						updateused($studentid,$stickertype,"remove");
+						return "stickered";
 					}
 				}
 			}

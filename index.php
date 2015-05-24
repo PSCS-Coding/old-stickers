@@ -14,7 +14,11 @@
 				} else  if (color == 3){
 					stickercolor = "white";
 				}
+				if (document.getElementById(classid + "-" + color).innerHTML = '✓') {
+				document.getElementById(classid + "-" + color).innerHTML = '';
+				} else if (document.getElementById(classid + "-" + color).innerHTML = '✓') {
 				document.getElementById(classid + "-" + color).innerHTML = '✓';
+				}
 				console.log(studentid);
 				console.log(classid);
 				console.log(stickercolor);

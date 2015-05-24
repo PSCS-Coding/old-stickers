@@ -125,7 +125,12 @@
 				?>
 			</td>
 			<!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
-			<?php echo '<td id="' . $class["classid"] . '-1" style="background-color:#5F5959;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',1)"></td>'; ?>
+			<?php echo '<td id="' . $class["classid"] . '-1" style="background-color:#5F5959;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',1)">';
+			if (strpos($class["blackstickers"],$_SESSION["id"]) !== false) {
+				//true
+				echo "✓";
+			}
+			echo '</td>'; ?>
 			<?php echo '<td id="' . $class["classid"] . '-2" style="background-color:#A69E9E;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',2)"></td>'; ?>
 			<?php echo '<td id="' . $class["classid"] . '-3" style="background-color:#FFFFFF;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',3)"></td>'; ?>
 		</tr>

@@ -19,6 +19,6 @@ if(!empty($_GET)){
 			}
 		$usedstickers = $usedstickers[0][0];
 		//echo $usedstickers;
-	//echo $returninfo;
+	echo $returninfo;
 }
 ?>

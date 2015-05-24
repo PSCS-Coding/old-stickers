@@ -9,7 +9,7 @@ function updateused($studentid,$stickertype,$update){
 			array_push($usedstickers, $data_result);
 		}
 		$usedstickers = $usedstickers[0][0];
-		//echo $usedstickers;
+		echo $usedstickers;
 		
 		if ($update == "add"){
 			$usedstickers++;

@@ -22,9 +22,6 @@
 					xmlHttp.open( "GET", "jsget.php?studentid=" + studentid + "&classid=" + classid + "&stickercolor=" + stickercolor, false );
 					xmlHttp.send( null );
 					console.log(xmlHttp.responseText);
-				if (xmlHttp.responseText == "failure") {
-					alert("Connection Failed! Check your Internet connection.");
-				}
 				if(xmlHttp.responseText.indexOf("unstickered")>=0){
 					document.getElementById(classid + "-" + color).innerHTML = '';
 				} else {
@@ -38,7 +35,7 @@
         <header>
             <h2>PSCS Class Offerings</h2>
             <a class="start" href="student.php">change user / login</a>
-			<input type="submit" name="submit" value="Submit">
+			<br />
         </header>
         <?php
             include_once("connection.php");

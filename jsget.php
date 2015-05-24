@@ -10,13 +10,14 @@ if(!empty($_GET)){
 		} elseif ($returninfo == "unstickered"){
 			updateused($_GET['studentid'],$_GET['stickercolor']. "stickers","add");
 		}
-	echo "success";
-	echo "---" . $returninfo;
-	/*echo $_GET['studentid'] . "  ";
-	echo $_GET['classid'] . "  ";
-	echo $_GET['stickercolor'] . "  ";
-	*/
-} else {
-	echo "failure";
+		
+		$getused  =  $db_stickers->query("SELECT $stickertype FROM usedstickers WHERE studentid=$studentid");
+		$usedstickers = array();
+			while($data_result = $getused->fetch_row()) {
+				array_push($usedstickers, $data_result);
+			}
+		$usedstickers = $usedstickers[0][0];
+		echo $usedstickers;
+	echo $returninfo;
 }
 ?>

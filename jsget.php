@@ -7,7 +7,7 @@ if(!empty($_GET)){
 	
 		if($returninfo == "stickered"){
 			updateused($_GET['studentid'],$_GET['stickercolor']. "stickers","remove");
-		} elseif ($returninfor == "unstickered"){
+		} elseif ($returninfo == "unstickered"){
 			updateused($_GET['studentid'],$_GET['stickercolor']. "stickers","remove");
 		}
 	echo "success";

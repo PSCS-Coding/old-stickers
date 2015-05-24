@@ -41,10 +41,7 @@ function addsticker($studentid,$classid,$stickertype){
 					$stmt->execute();
 				}
 			} elseif(strpos($rowresult[0][$color],",")) {
-				$celldata = explode(",",$rowresult[0][$color]);
-				// "<pre>";
-				print_r($celldata);
-				// "</pre>"; 
+				$celldata = explode(",",$rowresult[0][$color]); 
 				if (in_array($studentid,$celldata)){
 					// "already in " . $color . " " . $stickertype;
 					if($color == $stickertype){

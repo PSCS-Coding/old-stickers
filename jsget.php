@@ -11,6 +11,7 @@ if(!empty($_GET)){
 			updateused($_GET['studentid'],$_GET['stickercolor']. "stickers","remove");
 		}
 	echo "success";
+	echo "---" . $returninfo;
 	/*echo $_GET['studentid'] . "  ";
 	echo $_GET['classid'] . "  ";
 	echo $_GET['stickercolor'] . "  ";

@@ -20,7 +20,7 @@
 					console.log(xmlHttp.responseText);
 				if(xmlHttp.responseText.indexOf("unstickered")>=0){
 					document.getElementById(classid + "-" + color).innerHTML = '';
-				} else {
+				} else if (xmlHttp.responseText.indexOf("stickered")>=0) {
 					document.getElementById(classid + "-" + color).innerHTML = '✓';
 				}
 			}

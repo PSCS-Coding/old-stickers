@@ -18,12 +18,15 @@
 				console.log(studentid);
 				console.log(classid);
 				console.log(stickercolor);
-				 var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "jsget.php?studentid=" + studentid + "&classid=" + classid + "&stickercolor=" + stickercolor, false );
-    xmlHttp.send( null );
-    console.log(xmlHttp.responseText);
+					var xmlHttp = new XMLHttpRequest();
+					xmlHttp.open( "GET", "jsget.php?studentid=" + studentid + "&classid=" + classid + "&stickercolor=" + stickercolor, false );
+					xmlHttp.send( null );
+					console.log(xmlHttp.responseText);
+				if (xmlHttp.responseText == "failure") {
+					alert("Connection Failed! Check your Internet connection.");
+				}
 			}
-			</script>
+		</script>
     </head>
     <body>
 		<form method='post' action='<?php echo basename($_SERVER['PHP_SELF']); ?>' id='main'>

@@ -14,7 +14,6 @@
 				} else  if (color == 3){
 					stickercolor = "white";
 				}
-				document.getElementById(classid + "-" + color).innerHTML = '✓';
 				
 				console.log(studentid);
 				console.log(classid);
@@ -25,6 +24,11 @@
 					console.log(xmlHttp.responseText);
 				if (xmlHttp.responseText == "failure") {
 					alert("Connection Failed! Check your Internet connection.");
+				}
+				if(xmlHttp.responseText.indexOf("unstickered")>=0){
+					document.getElementById(classid + "-" + color).innerHTML = '';
+				} else {
+					document.getElementById(classid + "-" + color).innerHTML = '✓';
 				}
 			}
 		</script>

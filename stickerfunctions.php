@@ -1,6 +1,5 @@
 <?php
 function updateused($studentid,$stickertype,$update){
-	echo $studentid . " " . $stickertype . " " . $update;
 	global $db_attendance;
 	global $db_stickers;
 	

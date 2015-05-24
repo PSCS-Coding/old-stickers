@@ -14,10 +14,6 @@
 				} else  if (color == 3){
 					stickercolor = "white";
 				}
-				
-				console.log(studentid);
-				console.log(classid);
-				console.log(stickercolor);
 					var xmlHttp = new XMLHttpRequest();
 					xmlHttp.open( "GET", "jsget.php?studentid=" + studentid + "&classid=" + classid + "&stickercolor=" + stickercolor, false );
 					xmlHttp.send( null );
@@ -38,6 +34,13 @@
 			<br />
         </header>
         <?php
+		
+				/*
+				console.log(studentid);
+				console.log(classid);
+				console.log(stickercolor);
+				*/
+				
             include_once("connection.php");
             include_once("function.php");
 			include_once("stickerfunctions.php");

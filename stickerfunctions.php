@@ -28,10 +28,10 @@ function addsticker($studentid,$classid,$stickertype){
 	$getBlackStickers = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT blackstickers FROM offerings WHERE classid = $classid ORDER BY classid DESC LIMIT 1"));
 	$getGreyStickers  = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT greystickers  FROM offerings WHERE classid = $classid ORDER BY classid DESC LIMIT 1"));
 	$getWhiteStickers = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT whitestickers FROM offerings WHERE classid = $classid ORDER BY classid DESC LIMIT 1"));
-
-	$blackArray = explode(",", $getBlackStickers[0]);
-	$greyArray  = explode(",", $getGreyStickers[0]);
-	$whiteArray = explode(",", $getWhiteStickers[0]);
+	
+	$blackArray = explode(",", $getBlackStickers['blackstickers']);
+	$greyArray  = explode(",", $getGreyStickers['greystickers']);
+	$whiteArray = explode(",", $getWhiteStickers['whitestickers']);
 	
 	$mergeArray = array();
 	
@@ -48,7 +48,7 @@ function addsticker($studentid,$classid,$stickertype){
 			foreach($blackArray as $child) {
 				if ($child == $studentid) {
 					$key = array_search($studentid,$blackArray);
-					unset($celldata[$key]);
+					unset($blackArray[$key]);
 					$implodedBlackStickers = implode(',', $blackArray);
 					$stmt = $db_stickers->prepare('UPDATE offerings SET blackstickers = ? WHERE classid = ?');
 					$stmt->bind_param('ss', $implodedBlackStickers, $classid);
@@ -63,7 +63,7 @@ function addsticker($studentid,$classid,$stickertype){
 			foreach($greyArray as $child) {
 				if ($child == $studentid) {
 					$key = array_search($studentid,$greyArray);
-					unset($celldata[$key]);
+					unset($greyArray[$key]);
 					$implodedGreyStickers = implode(',', $greyArray);
 					$stmt = $db_stickers->prepare('UPDATE offerings SET greystickers = ? WHERE classid = ?');
 					$stmt->bind_param('ss', $implodedGreyStickers, $classid	);
@@ -78,7 +78,7 @@ function addsticker($studentid,$classid,$stickertype){
 			foreach($whiteArray as $child) {
 				if ($child == $studentid) {
 					$key = array_search($studentid, $whiteArray);
-					unset($celldata[$key]);
+					unset($whiteArray[$key]);
 					$implodedWhiteStickers = implode(',', $whiteArray);
 					$stmt = $db_stickers->prepare('UPDATE offerings SET whitestickers = ? WHERE classid = ?');
 					$stmt->bind_param('ss', $implodedWhiteStickers, $classid);

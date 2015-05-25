@@ -90,8 +90,8 @@ function addsticker($studentid,$classid,$stickertype){
 		if ($stickertype == "black") {
 			array_push($blackArray, $studentid);
 			$implodedBlackStickers = implode(',', $blackArray);
-			$stmt = $db_stickers->prepare('UPDATE offerings SET blackstickers = ? WHERE classid = $classid');
-			$stmt->bind_param('s', $implodedBlackStickers);
+			$stmt = $db_stickers->prepare('UPDATE offerings SET blackstickers = ? WHERE classid = ?');
+			$stmt->bind_param('ss', $implodedBlackStickers, $classid);
 			$stmt->execute();
 			$stmt->close();
 		}

@@ -25,9 +25,9 @@ function addsticker($studentid,$classid,$stickertype){
 	global $db_attendance;
 	global $db_stickers;
 	
-	$getBlackStickers = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT blackstickers FROM offerings WHERE classid = $classid ORDER BY name DESC LIMIT 1"));
-	$getGreyStickers  = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT greystickers  FROM offerings WHERE classid = $classid ORDER BY name DESC LIMIT 1"));
-	$getWhiteStickers = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT whitestickers FROM offerings WHERE classid = $classid ORDER BY name DESC LIMIT 1"));
+	$getBlackStickers = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT blackstickers FROM offerings WHERE classid = $classid ORDER BY classid DESC LIMIT 1"));
+	$getGreyStickers  = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT greystickers  FROM offerings WHERE classid = $classid ORDER BY classid DESC LIMIT 1"));
+	$getWhiteStickers = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT whitestickers FROM offerings WHERE classid = $classid ORDER BY classid DESC LIMIT 1"));
 
 	$blackArray = explode(",", $getBlackStickers);
 	$greyArray  = explode(",", $getGreyStickers);

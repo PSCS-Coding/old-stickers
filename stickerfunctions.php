@@ -40,6 +40,7 @@ function addsticker($studentid,$classid,$stickertype){
 	foreach ($blackArray as $sub) { array_push($mergeArray, $sub); }
 
 	foreach($mergeArray as $sub) {
+		$deletedsticker = false;
 		if ($sub == $studentid) {
 			//you've alredy stickered this class, so delete sticker
 			

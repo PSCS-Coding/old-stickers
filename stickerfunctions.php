@@ -49,8 +49,8 @@ function addsticker($studentid,$classid,$stickertype){
 				if ($child == $studentid) {
 					unset($child);
 					$implodedBlackStickers = implode(',', $blackArray);
-					$stmt = $db_stickers->prepare('UPDATE offerings SET blackstickers = ? WHERE classid = $classid');
-					$stmt->bind_param('s', $implodedBlackStickers);
+					$stmt = $db_stickers->prepare('UPDATE offerings SET blackstickers = ? WHERE classid = ?');
+					$stmt->bind_param('ss', $implodedBlackStickers, $classid);
 					$stmt->execute();
 					$stmt->close();
 				}
@@ -60,8 +60,8 @@ function addsticker($studentid,$classid,$stickertype){
 				if ($child == $studentid) {
 					unset($child);
 					$implodedGreyStickers = implode(',', $greyArray);
-					$stmt = $db_stickers->prepare('UPDATE offerings SET greystickers = ? WHERE classid = $classid');
-					$stmt->bind_param('s', $implodedGreyStickers);
+					$stmt = $db_stickers->prepare('UPDATE offerings SET greystickers = ? WHERE classid = ?');
+					$stmt->bind_param('ss', $implodedGreyStickers, $classid);
 					$stmt->execute();
 					$stmt->close();
 				}
@@ -71,8 +71,8 @@ function addsticker($studentid,$classid,$stickertype){
 				if ($child == $studentid) {
 					unset($child);
 					$implodedGreyStickers = implode(',', $greyArray);
-					$stmt = $db_stickers->prepare('UPDATE offerings SET greystickers = ? WHERE classid = $classid');
-					$stmt->bind_param('s', $implodedGreyStickers);
+					$stmt = $db_stickers->prepare('UPDATE offerings SET greystickers = ? WHERE classid = ?');
+					$stmt->bind_param('ss', $implodedGreyStickers, $classid);
 					$stmt->execute();
 					$stmt->close();
 				}
@@ -122,7 +122,7 @@ function addsticker($studentid,$classid,$stickertype){
 				array_push($whiteArray, $studentid);
 				$implodedWhiteStickers = implode(',', $whiteArray);
 				$stmt = $db_stickers->prepare('UPDATE offerings SET whitestickers = ? WHERE classid = ?');
-				$stmt->bind_param('s', $implodedWhiteStickers, $classid);
+				$stmt->bind_param('ss', $implodedWhiteStickers, $classid);
 				$stmt->execute();
 				$stmt->close();
 			} else {

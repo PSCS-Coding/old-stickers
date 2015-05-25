@@ -88,7 +88,7 @@ function addsticker($studentid,$classid,$stickertype){
 		
 		//find out which 
 		if ($stickertype == "black") {
-			if ($blackArray[0] != 0) {
+			if ($blackArray == 0) {
 				array_push($blackArray, $studentid);
 				$implodedBlackStickers = implode(',', $blackArray);
 				$stmt = $db_stickers->prepare('UPDATE offerings SET blackstickers = ? WHERE classid = ?');
@@ -103,7 +103,7 @@ function addsticker($studentid,$classid,$stickertype){
 			}
 		}
 		if ($stickertype == "grey") {
-			if ($greyArray[0] != 0) {
+			if ($greyArray == 0) {
 				array_push($greyArray, $studentid);
 				$implodedGreyStickers = implode(',', $greyArray);
 				$stmt = $db_stickers->prepare('UPDATE offerings SET stickers = ? WHERE classid = ?');
@@ -118,7 +118,7 @@ function addsticker($studentid,$classid,$stickertype){
 			}
 		}
 		if ($stickertype == "white") {
-			if ($whiteArray[0] != 0) {
+			if ($whiteArray == 0) {
 				array_push($whiteArray, $studentid);
 				$implodedWhiteStickers = implode(',', $whiteArray);
 				$stmt = $db_stickers->prepare('UPDATE offerings SET whitestickers = ? WHERE classid = ?');

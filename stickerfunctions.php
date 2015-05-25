@@ -20,7 +20,7 @@ function updateused($studentid,$stickertype,$update){
 			$stmt->execute(); 
 }
 	
-function addsticker($studentid,$classid,$stickertype){
+/*function addsticker($studentid,$classid,$stickertype){
 	// $studentid . " " . $classid . " " . $stickertype . "<br>";
 	global $db_attendance;
 	global $db_stickers;
@@ -144,6 +144,6 @@ function addsticker($studentid,$classid,$stickertype){
 		}
 		return "stickered";
 	}
-}
+} */
 	
 ?>

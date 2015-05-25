@@ -40,11 +40,7 @@ function addsticker($studentid,$classid,$stickertype){
 			array_push($allstickers, $item);
 		}
 	}
-	
-	echo "<pre>";
-	print_r($stickers_array[0]);
-	echo "</pre>";
-	
+
 	//check if student is there, if they are and color is the same as where they are then remove them
 	//if not then add
 	
@@ -55,17 +51,13 @@ function addsticker($studentid,$classid,$stickertype){
 			
 			if(in_array($studentid,$items)){ //if it is in that color
 				$key  = array_search($sticker,$stickers_array[0]);
-				echo $studentid . " found in color " . $key . "<br>";
 				
 				if($stickervalue == $key){ //check if same color as input color
-					echo "time to remove" . "<br>";
 					$get_cell = $db_stickers->query("SELECT $stickertype FROM offerings WHERE classid=$classid");
 					$get_cell = $get_cell->fetch_row();
 					$get_cell = $get_cell[0];
-					echo $get_cell . "<br>";
 					
 					if(strcmp($get_cell, $studentid) == 0){ // check if studentid is the only one in there and if it is set it to zero
-						echo "its the studentid";
 						$zero = 0;
 						$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
 						$stmt->bind_param('s', $zero);
@@ -85,6 +77,8 @@ function addsticker($studentid,$classid,$stickertype){
 					}
 					
 				}
+			}
+		}
 			} else {// studentid is not in array
 				$get_cell = $db_stickers->query("SELECT $stickertype FROM offerings WHERE classid=$classid");
 				$get_cell = $get_cell->fetch_row();
@@ -106,8 +100,6 @@ function addsticker($studentid,$classid,$stickertype){
 					return "stickered";
 				}
 			}
-		}
-	}
 
 
 }

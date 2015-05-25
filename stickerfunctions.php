@@ -24,73 +24,94 @@ function addsticker($studentid,$classid,$stickertype){
 	// $studentid . " " . $classid . " " . $stickertype . "<br>";
 	global $db_attendance;
 	global $db_stickers;
-	$zero = 0;
 	
-	$stickertype = $stickertype . "stickers";
+	$getBlackStickers = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT blackstickers FROM offerings WHERE classid = $classid ORDER BY name DESC LIMIT 1"));
+	$getGreyStickers  = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT greystickers  FROM offerings WHERE classid = $classid ORDER BY name DESC LIMIT 1"));
+	$getWhiteStickers = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT whitestickers FROM offerings WHERE classid = $classid ORDER BY name DESC LIMIT 1"));
+
+	$blackArray = explode(",", $getBlackStickers);
+	$greyArray  = explode(",", $getGreyStickers);
+	$whiteArray = explode(",", $getWhiteStickers);
 	
-	//get all stickers for that class
-	$getallstickers = $db_stickers->query("SELECT blackstickers,greystickers,whitestickers FROM offerings WHERE classid=$classid");
+	$mergeArray = array();
 	
-		$rowresult = array();
-		while($data_result = $getallstickers->fetch_assoc()) {
-			array_push($rowresult, $data_result);
-		}
-		
-		$stickercolors = array();
-		array_push($stickercolors,"blackstickers","greystickers","whitestickers");
-		
-		foreach($stickercolors as $color){
-			// $rowresult[0][$color] . "<br>";
+	foreach ($blackArray as $sub) { array_push($mergeArray, $sub); }
+	foreach ($greyArray  as $sub) { array_push($mergeArray, $sub); }
+	foreach ($blackArray as $sub) { array_push($mergeArray, $sub); }
+
+	foreach($mergeArray as $sub) {
+		if ($sub == $studentid) {
+			//you've alredy stickered this class, so delete sticker
 			
-			if(strcmp($rowresult[0][$color],$studentid) == 0){
-				// " cell is the same as studentid";
-				if($color == $stickertype){
-					// "was of selected color so remove";
-					$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
-					$stmt->bind_param('s', $zero);
+			//find out which color the sticker is
+			foreach($blackArray as $child) {
+				if ($child == $studentid) {
+					unset($child);
+					$implodedBlackStickers = implode(',', $blackArray);
+					$stmt = $db_server->prepare('UPDATE offerings SET blackstickers = ? WHERE classid = $classid');
+					$stmt->bind_param('s', $implodedBlackStickers);
 					$stmt->execute();
-					return "unstickered";
-				} else {
-					// " already stickered in different color";
-					break;
-					//return "failed";
+					$stmt->close();
 				}
-			} elseif ($rowresult[0][$color] == 0){
-				// " no stickers";
-				if($color == $stickertype){
-					// "zero so just add";
-					$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
-					$stmt->bind_param('s', $studentid);
-					$stmt->execute();
-					return "stickered";
-				}
-			} elseif(strpos($rowresult[0][$color],",")) {
-				$celldata = explode(",",$rowresult[0][$color]); 
-				if (in_array($studentid,$celldata)){
-					// "already in " . $color . " " . $stickertype;
-					if($color == $stickertype){
-						// "already stickered here so remove";
-						$key = array_search($studentid,$celldata);
-						unset($celldata[$key]);
-						$celldata = implode(",", $celldata);
-						$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
-						$stmt->bind_param('s', $celldata);
-						$stmt->execute();
-						return "unstickered";
-					}
-				} else {
-					if($color == $stickertype){
-						// "not stickered but should be ";
-						array_push($celldata, $studentid);
-						$celldata = implode(",", $celldata);
-						$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
-						$stmt->bind_param('s', $celldata);
-						$stmt->execute();
-						return "stickered";
-					}
-				}
+				break;
 			}
+			foreach($greyArray as $child) {
+				if ($child == $studentid) {
+					unset($child);
+					$implodedGreyStickers = implode(',', $greyArray);
+					$stmt = $db_server->prepare('UPDATE offerings SET greystickers = ? WHERE classid = $classid');
+					$stmt->bind_param('s', $implodedGreyStickers);
+					$stmt->execute();
+					$stmt->close();
+				}
+				break;
+			}
+			foreach($whiteArray as $child) {
+				if ($child == $studentid) {
+					unset($child);
+					$implodedGreyStickers = implode(',', $greyArray);
+					$stmt = $db_server->prepare('UPDATE offerings SET greystickers = ? WHERE classid = $classid');
+					$stmt->bind_param('s', $implodedGreyStickers);
+					$stmt->execute();
+					$stmt->close();
+				}
+				break;
+			}
+			$deletedSticker == true;
 		}
+		return "unstickered";
+		break;
+	}
+	if ($deletedsticker != true) {
+		//you haven't stickered this class, so add sticker
+		
+		//find out which 
+		if ($stickertype == "black") {
+			array_push($studentid, $blackArray);
+			$implodedBlackStickers = implode(',', $blackArray);
+			$stmt = $db_server->prepare('UPDATE offerings SET blackstickers = ? WHERE classid = $classid');
+			$stmt->bind_param('s', $implodedBlackStickers);
+			$stmt->execute();
+			$stmt->close();
+		}
+		if ($stickertype == "grey") {
+			array_push($studentid, $greyArray);
+			$implodedGreyStickers = implode(',', $greyArray);
+			$stmt = $db_server->prepare('UPDATE offerings SET greystickers = ? WHERE classid = $classid');
+			$stmt->bind_param('s', $implodedGreyStickers);
+			$stmt->execute();
+			$stmt->close();
+		}
+		if ($stickertype == "black") {
+			array_push($studentid, $blackArray);
+			$implodedGreyStickers = implode(',', $greyArray);
+			$stmt = $db_server->prepare('UPDATE offerings SET greystickers = ? WHERE classid = $classid');
+			$stmt->bind_param('s', $implodedGreyStickers);
+			$stmt->execute();
+			$stmt->close();
+		}
+		return "stickered";
+	}
+}
 	
-}	
 ?>

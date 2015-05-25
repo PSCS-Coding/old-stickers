@@ -86,7 +86,25 @@ function addsticker($studentid,$classid,$stickertype){
 					
 				}
 			} else {// studentid is not in array
+				$get_cell = $db_stickers->query("SELECT $stickertype FROM offerings WHERE classid=$classid");
+				$get_cell = $get_cell->fetch_row();
+				$get_cell = $get_cell[0];
 				
+				if(strcmp($get_cell,"0") == 0){ // no numbers so just add
+					$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
+					$stmt->bind_param('s', $studentid);
+					$stmt->execute();
+					return "stickered";
+					
+				} else { //add to end of explosion
+					$cell_array = explode(",",$get_cell);
+					array_push($cell_array,$studentid);
+					$cell_data = implode(",", $cell_array);
+					$stmt = $db_stickers->prepare("UPDATE offerings SET $stickertype = ? WHERE classid=$classid");
+					$stmt->bind_param('s', $cell_data);
+					$stmt->execute();
+					return "stickered";
+				}
 			}
 		}
 	}

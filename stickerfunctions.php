@@ -78,8 +78,8 @@ function addsticker($studentid,$classid,$stickertype){
 				break;
 			}
 			$deletedSticker == true;
+			return "unstickered";
 		}
-		return "unstickered";
 		break;
 	}
 	if ($deletedsticker != true) {

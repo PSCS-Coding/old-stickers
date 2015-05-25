@@ -61,7 +61,7 @@ function addsticker($studentid,$classid,$stickertype){
 					unset($child);
 					$implodedGreyStickers = implode(',', $greyArray);
 					$stmt = $db_stickers->prepare('UPDATE offerings SET greystickers = ? WHERE classid = ?');
-					$stmt->bind_param('ss', $implodedGreyStickers, $classid);
+					$stmt->bind_param('ss', $implodedGreyStickers, $classid	);
 					$stmt->execute();
 					$stmt->close();
 				}
@@ -78,7 +78,7 @@ function addsticker($studentid,$classid,$stickertype){
 				}
 				break;
 			}
-			$deletedSticker == true;
+			$deletedSticker = true;
 			return "unstickered";
 		}
 		break;

@@ -91,23 +91,23 @@ function addsticker($studentid,$classid,$stickertype){
 			array_push($blackArray, $studentid);
 			$implodedBlackStickers = implode(',', $blackArray);
 			$stmt = $db_stickers->prepare('UPDATE offerings SET blackstickers = ? WHERE classid = ?');
-			$stmt->bind_param('ss', $implodedBlackStickers, $classid);
+			$stmt->bind_param('ss', $implodedBlackStickers, $classid); 
 			$stmt->execute();
 			$stmt->close();
 		}
 		if ($stickertype == "grey") {
 			array_push($greyArray, $studentid);
 			$implodedGreyStickers = implode(',', $greyArray);
-			$stmt = $db_stickers->prepare('UPDATE offerings SET greystickers = ? WHERE classid = $classid');
-			$stmt->bind_param('s', $implodedGreyStickers);
+			$stmt = $db_stickers->prepare('UPDATE offerings SET greystickers = ? WHERE classid = ?');
+			$stmt->bind_param('s', $implodedGreyStickers, $classid);
 			$stmt->execute();
 			$stmt->close();
 		}
 		if ($stickertype == "white") {
 			array_push($whiteArray, $studentid);
 			$implodedWhiteStickers = implode(',', $whiteArray);
-			$stmt = $db_stickers->prepare('UPDATE offerings SET whitestickers = ? WHERE classid = $classid');
-			$stmt->bind_param('s', $implodedWhiteStickers);
+			$stmt = $db_stickers->prepare('UPDATE offerings SET whitestickers = ? WHERE classid = ?');
+			$stmt->bind_param('s', $implodedWhiteStickers, $classid);
 			$stmt->execute();
 			$stmt->close();
 		}

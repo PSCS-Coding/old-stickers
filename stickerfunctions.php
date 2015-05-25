@@ -70,9 +70,9 @@ function addsticker($studentid,$classid,$stickertype){
 			foreach($whiteArray as $child) {
 				if ($child == $studentid) {
 					unset($child);
-					$implodedGreyStickers = implode(',', $greyArray);
-					$stmt = $db_stickers->prepare('UPDATE offerings SET greystickers = ? WHERE classid = ?');
-					$stmt->bind_param('ss', $implodedGreyStickers, $classid);
+					$implodedWhiteStickers = implode(',', $whiteArray);
+					$stmt = $db_stickers->prepare('UPDATE offerings SET whitestickers = ? WHERE classid = ?');
+					$stmt->bind_param('ss', $implodedWhiteStickers, $classid);
 					$stmt->execute();
 					$stmt->close();
 				}

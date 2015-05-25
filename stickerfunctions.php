@@ -47,7 +47,11 @@ function addsticker($studentid,$classid,$stickertype){
 			//find out which color the sticker is
 			foreach($blackArray as $child) {
 				if ($child == $studentid) {
-					unset($child);
+					print_r($blackArray);
+					echo "<br>";
+					$key = array_search($studentid,$blackArray);
+					unset($key);
+					print_r($blackArray);
 					$implodedBlackStickers = implode(',', $blackArray);
 					$stmt = $db_stickers->prepare('UPDATE offerings SET blackstickers = ? WHERE classid = ?');
 					$stmt->bind_param('ss', $implodedBlackStickers, $classid);

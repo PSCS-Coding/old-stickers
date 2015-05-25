@@ -19,7 +19,16 @@ if(!empty($_GET)){
 				array_push($usedstickers, $data_result);
 			}
 		$usedstickers = $usedstickers[0][0];
-		//echo $usedstickers;
+		if($usedstickers < 0){
+				$returninfo = addsticker($_GET['studentid'],$_GET['classid'],$_GET['stickercolor']);
+	
+				if($returninfo == "stickered"){
+					updateused($_GET['studentid'],$_GET['stickercolor']. "stickers","remove");
+				} elseif ($returninfo == "unstickered"){
+					updateused($_GET['studentid'],$_GET['stickercolor']. "stickers","add");
+				}
+		}
+		
 	echo $returninfo;
 }
 ?>

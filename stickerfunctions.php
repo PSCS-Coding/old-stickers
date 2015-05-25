@@ -48,8 +48,8 @@ function addsticker($studentid,$classid,$stickertype){
 			foreach($blackArray as $child) {
 				if ($child == $studentid) {
 					print_r($blackArray);
-					echo "<br>";
 					$key = array_search($studentid,$blackArray);
+					echo $key;
 					unset($key);
 					print_r($blackArray);
 					$implodedBlackStickers = implode(',', $blackArray);

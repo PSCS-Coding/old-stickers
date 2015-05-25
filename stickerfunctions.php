@@ -38,7 +38,7 @@ function addsticker($studentid,$classid,$stickertype){
 	foreach ($blackArray as $sub) { array_push($mergeArray, $sub); }
 	foreach ($greyArray  as $sub) { array_push($mergeArray, $sub); }
 	foreach ($blackArray as $sub) { array_push($mergeArray, $sub); }
-
+	
 	foreach($mergeArray as $sub) {
 		$deletedsticker = false;
 		if ($sub == $studentid) {
@@ -53,6 +53,9 @@ function addsticker($studentid,$classid,$stickertype){
 					$stmt->bind_param('ss', $implodedBlackStickers, $classid);
 					$stmt->execute();
 					$stmt->close();
+						
+					$deletedSticker = true;
+					return "unstickered";
 				}
 				break;
 			}
@@ -64,6 +67,9 @@ function addsticker($studentid,$classid,$stickertype){
 					$stmt->bind_param('ss', $implodedGreyStickers, $classid	);
 					$stmt->execute();
 					$stmt->close();
+						
+					$deletedSticker = true;
+					return "unstickered";
 				}
 				break;
 			}
@@ -75,11 +81,12 @@ function addsticker($studentid,$classid,$stickertype){
 					$stmt->bind_param('ss', $implodedWhiteStickers, $classid);
 					$stmt->execute();
 					$stmt->close();
+						
+					$deletedSticker = true;
+					return "unstickered";
 				}
 				break;
 			}
-			$deletedSticker = true;
-			return "unstickered";
 		}
 		break;
 	}

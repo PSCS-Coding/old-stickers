@@ -32,10 +32,10 @@ foreach($feed as &$k){
             $k['content'] = $src;
     }
 }
-
+$zero = "0";
 foreach ($feed as $class) {
-	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,facilitator,category,description,image) VALUES (?,?,?,?,?)");
-    $stmt->bind_param('sssss', $class['title'], $class['creator'], $class['category'], $class['desc'], $class['content']);
+	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,facilitator,category,description,image,blackstickers,greystickers,whitestickers) VALUES (?,?,?,?,?,?,?,?)");
+    $stmt->bind_param('ssssssss', $class['title'], $class['creator'], $class['category'], $class['desc'], $class['content'], $zero, $zero, $zero);
     $stmt->execute();
     $stmt->close();
 

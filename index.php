@@ -97,7 +97,7 @@
 	?>
 	
 	<!-- RENDER TABLE -->
-	<table>
+	<table align="center">
 		<tr>
 			<th>Title</th>
 			<th>Facilitator</th>

@@ -35,12 +35,6 @@
         </header>
         <?php
 		
-				/*
-				console.log(studentid);
-				console.log(classid);
-				console.log(stickercolor);
-				*/
-				
             include_once("connection.php");
             include_once("function.php");
 			include_once("stickerfunctions.php");

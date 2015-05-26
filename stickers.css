@@ -20,7 +20,6 @@ margin-top:-27%;
 width:80%;
 font-size:20px;
 opacity: 0.9;
-text-align: center;
 }
 
 tr {
@@ -40,7 +39,7 @@ color: #848484;
 td {
 padding: 5px;
 color: #424242;
-height:25px;
+height:22px;
 }
 
 tr:nth-child(odd) {

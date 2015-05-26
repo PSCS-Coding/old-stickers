@@ -50,6 +50,7 @@
 		if(!empty($_GET['reset'])) {
 			if($_GET['reset'] == 1) {
 				$init = 1;
+				unset($_GET['reset']);
 			} else {
 				$init = 0;
 			}

@@ -2,7 +2,6 @@
 include_once("connection.php");
 include_once("function.php");
 include_once("stickerfunctions.php");
-include_once("testfunctions.php");
 if(!empty($_GET)){
 	$returninfo = addsticker($_GET['studentid'],$_GET['classid'],$_GET['stickercolor']);
 	

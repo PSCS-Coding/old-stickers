@@ -2,8 +2,19 @@
 <!DOCTYPE html>
 <html>
     <head>
+		<title> PSCS Offerings </title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="stickers.css">    
+				<style>
+					@font-face {
+						font-family:CODE2000;
+						src: url(CODE2000.ttf);
+					}
+					
+					* {
+						font-family:CODE2000;
+					}
+					</style>
 		<script>
 			
 			function updateStickers (studentid, classid, color) {

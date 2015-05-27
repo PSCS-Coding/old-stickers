@@ -126,7 +126,17 @@
 				<a href="class.php?classid=<?php echo $class['classid'];?>"> <?php echo $class['classname']; ?> </a>
 			</td>
 			<td><?php echo $class['facilitator']; ?></td>
-			<td><?php echo $class['category']; ?> </td>
+			<td><?php 
+				if($class['category'] == "Occupational Education") {
+						echo "Occupational Ed";
+					}
+					else {
+						echo $class['category'];
+					}
+				
+				
+				?> 
+			</td>
 			<td>
 				<?php
 					if($class['block'] == 0) {

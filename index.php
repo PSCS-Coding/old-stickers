@@ -14,9 +14,8 @@
 					* {
 						font-family:CODE2000;
 					}
-					</style>
+				</style>
 		<script>
-			
 			function updateStickers (studentid, classid, color) {
 				if (color == 1) {
 					stickercolor = "black";
@@ -106,7 +105,6 @@
 			array_push($classesresult, $data_result);
 		}
 	?>
-	
 	<!-- RENDER TABLE -->
 	<table align="center">
 		<tr>
@@ -133,8 +131,6 @@
 					else {
 						echo $class['category'];
 					}
-				
-				
 				?> 
 			</td>
 			<td>

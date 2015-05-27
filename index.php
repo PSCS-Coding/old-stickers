@@ -112,6 +112,7 @@
 		<tr>
 			<th>Title</th>
 			<th>Facilitator</th>
+			<th>Catagories</th>
 			<th>Block</th>
 			<th class="stickerheader">Black Stickers</th>
 			<th class="stickerheader">Grey Stickers</th>
@@ -125,10 +126,11 @@
 				<a href="class.php?classid=<?php echo $class['classid'];?>"> <?php echo $class['classname']; ?> </a>
 			</td>
 			<td><?php echo $class['facilitator']; ?></td>
+			<td><?php echo $class['category']; ?> </td>
 			<td>
 				<?php
 					if($class['block'] == 0) {
-						echo "Non-Block";
+						echo "";
 					}
 					else {
 						echo "Block";

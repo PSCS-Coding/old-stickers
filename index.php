@@ -10,10 +10,6 @@
 						font-family:CODE2000;
 						src: url(CODE2000.ttf);
 					}
-					
-					* {
-						
-					}
 				</style>
 		<script>
 			function updateStickers (studentid, classid, color) {

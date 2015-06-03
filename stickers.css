@@ -17,7 +17,7 @@ width:8%;
 table {
 margin:auto;
 margin-top:-27%;
-width:90%;
+width:80%;
 font-size:20px;
 opacity: 0.9;
 }
@@ -111,13 +111,25 @@ margin-bottom: 15px;
 	z-index: 1;
 }
 
+.remaining {
+	margin:5px;
+	width:8%;
+	text-align: center;
+}
+
 .white {
 	background-color: white;
 	color: black;
+	margin:5px;
+	width:8%;
+	text-align: center;
 }
 
 .grey {
 	background-color: gray;
+	margin:5px;
+	width:8%;
+	text-align: center;
 }
 
 .black {

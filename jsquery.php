@@ -4,7 +4,7 @@ include_once("function.php");
 include_once("stickerfunctions.php");
 if(!empty($_GET)){
 	if($_GET['students']==1){
-	$studentquery = $db_attendance->query("SELECT studentid,firstname,lastname FROM studentdata WHERE current=1 ORDER BY firstname ASC");
+	$studentquery = $db_attendance->query("SELECT studentid,firstname,lastname FROM studentdata WHERE current=1 ORDER BY firstname DESC");
 	
 	$studentinfo = array();
 		while ($student_data = $studentquery->fetch_assoc()) {

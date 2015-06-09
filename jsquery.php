@@ -3,7 +3,7 @@ include_once("connection.php");
 include_once("function.php");
 include_once("stickerfunctions.php");
 if(!empty($_GET)){
-	if($_GET['students']==1){
+	if(!empty($_GET['students'])){
 	$studentquery = $db_attendance->query("SELECT studentid,firstname,lastname FROM studentdata WHERE current=1 ORDER BY firstname DESC");
 	
 	$studentinfo = array();
@@ -13,7 +13,7 @@ if(!empty($_GET)){
 		foreach($studentinfo as $studentrow){
 			echo $studentrow['studentid'] . "," . $studentrow['firstname'] . "," . $studentrow['lastname'] . "---";
 		}
-	} elseif ($_GET['pass']==1){
+	} elseif (!empty($_GET['pass'])){
 		if ($LoginResult = $db_attendance->query("SELECT * FROM login WHERE username='pscs'")){
 			$LoginRow = $LoginResult->fetch_assoc();
 			$LoginResult->free();

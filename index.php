@@ -8,7 +8,7 @@
 				<style>
 					@font-face {
 						font-family:CODE2000;
-						src: url(CODE2000.ttf);
+						src: url(CODE2000.TTF);
 					}
 				</style>
 		<script>

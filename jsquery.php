@@ -14,7 +14,7 @@ if(!empty($_GET)){
 			echo $studentrow['studentid'] . "," . $studentrow['firstname'] . "," . $studentrow['lastname'] . "---";
 		}
 	} elseif ($_GET['pass']==1){
-		if ($LoginResult = $db_server->query("SELECT * FROM login WHERE username='pscs'")){
+		if ($LoginResult = $db_attendance->query("SELECT * FROM login WHERE username='pscs'")){
 			$LoginRow = $LoginResult->fetch_assoc();
 			$LoginResult->free();
 		}

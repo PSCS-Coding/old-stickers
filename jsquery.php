@@ -13,6 +13,16 @@ if(!empty($_GET)){
 		foreach($studentinfo as $studentrow){
 			echo $studentrow['studentid'] . "," . $studentrow['firstname'] . "," . $studentrow['lastname'] . "---";
 		}
+	} elseif ($_GET['pass']==1){
+		if ($LoginResult = $db_server->query("SELECT * FROM login WHERE username='pscs'")){
+			$LoginRow = $LoginResult->fetch_assoc();
+			$LoginResult->free();
+		}
+		$studentPW = $LoginRow['password'];
+		$adminPW = $LoginRow['adminPass'];
+		$SecureAdminPW = $adminPW;
+		$SecureStudentPW = $studentPW;
+		echo $SecureAdminPW . "," . $SecureStudentPW;
 	}
 }
 ?>

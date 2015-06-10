@@ -14,14 +14,14 @@ if(!empty($_GET)){
 			echo $studentrow['studentid'] . "," . $studentrow['firstname'] . "," . $studentrow['lastname'] . "---";
 		}
 	} elseif (!empty($_GET['pass'])){
-		if ($LoginResult = $db_attendance->query("SELECT password,adminPass FROM login WHERE username='pscs'")){
+		if ($LoginResult = $db_stickers->query("SELECT student,admin FROM stickerpass")){
 			$LoginRow = $LoginResult->fetch_assoc();
 			$LoginResult->free();
 		}
-		$studentPW = $LoginRow['password'];
-		$adminPW = $LoginRow['adminPass'];
-		$SecureAdminPW = crypt($adminPW, "P9");
-		$SecureStudentPW = crypt($studentPW, "P9");
+		$studentPW = $LoginRow['student'];
+		$adminPW = $LoginRow['admin'];
+		$SecureAdminPW = $adminPW;
+		$SecureStudentPW = $studentPW;
 		echo $SecureAdminPW . "," . $SecureStudentPW;
 	}
 }

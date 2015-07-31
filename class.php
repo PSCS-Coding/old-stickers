@@ -6,6 +6,8 @@ session_start();
 <?php // init
 
 include_once("connection.php");
+include_once("stickerfunctions.php");
+include_once("function.php");
 
 if(!empty($_GET['classid'])){
 	$_SESSION['classid'] = $_GET['classid']; 
@@ -47,6 +49,28 @@ if (preg_match('/<p/',$classresult[0]["image"])){
 }
 ?>
 </p>
+<?php 
+//render students that have stickered this class
+$blackstickers = getstudents($classid,"blackstickers");
+$greystickers = getstudents($classid,"greystickers");
+$whitestickers = getstudents($classid,"whitestickers");
+
+$blackstickers = explode(",", $blackstickers[0]);
+$greystickers = explode(",", $greystickers[0]);
+$whitestickers = explode(",", $whitestickers[0]);
+
+foreach($blackstickers as $sticker){
+	echo "<div class = " . "blacksticker" . ">" . idToName($sticker) . "</div>";
+}
+
+foreach($greystickers as $sticker){
+	echo "<div class = " . "greysticker" . ">" . idToName($sticker) . "</div>";
+}
+
+foreach($whitestickers as $sticker){
+	echo "<div class = " . "whitesticker" . ">" . idToName($sticker) . "</div>";
+}
+?>
 </div>
 
 </body>

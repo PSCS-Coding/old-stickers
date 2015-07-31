@@ -1,11 +1,32 @@
 <?php
-function updateused($studentid,$stickertype,$update){
+include_once("function.php");
+
+function getstudents($classid,$stickercolor){ // gets studentids of students that have stickered a class
+	global $db_attendance;
+	global $db_stickers;
+	
+	$getstickers = $db_stickers->query("SELECT $stickercolor FROM offerings WHERE classid=$classid");
+	$allstickers = array();
+	while($data_result = $getstickers->fetch_row()) {
+		array_push($allstickers, $data_result);
+	}
+	$allstickers = $allstickers[0];
+	
+	//echo "<pre>";
+	//print_r($allstickers);
+	//echo "</pre>";
+	
+	return($allstickers);
+}
+	
+	
+function updateused($studentid,$stickertype,$update){ // updates used stickers
 	global $db_attendance;
 	global $db_stickers;
 	
 	$getused  =  $db_stickers->query("SELECT $stickertype FROM usedstickers WHERE studentid=$studentid");
 	$usedstickers = array();
-		while($data_result = $getused->fetch_row()) {
+		while($data_result = $getused->fetch_row()){
 			array_push($usedstickers, $data_result);
 		}
 		$usedstickers = $usedstickers[0][0];
@@ -20,7 +41,7 @@ function updateused($studentid,$stickertype,$update){
 			$stmt->execute(); 
 }
 	
-function addsticker($studentid,$classid,$stickertype){
+function addsticker($studentid,$classid,$stickertype){ // adds / removes stickers from classes
 	global $db_attendance;
 	global $db_stickers;
 	

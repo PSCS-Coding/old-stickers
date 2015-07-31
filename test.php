@@ -1,7 +1,7 @@
 <?php
 include_once("connection.php");
 include_once("function.php");
-include_once("testfunctions.php");
+include_once("stickerfunctions.php");
 
-addsticker(55,1,"black");
+getstudents(1,"blackstickers");
 ?>

@@ -12,6 +12,7 @@ session_start();
 	<?php
 	include_once("connection.php");	
 	include_once("function.php");
+	include_once("stickerfunctions.php");
 	
 	$studentquery = $db_attendance->query("SELECT studentid,firstname,lastname FROM studentdata WHERE current=1 ORDER BY firstname ASC");
 	
@@ -34,9 +35,22 @@ session_start();
 			}
 		?>
 	</select>
-	<input type="submit" value="Sign In" name="submit">
+	<input type="submit" value="Sign In" name="submit"> 
+	<?php 
+		if (!empty($_SESSION['id'])){
+			echo "Currently signed in as " . idToName($_SESSION['id']); 
+		} else {
+			echo "Please sign in";
+		}
+		?>
 	<br>
-	<br>
+	
+	<h3> Currently Stickered Classes </h3>
+	<p>
+		
+	
+	
+	</p>
 	</div>
 	</form>
 </body>

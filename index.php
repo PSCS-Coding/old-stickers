@@ -67,6 +67,36 @@
 		if($init) {
 			include_once("reset.php");
 		}
+		// render stickers for the side
+		
+		$id = $_SESSION['id'];
+		$getused  =  $db_stickers->query("SELECT * FROM usedstickers WHERE studentid=$id");
+		$usedstickers = array();
+		while($data_result = $getused->fetch_row()) {
+			array_push($usedstickers, $data_result);
+		}
+		$usedstickers = $usedstickers[0];
+		
+		echo "<div class = 'remaining'>Remaining:</div>";
+		
+		for($i=1; $i<4; $i++){
+			switch ($i){
+				case 1:
+					$stickervalue = "black";
+					break;
+				case 2:
+					$stickervalue = "grey";
+					break;
+				case 3:
+					$stickervalue = "white";
+					break;
+				default:
+					echo "error";
+			}
+			for($k=$usedstickers[$i]; $k>0; $k--){
+				echo "<div class = " . $stickervalue . ">" . $stickervalue . "sticker " . "</div>";
+			}
+		}
 		
 		// QUERY OFFERINGS
 		$result = $db_stickers->query("SELECT * FROM offerings");

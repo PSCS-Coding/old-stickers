@@ -29,6 +29,11 @@
 				} else if (xmlHttp.responseText.indexOf("stickered")>=0) {
 					document.getElementById(classid + "-" + color).innerHTML = '✓';
 				}
+				//using XML DOM NodeLists http://www.w3schools.com/dom/met_nodelist_item.asp
+				var remainingStickers = document.getElementsByClassName(stickercolor);
+				document.getElementById(remainingStickers.item(1).id).remove();
+				//console.log(remainingStickers.length);
+				//console.log(remainingStickers.item(1).id);
 			}
 		</script>
     </head>
@@ -94,7 +99,7 @@
 					echo "error";
 			}
 			for($k=$usedstickers[$i]; $k>0; $k--){
-				echo "<div class = " . $stickervalue . ">" . $stickervalue . "sticker " . "</div>";
+				echo "<div class = " . $stickervalue . " id='white-" . $k ."'>" . $stickervalue . "sticker " . "</div>";
 			}
 		}
 		

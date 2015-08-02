@@ -28,15 +28,17 @@
 					console.log(xmlHttp.responseText);
 				if (xmlHttp.responseText.indexOf("unstickered")>=0){
 					document.getElementById(classid + "-" + color).innerHTML = '';
-					state = "stickered";
+					state = "unstickered";
 				} else if (xmlHttp.responseText.indexOf("stickered")>=0) {
 					document.getElementById(classid + "-" + color).innerHTML = '✓';
-					state = "unstickered";
+					state = "stickered";
 				}
 				//using XML DOM NodeLists http://www.w3schools.com/dom/met_nodelist_item.asp
 				if (state == "stickered") {
 					//remove last remainingsticker element
+					console.log(stickercolor);
 					var remainingStickers = document.getElementsByClassName(stickercolor);
+					
 					//if no remaining stickers change remaining text
 					if (remainingStickers.item(0).id == stickercolor.concat("-1")) {
 						document.getElementById("remaining").innerHTML = "No Remaining Stickers";
@@ -44,10 +46,10 @@
 					document.getElementById(remainingStickers.item(0).id).remove();
 					//use 0 because element 0 in the NodeList is actually the highest ID because it goes from top to bottom http://i.imgur.com/ioGmnEr.png
 				} else if (state == "unstickered") {
-					//add remainingsticker element
+				/*	//add remainingsticker element
 					var remainingStickers = document.getElementsByClassName(stickercolor);
 					document.getElementById(remainingStickers.item(remainingStickers.length - 1).className);
-					console.log(remainingStickers.length);
+					console.log(remainingStickers.length);*/
 				}
 				//console.log(remainingStickers.item(1).id);
 			}

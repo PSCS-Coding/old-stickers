@@ -12,6 +12,8 @@
 					}
 				</style>
 		<script>
+			
+					
 			function updateStickers (studentid, classid, color) {
 				if (color == 1) {
 					stickercolor = "black";
@@ -24,11 +26,44 @@
 					xmlHttp.open( "GET", "jsget.php?studentid=" + studentid + "&classid=" + classid + "&stickercolor=" + stickercolor, false );
 					xmlHttp.send( null );
 					console.log(xmlHttp.responseText);
-				if(xmlHttp.responseText.indexOf("unstickered")>=0){
+				if (xmlHttp.responseText.indexOf("unstickered")>=0){
 					document.getElementById(classid + "-" + color).innerHTML = '';
+					state = "unstickered";
 				} else if (xmlHttp.responseText.indexOf("stickered")>=0) {
 					document.getElementById(classid + "-" + color).innerHTML = '✓';
+					state = "stickered";
+				} else {
+					state = "not";
+					
 				}
+				//using XML DOM NodeLists http://www.w3schools.com/dom/met_nodelist_item.asp
+				if (state == "stickered") {
+					//remove last remainingsticker element
+					console.log(stickercolor);
+					var remainingStickers = document.getElementsByClassName(stickercolor);
+					
+					//if no remaining stickers change remaining text
+					if (remainingStickers.item(0).id == stickercolor.concat("-1")) {
+						document.getElementById("remaining").innerHTML = "No Remaining Stickers";
+					}
+					remainingStickers.item(0).remove();
+					//use 0 because element 0 in the NodeList is actually the highest ID because it goes from top to bottom http://i.imgur.com/ioGmnEr.png
+				} else if (state == "unstickered") {
+					//add remainingsticker element
+					var sticker = document.getElementById(stickercolor.concat("list")).firstChild;
+					if (sticker != null) {
+						//if can clone
+						sticker = sticker.cloneNode(true);
+						document.getElementById(stickercolor.concat("list")).appendChild(sticker);
+					} else {
+						//nothing to clone, must insert
+						console.log("fooo");
+						document.getElementById(stickercolor.concat("list")).innerHTML = "<div class='".concat(stickercolor,"'>",stickercolor,"sticker</div>");
+						}
+				} else if (state == "not") {
+					console.log("error");
+				}
+				//console.log(remainingStickers.item(1).id);
 			}
 		</script>
     </head>
@@ -77,8 +112,11 @@
 		}
 		$usedstickers = $usedstickers[0];
 		
-		echo "<div class = 'remaining'>Remaining:</div>";
-		
+		if ($usedstickers[1] != 0 || $usedstickers[2] != 0 || $usedstickers[3] != 0) {
+		echo "<div id = 'remaining'>Remaining:</div>";
+		} else {
+		echo "<div id = 'remaining'>No Remaining Stickers</div>";
+		}
 		for($i=1; $i<4; $i++){
 			switch ($i){
 				case 1:
@@ -93,9 +131,12 @@
 				default:
 					echo "error";
 			}
+			
+			echo ("<span id='" . $stickervalue . "list'>");
 			for($k=$usedstickers[$i]; $k>0; $k--){
-				echo "<div class = " . $stickervalue . ">" . $stickervalue . "sticker " . "</div>";
+				echo "<div class = " . $stickervalue . ">" . $stickervalue . "sticker" . "</div>";
 			}
+			echo ("</span>");
 		}
 		
 		// QUERY OFFERINGS

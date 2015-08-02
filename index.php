@@ -43,13 +43,13 @@
 					if (remainingStickers.item(0).id == stickercolor.concat("-1")) {
 						document.getElementById("remaining").innerHTML = "No Remaining Stickers";
 					}
-					document.getElementById(remainingStickers.item(0).id).remove();
+					remainingStickers.item(0).remove();
 					//use 0 because element 0 in the NodeList is actually the highest ID because it goes from top to bottom http://i.imgur.com/ioGmnEr.png
 				} else if (state == "unstickered") {
-				/*	//add remainingsticker element
-					var remainingStickers = document.getElementsByClassName(stickercolor);
-					document.getElementById(remainingStickers.item(remainingStickers.length - 1).className);
-					console.log(remainingStickers.length);*/
+					//add remainingsticker element
+					var sticker = document.getElementById(stickercolor.concat("list")).firstChild;
+					sticker = sticker.cloneNode(true);
+					document.getElementById(stickercolor.concat("list")).appendChild(sticker);
 				}
 				//console.log(remainingStickers.item(1).id);
 			}
@@ -105,7 +105,6 @@
 		} else {
 		echo "<div id = 'remaining'>No Remaining Stickers</div>";
 		}
-		
 		for($i=1; $i<4; $i++){
 			switch ($i){
 				case 1:
@@ -120,9 +119,12 @@
 				default:
 					echo "error";
 			}
+			
+			echo ("<span id='" . $stickervalue . "list'>");
 			for($k=$usedstickers[$i]; $k>0; $k--){
-				echo "<div class = " . $stickervalue . " id='" . $stickervalue . "-" . $k ."'>" . $stickervalue . "sticker " . "</div>";
+				echo "<div class = " . $stickervalue . ">" . $stickervalue . "sticker" . "</div>";
 			}
+			echo ("</span>");
 		}
 		
 		// QUERY OFFERINGS

@@ -35,11 +35,14 @@
 				if (stickered == true) {
 					//remove last remainingsticker element
 					var remainingStickers = document.getElementsByClassName(stickercolor);
-					document.getElementById(remainingStickers.item(remainingStickers.length - 1).id).remove();
+					document.getElementById(remainingStickers.item(0).id).remove();
+					//use 0 because element 0 in the NodeList is actually the highest ID because it goes from top to bottom http://i.imgur.com/ioGmnEr.png
 				} else if (stickered == false) {
-					//add remainingsticker element
+				/*	//add remainingsticker element
+					var remainingStickers = document.getElementsByClassName(stickercolor);
+					document.getElementById(remainingStickers.item(remainingStickers.length - 1).id).remove();
+					console.log(remainingStickers.length);*/
 				}
-				//console.log(remainingStickers.length);
 				//console.log(remainingStickers.item(1).id);
 			}
 		</script>
@@ -89,7 +92,7 @@
 		}
 		$usedstickers = $usedstickers[0];
 		
-		echo "<div class = 'remaining'>Remaining:</div>";
+		echo "<div id = 'remaining'>Remaining:</div>";
 		
 		for($i=1; $i<4; $i++){
 			switch ($i){

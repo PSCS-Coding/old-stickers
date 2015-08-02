@@ -12,6 +12,8 @@
 					}
 				</style>
 		<script>
+			
+					
 			function updateStickers (studentid, classid, color) {
 				if (color == 1) {
 					stickercolor = "black";
@@ -35,6 +37,10 @@
 				if (stickered == true) {
 					//remove last remainingsticker element
 					var remainingStickers = document.getElementsByClassName(stickercolor);
+					//if no remaining stickers change remaining text
+					if (remainingStickers.item(0).id == stickercolor.concat("-1")) {
+						document.getElementById("remaining").innerHTML = "No Remaining Stickers";
+					}
 					document.getElementById(remainingStickers.item(0).id).remove();
 					//use 0 because element 0 in the NodeList is actually the highest ID because it goes from top to bottom http://i.imgur.com/ioGmnEr.png
 				} else if (stickered == false) {

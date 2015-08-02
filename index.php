@@ -31,7 +31,7 @@
 				}
 				//using XML DOM NodeLists http://www.w3schools.com/dom/met_nodelist_item.asp
 				var remainingStickers = document.getElementsByClassName(stickercolor);
-				document.getElementById(remainingStickers.item(1).id).remove();
+				document.getElementById(remainingStickers.item(remainingStickers.length - 1).id).remove();
 				//console.log(remainingStickers.length);
 				//console.log(remainingStickers.item(1).id);
 			}

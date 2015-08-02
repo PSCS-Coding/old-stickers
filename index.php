@@ -32,6 +32,9 @@
 				} else if (xmlHttp.responseText.indexOf("stickered")>=0) {
 					document.getElementById(classid + "-" + color).innerHTML = '✓';
 					state = "stickered";
+				} else {
+					state = "not";
+					
 				}
 				//using XML DOM NodeLists http://www.w3schools.com/dom/met_nodelist_item.asp
 				if (state == "stickered") {
@@ -57,6 +60,8 @@
 						console.log("fooo");
 						document.getElementById(stickercolor.concat("list")).innerHTML = "<div class='".concat(stickercolor,"'>",stickercolor,"sticker</div>");
 						}
+				} else if (state == "not") {
+					console.log("error");
 				}
 				//console.log(remainingStickers.item(1).id);
 			}

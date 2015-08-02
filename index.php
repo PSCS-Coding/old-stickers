@@ -98,7 +98,11 @@
 		}
 		$usedstickers = $usedstickers[0];
 		
+		if ($usedstickers[1] != 0 || $usedstickers[2] != 0 || $usedstickers[3] != 0) {
 		echo "<div id = 'remaining'>Remaining:</div>";
+		} else {
+		echo "<div id = 'remaining'>No Remaining Stickers</div>";
+		}
 		
 		for($i=1; $i<4; $i++){
 			switch ($i){

@@ -119,7 +119,7 @@
 					echo "error";
 			}
 			for($k=$usedstickers[$i]; $k>0; $k--){
-				echo "<div class = " . $stickervalue . " id='" . $stickervalue . "'-" . $k ."'>" . $stickervalue . "sticker " . "</div>";
+				echo "<div class = " . $stickervalue . " id='" . $stickervalue . "-" . $k ."'>" . $stickervalue . "sticker " . "</div>";
 			}
 		}
 		

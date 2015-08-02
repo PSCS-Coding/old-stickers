@@ -24,14 +24,21 @@
 					xmlHttp.open( "GET", "jsget.php?studentid=" + studentid + "&classid=" + classid + "&stickercolor=" + stickercolor, false );
 					xmlHttp.send( null );
 					console.log(xmlHttp.responseText);
-				if(xmlHttp.responseText.indexOf("unstickered")>=0){
+				if (xmlHttp.responseText.indexOf("unstickered")>=0){
 					document.getElementById(classid + "-" + color).innerHTML = '';
+					stickered = false;
 				} else if (xmlHttp.responseText.indexOf("stickered")>=0) {
 					document.getElementById(classid + "-" + color).innerHTML = '✓';
+					stickered = true;
 				}
 				//using XML DOM NodeLists http://www.w3schools.com/dom/met_nodelist_item.asp
-				var remainingStickers = document.getElementsByClassName(stickercolor);
-				document.getElementById(remainingStickers.item(remainingStickers.length - 1).id).remove();
+				if (stickered == true) {
+					//remove last remainingsticker element
+					var remainingStickers = document.getElementsByClassName(stickercolor);
+					document.getElementById(remainingStickers.item(remainingStickers.length - 1).id).remove();
+				} else if (stickered == false) {
+					//add remainingsticker element
+				}
 				//console.log(remainingStickers.length);
 				//console.log(remainingStickers.item(1).id);
 			}

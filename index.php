@@ -46,7 +46,7 @@
 				} else if (state == "unstickered") {
 					//add remainingsticker element
 					var remainingStickers = document.getElementsByClassName(stickercolor);
-					document.getElementById(remainingStickers.item(remainingStickers.length - 1).id).remove();
+					document.getElementById(remainingStickers.item(remainingStickers.length - 1).className);
 					console.log(remainingStickers.length);
 				}
 				//console.log(remainingStickers.item(1).id);
@@ -119,7 +119,7 @@
 					echo "error";
 			}
 			for($k=$usedstickers[$i]; $k>0; $k--){
-				echo "<div class = " . $stickervalue . " id='white-" . $k ."'>" . $stickervalue . "sticker " . "</div>";
+				echo "<div class = " . $stickervalue . " id='" . $stickervalue . "'-" . $k ."'>" . $stickervalue . "sticker " . "</div>";
 			}
 		}
 		

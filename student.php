@@ -1,3 +1,6 @@
+<?php	
+session_start(); 
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,9 +10,9 @@
 	</head>
 <body>
 	<?php
-	session_start();
 	include_once("connection.php");	
 	include_once("function.php");
+	include_once("stickerfunctions.php");
 	
 	$studentquery = $db_attendance->query("SELECT studentid,firstname,lastname FROM studentdata WHERE current=1 ORDER BY firstname ASC");
 	
@@ -32,9 +35,36 @@
 			}
 		?>
 	</select>
-	<input type="submit" value="Sign In" name="submit">
+	<input type="submit" value="Sign In" name="submit"> 
+	<?php 
+		if (!empty($_SESSION['id'])){
+			echo "Currently signed in as " . idToName($_SESSION['id']); 
+		} else {
+			echo "Please sign in";
+		}
+		?>
 	<br>
-	<br>
+	
+	<h3> Currently Stickered Classes </h3>
+	<p>
+	<?php
+		$blackstickers = getclasses($_SESSION['id'], "blackstickers");
+		$greystickers = getclasses($_SESSION['id'], "greystickers");
+		$whitestickers = getclasses($_SESSION['id'], "whitestickers");
+		
+		foreach($blackstickers as $sticker){
+			echo "<div class = " . "black" . ">" . classidToName($sticker) . "</div>";
+		}			
+
+		foreach($greystickers as $sticker){
+			echo "<div class = " . "grey" . ">" . classidToName($sticker) . "</div>";
+		}
+		
+		foreach($whitestickers as $sticker){
+			echo "<div class = " . "white" . ">" . classidToName($sticker) . "</div>";
+		}
+	 ?>
+	</p>
 	</div>
 	</form>
 </body>

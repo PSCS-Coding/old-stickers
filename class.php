@@ -1,9 +1,13 @@
+<?php	
+session_start(); 
+?>
 <!DOCTYPE html>
 <html>
 <?php // init
-session_start();
 
 include_once("connection.php");
+include_once("stickerfunctions.php");
+include_once("function.php");
 
 if(!empty($_GET['classid'])){
 	$_SESSION['classid'] = $_GET['classid']; 
@@ -35,9 +39,42 @@ while ($data_result = $classquery->fetch_assoc()) {
 <a class="back" href="index.php">Back</a>
 <h3><?php echo $classresult[0]['classname'] . ", taught by " . $classresult[0]['facilitator']; ?></h3>
 <p>
-<?php echo $classresult[0]['description']; ?>
 
+
+<?php echo $classresult[0]['description'];
+if (preg_match('/<p/',$classresult[0]["image"])){
+} else {
+	?><img src='<?php echo $classresult[0]["image"]; ?>'>
+<?php	
+}
+?>
 </p>
+<h3> Stickers on this class </h3>
+<p>
+<?php 
+//render students that have stickered this class
+$blackstickers = getstudents($classid,"blackstickers");
+$greystickers = getstudents($classid,"greystickers");
+$whitestickers = getstudents($classid,"whitestickers");
+
+$blackstickers = explode(",", $blackstickers[0]);
+$greystickers = explode(",", $greystickers[0]);
+$whitestickers = explode(",", $whitestickers[0]);
+
+foreach($blackstickers as $sticker){
+	echo "<div class = " . "black" . ">" . idToName($sticker) . "</div>";
+}
+
+foreach($greystickers as $sticker){
+	echo "<div class = " . "grey" . ">" . idToName($sticker) . "</div>";
+}
+
+foreach($whitestickers as $sticker){
+	echo "<div class = " . "white" . ">" . idToName($sticker) . "</div>";
+}
+
+?>
+<p>
 </div>
 
 </body>

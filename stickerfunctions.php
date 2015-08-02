@@ -1,6 +1,16 @@
 <?php
 include_once("function.php");
 
+function classidToName($id)
+{
+    global $db_attendance;
+	global $db_stickers;
+    $query = $db_stickers->query("SELECT classname FROM offerings WHERE classid = $id");
+	$tempvar = $query->fetch_assoc();
+	$name = $tempvar['classname'];
+    return($name);
+}
+
 function getstudents($classid,$stickercolor){ // gets studentids of students that have stickered a class
 	global $db_attendance;
 	global $db_stickers;
@@ -17,6 +27,30 @@ function getstudents($classid,$stickercolor){ // gets studentids of students tha
 	//echo "</pre>";
 	
 	return($allstickers);
+}
+
+function getclasses($studentid,$stickercolor){
+	global $db_attendance;
+	global $db_stickers;
+
+	$returninfo = array();
+	
+	$getclasses = $db_stickers->query("SELECT $stickercolor FROM offerings");
+	$allclasses = array();
+	
+	while($data_result = $getclasses->fetch_row()) {
+		array_push($allclasses, $data_result[0]);
+	}
+	
+	for($i = 0; $i < count($allclasses); $i++ ){
+		$students = explode(",", $allclasses[$i]);
+			if (in_array($studentid,$students)){
+				$k = $i+1;
+				array_push($returninfo,$k);
+			}
+	}
+	
+	return($returninfo);
 }
 	
 	

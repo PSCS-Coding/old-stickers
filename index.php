@@ -48,8 +48,15 @@
 				} else if (state == "unstickered") {
 					//add remainingsticker element
 					var sticker = document.getElementById(stickercolor.concat("list")).firstChild;
-					sticker = sticker.cloneNode(true);
-					document.getElementById(stickercolor.concat("list")).appendChild(sticker);
+					if (sticker != null) {
+						//if can clone
+						sticker = sticker.cloneNode(true);
+						document.getElementById(stickercolor.concat("list")).appendChild(sticker);
+					} else {
+						//nothing to clone, must insert
+						console.log("fooo");
+						document.getElementById(stickercolor.concat("list")).innerHTML = "<div class='".concat(stickercolor,"'>",stickercolor,"sticker</div>");
+						}
 				}
 				//console.log(remainingStickers.item(1).id);
 			}

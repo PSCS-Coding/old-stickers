@@ -48,6 +48,7 @@ session_start();
 	<h3> Currently Stickered Classes </h3>
 	<p>
 	<?php
+		if(!empty($_SESSION['id'])){
 		$blackstickers = getclasses($_SESSION['id'], "blackstickers");
 		$greystickers = getclasses($_SESSION['id'], "greystickers");
 		$whitestickers = getclasses($_SESSION['id'], "whitestickers");
@@ -62,6 +63,7 @@ session_start();
 		
 		foreach($whitestickers as $sticker){
 			echo "<div class = " . "white" . ">" . classidToName($sticker) . "</div>";
+		}
 		}
 	 ?>
 	</p>

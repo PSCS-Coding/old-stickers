@@ -8,7 +8,7 @@ require_once("connection.php");
 <head>
 <div id="all">
 	<div id="container" style="max-width:800px;margin:1em auto 0;background-color:lightgrey;border-radius:15px;height:500px">
-		<!-- <p id="allottedtext">Allotted Stickers</p> -->
+		<p id="allottedtext">Allotted Stickers</p>
 		<div id="allottedstickers">
 			<?php
 			//here
@@ -30,7 +30,7 @@ require_once("connection.php");
 			</form>
 		</div>
 		
-		<!-- <p id="weighttext">Sticker Weight</p> -->
+		<p id="weighttext">Sticker Weight</p>
 		<div id="stickerweight">
 			<?php
 			//sticker weight

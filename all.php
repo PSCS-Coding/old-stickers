@@ -5,6 +5,7 @@ require_once("connection.php");
 ?>
 <head>
 	<title>All Classes</title>
+	<meta charset="utf-8">
 </head>
 <?php
 $classesQuery = $db_stickers->query("SELECT * FROM offerings");
@@ -36,6 +37,11 @@ foreach($classesResult as $sub) {
 <style>
 table, th, td {
     border: 1px solid black;
+}
+table {
+	float:left;
+	margin:1%;
+	width:10%;
 }
 .blackstickers {
 	background-color:black;

@@ -1,7 +1,9 @@
 <DOCTYPE HTML>
 <html>
 <?php
-require_once("connection.php");
+include_once("connection.php");
+include_once("stickerfunctions.php");
+include_once("function.php");
 ?>
 <head>
 	<title>All Classes</title>
@@ -14,12 +16,22 @@ $classesResult = array();
 while($class = $classesQuery->fetch_assoc()) {
 	array_push($classesResult, $class);
 }
+
 ?>
 <!-- Enclosing Classes Table -->
 <?php
+//get student stickers
 foreach($classesResult as $sub) {
-	//echo $sub["classname"];
-	//table
+	$blackstickers = getstudents($sub["classid"],"blackstickers");
+	$greystickers = getstudents($sub["classid"],"greystickers");
+	$whitestickers = getstudents($sub["classid"],"whitestickers");
+
+	$blackstickers = explode(",", $blackstickers[0]);
+	$greystickers = explode(",", $greystickers[0]);
+	$whitestickers = explode(",", $whitestickers[0]);
+
+	$highestVal = max(count($blackstickers), count ($greystickers), count($whitestickers));
+	
 	?>	<table name= <?php echo $sub["classid"] ?> >
 			<caption> <?php echo $sub["classname"] ?> </caption>
 			<colgroup>
@@ -32,9 +44,17 @@ foreach($classesResult as $sub) {
 				<th class='grey'>Grey</th>
 				<th class='white'>White</th>
 			</tr>
+			<?php 
+			for ($i = 0; $i < $highestVal; $i++) {
+			?>
 			<tr>
-				<td class='black'>Hello</td><td>world</td><td>!!!</td> 
+				<td> <?php if (!empty($blackstickers[$i])) echo idToName($blackstickers[$i]); ?> </td>
+				<td> <?php if (!empty($greystickers[$i])) echo idToName($greystickers[$i]);   ?> </td>
+				<td> <?php if (!empty($whitestickers[$i])) echo "<span class='whitestickers'>" . idToName($whitestickers[$i]) . "</span>"; ?> </td> 
 			</tr>
+			<?php
+			}
+			?>
 		 </table>
 	<?php
 }
@@ -58,13 +78,16 @@ caption {
 	padding-bottom:2%;
 }
 .blackstickers {
-	background-color:black;
+	background-color:#272525;
+	color:white;
 }
 .greystickers {
 	background-color:#A5A5A5;
+	color:black;
 }
 .whitestickers {
 	background-color:white;
+	color:black;
 }
 .black {
 	color:white;

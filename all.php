@@ -20,7 +20,7 @@ setInterval(function () {
 </script>
 <body>
 <?php
-$classesQuery = $db_stickers->query("SELECT * FROM offerings");
+$classesQuery = $db_stickers->query("SELECT * FROM offerings ORDER BY classname ASC");
 $classesResult = array();
 while($class = $classesQuery->fetch_assoc()) {
 	array_push($classesResult, $class);
@@ -31,10 +31,18 @@ while($class = $classesQuery->fetch_assoc()) {
 <!-- Toolbar -->
 
 <div id="toolbar">
-	<span id="toggleText">Live Updates</span>
+	<!-- Live Updates -->
+	<span class="toolbarText" id="toggleText">Live Updates</span>
 	<input id="toggle" type="checkbox" checked>
 	
-	
+	<!-- Sorting Options -->
+	<span class="toolbarText" id="sortText">Sort by</span>
+	<select id="sort">
+		<option>Class Name</option>
+		<option>Time Added</option>
+		<option>Most Stickered</option>
+		<option>Facilitator</option>
+	</select>
 </div>
 
 <br /><br /><br />
@@ -117,12 +125,24 @@ caption {
 	margin-top:.8%;
 	transform:scale(1.5);
 }
-#toggleText {
-	float:right;
+#sort {
+	float:left;
+	font-size:12pt;
 	margin-top:.6%;
-	margin-right:7%;
+	margin-left:1%;
+}
+.toolbarText {
+	margin-top:.6%;
 	font-weight:bold;
 	font-size:14pt;
+}
+#toggleText {
+	float:right;
+	margin-right:7%;
+}
+#sortText {
+	float:left;
+	margin-left:2%;
 }
 .blackstickers {
 	background-color:#272525;

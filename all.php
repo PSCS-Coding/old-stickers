@@ -10,6 +10,15 @@ include_once("function.php");
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="stickers.css">  
 </head>
+<script>
+setInterval(function () {
+	if (document.getElementById("toggle").checked == true) {
+		alert("Hello");
+	}
+}, 3000);
+
+</script>
+<body>
 <?php
 $classesQuery = $db_stickers->query("SELECT * FROM offerings");
 $classesResult = array();
@@ -18,7 +27,21 @@ while($class = $classesQuery->fetch_assoc()) {
 }
 
 ?>
+
+<!-- Toolbar -->
+
+<div id="toolbar">
+	<span id="toggleText">Live Updates</span>
+	<input id="toggle" type="checkbox" checked>
+	
+	
+</div>
+
+<br /><br /><br />
+
+
 <!-- Enclosing Classes Table -->
+
 <?php
 //get student stickers
 foreach($classesResult as $sub) {
@@ -59,6 +82,8 @@ foreach($classesResult as $sub) {
 	<?php
 }
 ?>
+</body>
+</html>
 <style>
 table, th, td, caption {
     border: 1px solid black;
@@ -76,6 +101,28 @@ caption {
     height: 2%;
 	padding-top:1%;
 	padding-bottom:2%;
+}
+#toolbar {
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    z-index: 5;
+    opacity: 0.9;
+    min-height: 4%;
+    top: 0;
+}
+#toggle {
+	float:right;
+	margin-right:1%;
+	margin-top:.8%;
+	transform:scale(1.5);
+}
+#toggleText {
+	float:right;
+	margin-top:.6%;
+	margin-right:7%;
+	font-weight:bold;
+	font-size:14pt;
 }
 .blackstickers {
 	background-color:#272525;

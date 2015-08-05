@@ -47,7 +47,6 @@ while($class = $classesQuery->fetch_assoc()) {
 
 <br /><br /><br />
 
-
 <!-- Enclosing Classes Table -->
 
 <?php
@@ -79,9 +78,9 @@ foreach($classesResult as $sub) {
 			for ($i = 0; $i < $highestVal; $i++) {
 			?>
 			<tr>
-				<td> <?php if (!empty($blackstickers[$i])) echo idToName($blackstickers[$i]); ?> </td>
-				<td> <?php if (!empty($greystickers[$i])) echo idToName($greystickers[$i]);   ?> </td>
-				<td> <?php if (!empty($whitestickers[$i])) echo "<span class='whitestickers'>" . idToName($whitestickers[$i]) . "</span>"; ?> </td> 
+				<td class="stickercell"> <?php if (!empty($blackstickers[$i])) echo "<div class='blackstickers'>" . idToName($blackstickers[$i]) . "</div>"; ?> </td>
+				<td class="stickercell"> <?php if (!empty($greystickers[$i]))  echo "<div class='greystickers'>" . idToName($greystickers[$i]) . "</div>";  ?> </td>
+				<td class="stickercell"> <?php if (!empty($whitestickers[$i])) echo "<div class='whitestickers'>" . idToName($whitestickers[$i]) . "</div>"; ?> </td> 
 			</tr>
 			<?php
 			}
@@ -109,6 +108,9 @@ caption {
     height: 2%;
 	padding-top:1%;
 	padding-bottom:2%;
+}
+.stickercell {
+	height:30px;
 }
 #toolbar {
     position: fixed;
@@ -145,16 +147,19 @@ caption {
 	margin-left:2%;
 }
 .blackstickers {
-	background-color:#272525;
+	background-color:black;
 	color:white;
+	text-align:center;
 }
 .greystickers {
-	background-color:#A5A5A5;
+	background-color:grey;
 	color:black;
+	text-align:center;
 }
 .whitestickers {
 	background-color:white;
 	color:black;
+	text-align:center;
 }
 .black {
 	color:white;

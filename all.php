@@ -51,6 +51,31 @@ while($class = $classesQuery->fetch_assoc()) {
 
 <?php
 //get student stickers
+
+	$highs = array();
+	foreach($classesResult as $sub) {
+		$blackstickers = getstudents($sub["classid"],"blackstickers");
+		$greystickers = getstudents($sub["classid"],"greystickers");
+		$whitestickers = getstudents($sub["classid"],"whitestickers");
+
+		$blackstickers = explode(",", $blackstickers[0]);
+		$greystickers = explode(",", $greystickers[0]);
+		$whitestickers = explode(",", $whitestickers[0]);
+
+		$highestVal = max(count($blackstickers), count ($greystickers), count($whitestickers));
+	}
+	
+
+  function byHighest($a, $b) {
+	$highestA = max(strlen($a['blackstickers']), strlen($a['greystickers']), strlen($a['whitestickers']));
+	$highestB = max(strlen($b['blackstickers']), strlen($b['greystickers']), strlen($b['whitestickers']));
+    return strnatcmp($highestA, $highestB);
+  }
+
+  // sort alphabetically by name
+  usort($classesResult, 'byHighest');
+  $classesResult = array_reverse($classesResult);//reverse
+  
 foreach($classesResult as $sub) {
 	$blackstickers = getstudents($sub["classid"],"blackstickers");
 	$greystickers = getstudents($sub["classid"],"greystickers");

@@ -20,9 +20,11 @@
 				<caption>Monday</caption>
 				<?php
 					$lengths = explode(',', $lengthResult["monday"]);
-					foreach($lengths as $sub) {
+					foreach($lengths as $index => $sub) {
 						echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
-						echo "<tr><td class='passing'>Passing Period</td></tr>";
+						if ($index != count($lengths) - 1) { //if not last
+							echo "<tr><td class='passing'>Passing Period</td></tr>";
+						}
 					}
 				?>
 			</table>
@@ -31,9 +33,11 @@
 				<caption>Tuesday</caption>
 				<?php
 					$lengths = explode(',', $lengthResult["tuesday"]);
-					foreach($lengths as $sub) {
+					foreach($lengths as $index => $sub) {
 						echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
-						echo "<tr><td class='passing'>Passing Period</td></tr>";
+						if ($index != count($lengths) - 1) { //if not last
+							echo "<tr><td class='passing'>Passing Period</td></tr>";
+						}
 					}
 				?>
 			</table>
@@ -42,9 +46,11 @@
 				<caption>Wednesday</caption>
 				<?php
 					$lengths = explode(',', $lengthResult["wednesday"]);
-					foreach($lengths as $sub) {
+					foreach($lengths as $index => $sub) {
 						echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
-						echo "<tr><td class='passing'>Passing Period</td></tr>";
+						if ($index != count($lengths) - 1) { //if not last
+							echo "<tr><td class='passing'>Passing Period</td></tr>";
+						}
 					}
 				?>
 			</table>
@@ -53,9 +59,11 @@
 				<caption>Thursday</caption>
 				<?php
 					$lengths = explode(',', $lengthResult["thursday"]);
-					foreach($lengths as $sub) {
+					foreach($lengths as $index => $sub) {
 						echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
-						echo "<tr><td class='passing'>Passing Period</td></tr>";
+						if ($index != count($lengths) - 1) { //if not last
+							echo "<tr><td class='passing'>Passing Period</td></tr>";
+						}
 					}
 				?>
 			</table>
@@ -64,9 +72,11 @@
 				<caption>Friday</caption>
 				<?php
 					$lengths = explode(',', $lengthResult["friday"]);
-					foreach($lengths as $sub) {
+					foreach($lengths as $index => $sub) {
 						echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
-						echo "<tr><td class='passing'>Passing Period</td></tr>";
+						if ($index != count($lengths) - 1) { //if not last
+							echo "<tr><td class='passing'>Passing Period</td></tr>";
+						}
 					}
 				?>
 			</table>

@@ -14,72 +14,32 @@
 		//get slot length data
 		$lengthQuery = $db_stickers->query("SELECT * FROM schedule LIMIT 1");
 		$lengthResult = $lengthQuery->fetch_array();
-			
-	?>
-			<table id="monday" class="day">
-				<caption>Monday</caption>
-				<?php
-					$lengths = explode(',', $lengthResult["monday"]);
-					foreach($lengths as $index => $sub) {
-						echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
-						if ($index != count($lengths) - 1) { //if not last
-							echo "<tr><td class='passing'>Passing Period</td></tr>";
+		
+		foreach ($lengthResult as $name => $day) {
+			if (!is_int($name)) {
+			?>	<table id=<?php echo $name ?> class="day">
+					<caption><?php echo ucfirst($name) ?></caption>
+					<?php
+						$lengths = explode(',', $lengthResult[$name]);
+						foreach($lengths as $index => $sub) {
+							echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
+							if ($index != count($lengths) - 1) { //if not last
+								echo "<tr><td class='passing'>Passing Period</td></tr>";
+							}
 						}
-					}
-				?>
-			</table>
-			
-			<table id="tuesday" class="day">
-				<caption>Tuesday</caption>
+					?>
+				</table>
 				<?php
-					$lengths = explode(',', $lengthResult["tuesday"]);
-					foreach($lengths as $index => $sub) {
-						echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
-						if ($index != count($lengths) - 1) { //if not last
-							echo "<tr><td class='passing'>Passing Period</td></tr>";
-						}
-					}
-				?>
-			</table>
+				}
+			}
 			
-			<table id="wednesday" class="day">
-				<caption>Wednesday</caption>
-				<?php
-					$lengths = explode(',', $lengthResult["wednesday"]);
-					foreach($lengths as $index => $sub) {
-						echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
-						if ($index != count($lengths) - 1) { //if not last
-							echo "<tr><td class='passing'>Passing Period</td></tr>";
-						}
-					}
-				?>
-			</table>
 			
-			<table id="thursday" class="day">
-				<caption>Thursday</caption>
-				<?php
-					$lengths = explode(',', $lengthResult["thursday"]);
-					foreach($lengths as $index => $sub) {
-						echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
-						if ($index != count($lengths) - 1) { //if not last
-							echo "<tr><td class='passing'>Passing Period</td></tr>";
-						}
-					}
-				?>
-			</table>
 			
-			<table id="friday" class="day">
-				<caption>Friday</caption>
-				<?php
-					$lengths = explode(',', $lengthResult["friday"]);
-					foreach($lengths as $index => $sub) {
-						echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
-						if ($index != count($lengths) - 1) { //if not last
-							echo "<tr><td class='passing'>Passing Period</td></tr>";
-						}
-					}
-				?>
-			</table>
+			
+			
+		?>
+			
+			
 </body>
 </html>
 

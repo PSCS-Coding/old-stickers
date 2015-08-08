@@ -13,7 +13,7 @@ include_once("function.php");
 <script>
 setInterval(function () {
 	if (document.getElementById("toggle").checked == true) {
-		alert("Hello");
+	//	alert("Hello");
 	}
 }, 3000);
 
@@ -133,6 +133,7 @@ caption {
     height: 2%;
 	padding-top:1%;
 	padding-bottom:2%;
+	max-width:186px;
 }
 .stickercell {
 	height:30px;

@@ -25,6 +25,13 @@ function reset () {
 }
 function updateTimes () {
 	var classSlots = document.getElementsByClassName("class");
+	
+	//date object initialization (starting at 9:00)
+	var time = new Date();
+	time.setHours(9);
+	time.setMinutes(0);
+	
+	console.log(time.getHours() + ":" + addZero(time.getMinutes()));
 	console.log(classSlots.length);
 	console.log(classSlots[0].style.height.split("px")[0]);
 }
@@ -32,6 +39,13 @@ function capitalize(s)
 {
     return s[0].toUpperCase() + s.slice(1);
 }
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+
 </script>
 <?php
 	include_once("connection.php");

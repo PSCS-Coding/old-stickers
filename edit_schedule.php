@@ -32,8 +32,10 @@ function updateTimes () {
 	time.setMinutes(0);
 	
 	console.log(time.getHours() + ":" + addZero(time.getMinutes()));
-	console.log(classSlots.length);
-	console.log(classSlots[0].style.height.split("px")[0]);
+
+	time = addMinutes(time,classSlots[0].style.height.split("px")[0]);
+	
+	console.log(time.getHours() + ":" + addZero(time.getMinutes()));
 }
 function capitalize(s)
 {
@@ -45,7 +47,9 @@ function addZero(i) {
     }
     return i;
 }
-
+function addMinutes(date, minutes) {
+    return new Date(date.getTime() + minutes*60000);
+}
 </script>
 <?php
 	include_once("connection.php");

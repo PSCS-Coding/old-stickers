@@ -14,6 +14,13 @@ function selectSlot (classid) {
 	}
 	prev = classid;
 }
+function reset () {
+	console.log("connecting...");
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET", "reset_schedule.php", false );
+	xmlHttp.send( null );
+	console.log(xmlHttp.responseText);
+}
 </script>
 <?php
 	include_once("connection.php");
@@ -24,7 +31,8 @@ function selectSlot (classid) {
 	<!-- Sidebar -->
 	<div id="sidebar">
         <h1 id="title">Edit Slot</h1>
-        <p id="name">hello world</p>
+        <p id="name">Select a Slot</p>
+		<button onclick="reset()">Reset Schedule</button>
     </div>
 	<div id="schedule">
 	<?php
@@ -65,12 +73,6 @@ background-color:dimgrey;
 td {
 	text-align:center;
 }
-#title {
-	text-align:center;
-}
-#name {
-	text-align:center;
-}
 #schedule {
 	margin-left:40%;
 	margin-top:5%;
@@ -94,5 +96,6 @@ td {
     height: 100%;
 	opacity:0.8;
 	background-color: white;
+	text-align:center;
 }
 </style>

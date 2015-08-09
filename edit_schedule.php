@@ -5,9 +5,14 @@
 	<!--<link rel="stylesheet" type="text/css" href="stickers.css">-->
 </head>
 <script>
+var prev;
 function selectSlot (classid) {
 	document.getElementById("name").innerHTML = classid;
-	
+	document.getElementById(classid).style.border = "2px solid red";
+	if (prev != null) {
+		document.getElementById(prev).style.border = "initial";
+	}
+	prev = classid;
 }
 </script>
 <?php

@@ -28,31 +28,26 @@ function updateTimes () {
 	var days = [];
 	//date object initialization (starting at 9:00)
 	for (i = 0; i <	classSlots.length; i++) {
-		if (days.contains(classSlots[i].id.split("-")[0])) {
-			//do it
-			console.log(time.getHours() + ":" + addZero(time.getMinutes()));
-
-			time = addMinutes(time,classSlots[i].style.height.split("px")[0]);
-	
-			console.log(time.getHours() + ":" + addZero(time.getMinutes()));
-		} else {
+		if (!days.contains(classSlots[i].id.split("-")[0])) {
 			days.push(classSlots[i].id.split("-")[0]); //add
 			
 			//reinitialize
 			var time = new Date();
 			time.setHours(9);
 			time.setMinutes(0);
-			
-			console.log(time.getHours() + ":" + addZero(time.getMinutes()));
-
-			time = addMinutes(time,classSlots[i].style.height.split("px")[0]);
-	
-			console.log(time.getHours() + ":" + addZero(time.getMinutes()));
 		}
+		//add time
+		classSlots[i].innerHTML = time.getHours() + ":" + addZero(time.getMinutes());
+
+		time = addMinutes(time,classSlots[i].style.height.split("px")[0]);
+	
+		classSlots[i].innerHTML = classSlots[i].innerHTML + " - " + time.getHours() + ":" + addZero(time.getMinutes());
+		
+		//add 5 minute passing period
+		time = addMinutes(time,5);
 	}
 }
-function capitalize(s)
-{
+function capitalize(s) {
     return s[0].toUpperCase() + s.slice(1);
 }
 function addZero(i) {

@@ -4,6 +4,12 @@
 	<title>Edit Schedule</title>
 	<!--<link rel="stylesheet" type="text/css" href="stickers.css">-->
 </head>
+<script>
+function selectSlot (classid) {
+	document.getElementById("name").innerHTML = classid;
+	
+}
+</script>
 <?php
 	include_once("connection.php");
 	include_once("stickerfunctions.php");
@@ -13,7 +19,7 @@
 	<!-- Sidebar -->
 	<div id="sidebar">
         <h1 id="title">Edit Slot</h1>
-        <p>hello world</p>
+        <p id="name">hello world</p>
     </div>
 	<div id="schedule">
 	<?php
@@ -28,7 +34,7 @@
 					<?php
 						$lengths = explode(',', $lengthResult[$name]);
 						foreach($lengths as $index => $sub) {
-							echo "<tr><td class='class' style='height:" . $sub . "'>Class</td></tr>";
+							echo "<tr><td id=" . $name . "-" . $index . " class='class' onclick='selectSlot(this.id)' style='height:" . $sub . "'>Class</td></tr>";
 							if ($index != count($lengths) - 1) { //if not last
 								echo "<tr><td class='passing'>Passing Period</td></tr>";
 							}
@@ -51,7 +57,13 @@ font-family:calibri;
 body {
 background-color:dimgrey;
 }
+td {
+	text-align:center;
+}
 #title {
+	text-align:center;
+}
+#name {
 	text-align:center;
 }
 #schedule {

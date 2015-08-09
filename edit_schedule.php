@@ -77,7 +77,7 @@ Array.prototype.contains = function(obj) {
 <body>
 	<!-- Sidebar -->
 	<div id="sidebar">
-        <h1 id="title" onclick="updateTimes()">Edit Slot</h1>
+        <h1 id="title">Edit Slot</h1>
         <p id="name">Select a Slot</p>
 		<button onclick="reset()">Reset Schedule</button>
     </div>
@@ -109,7 +109,9 @@ Array.prototype.contains = function(obj) {
 			
 </body>
 </html>
-
+<script>
+	updateTimes();
+</script>
 <style>
 * {
 font-family:calibri;

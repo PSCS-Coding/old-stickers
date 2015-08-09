@@ -25,17 +25,31 @@ function reset () {
 }
 function updateTimes () {
 	var classSlots = document.getElementsByClassName("class");
-	
+	var days = [];
 	//date object initialization (starting at 9:00)
-	var time = new Date();
-	time.setHours(9);
-	time.setMinutes(0);
-	
-	console.log(time.getHours() + ":" + addZero(time.getMinutes()));
+	for (i = 0; i <	classSlots.length; i++) {
+		if (days.contains(classSlots[i].id.split("-")[0])) {
+			//do it
+			console.log(time.getHours() + ":" + addZero(time.getMinutes()));
 
-	time = addMinutes(time,classSlots[0].style.height.split("px")[0]);
+			time = addMinutes(time,classSlots[i].style.height.split("px")[0]);
 	
-	console.log(time.getHours() + ":" + addZero(time.getMinutes()));
+			console.log(time.getHours() + ":" + addZero(time.getMinutes()));
+		} else {
+			days.push(classSlots[i].id.split("-")[0]); //add
+			
+			//reinitialize
+			var time = new Date();
+			time.setHours(9);
+			time.setMinutes(0);
+			
+			console.log(time.getHours() + ":" + addZero(time.getMinutes()));
+
+			time = addMinutes(time,classSlots[i].style.height.split("px")[0]);
+	
+			console.log(time.getHours() + ":" + addZero(time.getMinutes()));
+		}
+	}
 }
 function capitalize(s)
 {
@@ -49,6 +63,15 @@ function addZero(i) {
 }
 function addMinutes(date, minutes) {
     return new Date(date.getTime() + minutes*60000);
+}
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
 }
 </script>
 <?php

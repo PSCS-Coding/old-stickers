@@ -10,6 +10,12 @@
 	include_once("function.php");
 ?>
 <body>
+	<!-- Sidebar -->
+	<div id="sidebar">
+        <h1 id="title">Edit Slot</h1>
+        <p>hello world</p>
+    </div>
+	<div id="schedule">
 	<?php
 		//get slot length data
 		$lengthQuery = $db_stickers->query("SELECT * FROM schedule LIMIT 1");
@@ -29,28 +35,47 @@
 						}
 					?>
 				</table>
-				<?php
-				}
+			<?php
 			}
-			
-			
-			
-			
-			
+		}
 		?>
-			
+	</div>
 			
 </body>
 </html>
 
 <style>
+* {
+font-family:calibri;
+}
+body {
+background-color:dimgrey;
+}
+#title {
+	text-align:center;
+}
+#schedule {
+	margin-right:30%;
+	margin-top:5%;
+}
 .day {
-	float:left;
+	float:right;
+	max-width:15%;
+	top:0%;
 }
 .class {
-	background-color:red;
+	background-color:#A3CDD4;
 }
 .passing {
 	background-color:azure;
+}
+#sidebar {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 15%;
+    height: 100%;
+	opacity:0.8;
+	background-color: white;
 }
 </style>

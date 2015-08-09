@@ -55,11 +55,11 @@ background-color:dimgrey;
 	text-align:center;
 }
 #schedule {
-	margin-right:30%;
+	margin-left:40%;
 	margin-top:5%;
 }
 .day {
-	float:right;
+	float:left;
 	max-width:15%;
 	top:0%;
 }

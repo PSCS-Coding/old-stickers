@@ -76,10 +76,13 @@ Array.prototype.contains = function(obj) {
 ?>
 <body>
 	<!-- Sidebar -->
-	<div id="sidebar">
+	<div id="leftsidebar">
         <h1 id="title">Edit Slot</h1>
         <p id="name">Select a Slot</p>
 		<button onclick="reset()">Reset Schedule</button>
+    </div>
+	<div id="rightsidebar">
+        <h1 id="title">Classes</h1>
     </div>
 	<div id="schedule">
 	<?php
@@ -123,7 +126,7 @@ td {
 	text-align:center;
 }
 #schedule {
-	margin-left:40%;
+	margin-left:35%;
 	margin-top:5%;
 }
 .day {
@@ -137,10 +140,20 @@ td {
 .passing {
 	background-color:azure;
 }
-#sidebar {
+#leftsidebar {
     position: fixed;
     top: 0%;
     left: 0%;
+    width: 15%;
+    height: 100%;
+	opacity:0.8;
+	background-color: white;
+	text-align:center;
+}
+#rightsidebar {
+    position: fixed;
+    top: 0%;
+    right: 0%;
     width: 15%;
     height: 100%;
 	opacity:0.8;

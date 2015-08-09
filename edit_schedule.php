@@ -23,6 +23,11 @@ function reset () {
 	xmlHttp.send( null );
 	console.log(xmlHttp.responseText);
 }
+function updateTimes () {
+	var classSlots = document.getElementsByClassName("class");
+	console.log(classSlots.length);
+	console.log(classSlots[0].style.height.split("px")[0]);
+}
 function capitalize(s)
 {
     return s[0].toUpperCase() + s.slice(1);
@@ -36,7 +41,7 @@ function capitalize(s)
 <body>
 	<!-- Sidebar -->
 	<div id="sidebar">
-        <h1 id="title">Edit Slot</h1>
+        <h1 id="title" onclick="updateTimes()">Edit Slot</h1>
         <p id="name">Select a Slot</p>
 		<button onclick="reset()">Reset Schedule</button>
     </div>

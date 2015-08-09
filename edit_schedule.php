@@ -6,8 +6,10 @@
 </head>
 <script>
 var prev;
+var suffixes = [' initial','st','nd','rd','th','th','th','th','th','th','th','th','th'];
 function selectSlot (classid) {
-	document.getElementById("name").innerHTML = classid;
+	var split = classid.split("-");
+	document.getElementById("name").innerHTML = capitalize(split[0]).concat(" ",split[1],suffixes[split[1]], " slot") ;
 	document.getElementById(classid).style.border = "2px solid red";
 	if (prev != null) {
 		document.getElementById(prev).style.border = "initial";
@@ -20,6 +22,10 @@ function reset () {
 	xmlHttp.open( "GET", "reset_schedule.php", false );
 	xmlHttp.send( null );
 	console.log(xmlHttp.responseText);
+}
+function capitalize(s)
+{
+    return s[0].toUpperCase() + s.slice(1);
 }
 </script>
 <?php

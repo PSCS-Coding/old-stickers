@@ -15,19 +15,19 @@ console.log("classes:");
 setInterval(function () {
 	if (document.getElementById("toggle").checked == true) {
 		//	console.log("classes:");
-			getClasses();
+			var classes = getClasses().split(",");
+			for (var i = 0; i < classes.length; i++) {
+				console.log(classes[i]);
+			}
+			var classElements = document.getElementsByClassName("class");
+			
 	}
 }, 3000);
 function getClasses () {
 		var xmlHttp = new XMLHttpRequest();
 		xmlHttp.open( "GET", "allupdate.php", false );
 		xmlHttp.send( null );
-		var classes = xmlHttp.responseText;
-		
-		/*for (var i = 0; i < classes.length; i++) {
-			console.log(classes.blackstickers);
-		}*/
-		console.log(classes);
+		return xmlHttp.responseText;
 }
 </script>
 <body>
@@ -99,7 +99,7 @@ foreach($classesResult as $sub) {
 
 	$highestVal = max(count($blackstickers), count ($greystickers), count($whitestickers));
 	
-	?>	<table name= <?php echo $sub["classid"] ?> >
+	?>	<table class="class" name= <?php echo $sub["classid"] ?> >
 			<caption> <?php echo $sub["classname"] ?> </caption>
 			<colgroup>
 				<col class='blackstickers'>

@@ -11,12 +11,24 @@ include_once("function.php");
 	<link rel="stylesheet" type="text/css" href="stickers.css">  
 </head>
 <script>
+console.log("classes:");
 setInterval(function () {
 	if (document.getElementById("toggle").checked == true) {
-	//	alert("Hello");
+		//	console.log("classes:");
+			getClasses();
 	}
 }, 3000);
-
+function getClasses () {
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open( "GET", "allupdate.php", false );
+		xmlHttp.send( null );
+		var classes = xmlHttp.responseText;
+		
+		/*for (var i = 0; i < classes.length; i++) {
+			console.log(classes.blackstickers);
+		}*/
+		console.log(classes);
+}
 </script>
 <body>
 <?php

@@ -1,7 +1,7 @@
 <?php
 include_once("connection.php");
 
-$classesQuery = $db_stickers->query("SELECT * FROM offerings ORDER BY classname ASC");
+$classesQuery = $db_stickers->query("SELECT classid,classname,blackstickers,greystickers,whitestickers FROM offerings ORDER BY classname ASC");
 $classesResult = array();
 while($class = $classesQuery->fetch_assoc()) {
 	array_push($classesResult, $class);
@@ -17,5 +17,7 @@ while($class = $classesQuery->fetch_assoc()) {
 	usort($classesResult, 'byHighest');
 	$classesResult = array_reverse($classesResult);//reverse
   
-	echo json_encode($classesResult)
+	foreach($classesResult as $sub) {
+	echo $sub["classid"] . ",";
+	}
 ?>

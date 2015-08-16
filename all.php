@@ -8,7 +8,8 @@ include_once("function.php");
 <head>
 	<title>All Classes</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="stickers.css">  
+	<link rel="stylesheet" type="text/css" href="stickers.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <script>
 console.log("classes:");
@@ -16,11 +17,14 @@ setInterval(function () {
 	if (document.getElementById("toggle").checked == true) {
 		//	console.log("classes:");
 			var classes = getClasses().split(",");
-			for (var i = 0; i < classes.length; i++) {
-				console.log(classes[i]);
-			}
 			var classElements = document.getElementsByClassName("class");
 			
+			for (var i = 0; i < Math.max(classes.length,classElements.length); i++) {
+				console.log(classes[i]);
+				$(document).ready(function(){
+					$("<span>Hello world!</span>").insertBefore("#sortText");
+				});
+			}
 	}
 }, 3000);
 function getClasses () {

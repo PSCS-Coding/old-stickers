@@ -91,8 +91,10 @@ session_start();
 		</table>
 		<?php
 			} else {
-				?> <h3> Please Sign In! </h3> <?php
+				?> <h3> No Stickered Classes! </h3> <?php
 			}
+		} else {
+			?> <h3> Please Sign In! </h3> <?php
 		}
 	 ?>
 	</p>

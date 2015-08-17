@@ -44,7 +44,7 @@ session_start();
 		}
 		?>
 	<br>
-	
+		
 	<h3> Currently Stickered Classes </h3>
 	<p>
 	<?php
@@ -72,8 +72,37 @@ session_start();
 		if ($stickersResult["whitestickers"] - count($whitestickers) != 0) {
 			echo "<br />" . ($stickersResult["whitestickers"] - count($whitestickers)) . " unused White Stickers";
 		}
+		$highest = max(count($blackstickers),count($greystickers),count($whitestickers));		
 		
+		?>
+		<table style="margin-top:0">
+		<colgroup>
+				<col class='blackstickers'>
+				<col class='greystickers'>
+				<col class='whitestickers'>
+			</colgroup>
+			<tr>
+				<th class='black'>Black</th>
+				<th class='grey'>Grey</th>
+				<th class='white'>White</th>
+			</tr>
+		<?php
+		for ($i = 0; $i < $highest; $i++) {
+			
+			?>
+			
+			<tr>
+				<td> <?php if (!empty($blackstickers[$i])) echo "<div>" . classidToName($blackstickers[$i]) . "</div>"; ?> </td>
+				<td> <?php if (!empty($greystickers[$i]))  echo "<div>" . classidToName($greystickers[$i]) . "</div>";  ?> </td>
+				<td> <?php if (!empty($whitestickers[$i])) echo "<div>" . classidToName($whitestickers[$i]) . "</div>"; ?> </td> 
+			</tr>
+			
+			<?php
 		
+		}
+		?>
+		</table>
+		<?php
 		foreach($blackstickers as $sticker){
 			echo "<div class = " . "black" . ">" . classidToName($sticker) . "</div>";
 		}			

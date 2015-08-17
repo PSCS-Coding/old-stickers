@@ -56,7 +56,12 @@ session_start();
 		$stickersQuery = $db_stickers->query("SELECT * FROM allottedstickers LIMIT 1");
 		$stickersResult = $stickersQuery->fetch_array();
 		
-		echo "Unused Stickers:";
+		if ($stickersResult["blackstickers"] - count($blackstickers) != 0 ||
+			$stickersResult["greystickers"] - count($greystickers) != 0 ||
+			$stickersResult["whitestickers"] - count($whitestickers) != 0) {
+			
+			echo "Unused Stickers:";
+		}
 		
 		if ($stickersResult["blackstickers"] - count($blackstickers) != 0) {
 			echo "<br />" . ($stickersResult["blackstickers"] - count($blackstickers)) . " unused Black Stickers";

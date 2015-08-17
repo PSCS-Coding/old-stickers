@@ -65,7 +65,14 @@ background-attachment: fixed;
 }
 
 
-
+#login {
+	margin-left:10%;
+	margin-right:10%;
+}
+#name {
+	margin-left:5%;
+	font-weight:bold;
+}
 
 .classdata {
 width:50%;

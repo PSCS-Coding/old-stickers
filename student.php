@@ -26,6 +26,8 @@ session_start();
 	}
 	?>
 	<div class='classdata'>
+	<div id='login'>
+	<br />
 	<a class="back" href="index.php">Back</a>
 	<form method='post' action='<?php echo basename($_SERVER['PHP_SELF']); ?>' id='main'>
 	<select name='studentselect'>
@@ -38,11 +40,12 @@ session_start();
 	<input type="submit" value="Sign In" name="submit"> 
 	<?php 
 		if (!empty($_SESSION['id'])){
-			echo "Currently signed in as " . idToName($_SESSION['id']); 
+			echo "<span id='name'>" . idToName($_SESSION['id']) . "</span>"; 
 		} else {
-			echo "Please sign in";
+			echo "<span id='name'>Please sign in</span>";
 		}
 		?>
+	</div>
 	<br>
 	<p>
 	<?php

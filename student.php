@@ -53,6 +53,22 @@ session_start();
 		$greystickers = getclasses($_SESSION['id'], "greystickers");
 		$whitestickers = getclasses($_SESSION['id'], "whitestickers");
 		
+		$stickersQuery = $db_stickers->query("SELECT * FROM allottedstickers LIMIT 1");
+		$stickersResult = $stickersQuery->fetch_array();
+		
+		echo "Unused Stickers:";
+		
+		if ($stickersResult["blackstickers"] - count($blackstickers) != 0) {
+			echo "<br />" . ($stickersResult["blackstickers"] - count($blackstickers)) . " unused Black Stickers";
+		}
+		if ($stickersResult["greystickers"] - count($greystickers) != 0) {
+			echo "<br />" . ($stickersResult["greystickers"] - count($greystickers)) . " unused Grey Stickers";
+		}
+		if ($stickersResult["whitestickers"] - count($whitestickers) != 0) {
+			echo "<br />" . ($stickersResult["whitestickers"] - count($whitestickers)) . " unused White Stickers";
+		}
+		
+		
 		foreach($blackstickers as $sticker){
 			echo "<div class = " . "black" . ">" . classidToName($sticker) . "</div>";
 		}			

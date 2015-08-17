@@ -44,15 +44,16 @@ session_start();
 		}
 		?>
 	<br>
-		
-	<h3> Currently Stickered Classes </h3>
 	<p>
 	<?php
-		if(!empty($_SESSION['id'])){
+	if(!empty($_SESSION['id'])){
 		$blackstickers = getclasses($_SESSION['id'], "blackstickers");
 		$greystickers = getclasses($_SESSION['id'], "greystickers");
 		$whitestickers = getclasses($_SESSION['id'], "whitestickers");
 		
+		if (!(empty($blackstickers) && empty($greystickers) && empty($whitestickers))) {
+		?> <h3> Currently Stickered Classes </h3> <?php
+			
 		$stickersQuery = $db_stickers->query("SELECT * FROM allottedstickers LIMIT 1");
 		$stickersResult = $stickersQuery->fetch_array();
 		
@@ -89,6 +90,9 @@ session_start();
 			</tfoot>
 		</table>
 		<?php
+			} else {
+				?> <h3> Please Sign In! </h3> <?php
+			}
 		}
 	 ?>
 	</p>

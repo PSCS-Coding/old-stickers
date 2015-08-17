@@ -3,7 +3,6 @@ include_once("function.php");
 
 function get_teacher($url){
 	$text = file_get_contents($url);
-
 	$regex = "/<span>(.*?)<\/span>/";
 	
 	if (preg_match_all($regex, $text ,$matches)) {

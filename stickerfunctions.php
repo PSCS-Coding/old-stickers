@@ -1,6 +1,20 @@
 <?php
 include_once("function.php");
 
+function get_teacher($url){
+	$text = file_get_contents($url);
+
+	$regex = "/<span>(.*?)<\/span>/";
+	
+	if (preg_match_all($regex, $text ,$matches)) {
+			$string = $matches[1][0];
+			$string = str_replace("(", null, $string);
+			$string = str_replace(")", null, $string);
+			return $string;
+	}
+}
+
+
 function classidToName($id)
 {
     global $db_attendance;

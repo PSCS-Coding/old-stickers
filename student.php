@@ -56,22 +56,6 @@ session_start();
 		$stickersQuery = $db_stickers->query("SELECT * FROM allottedstickers LIMIT 1");
 		$stickersResult = $stickersQuery->fetch_array();
 		
-		if ($stickersResult["blackstickers"] - count($blackstickers) != 0 ||
-			$stickersResult["greystickers"] - count($greystickers) != 0 ||
-			$stickersResult["whitestickers"] - count($whitestickers) != 0) {
-			
-			echo "Unused Stickers:";
-		}
-		
-		if ($stickersResult["blackstickers"] - count($blackstickers) != 0) {
-			echo "<br />" . ($stickersResult["blackstickers"] - count($blackstickers)) . " unused Black Stickers";
-		}
-		if ($stickersResult["greystickers"] - count($greystickers) != 0) {
-			echo "<br />" . ($stickersResult["greystickers"] - count($greystickers)) . " unused Grey Stickers";
-		}
-		if ($stickersResult["whitestickers"] - count($whitestickers) != 0) {
-			echo "<br />" . ($stickersResult["whitestickers"] - count($whitestickers)) . " unused White Stickers";
-		}
 		$highest = max(count($blackstickers),count($greystickers),count($whitestickers));		
 		
 		?>
@@ -98,24 +82,13 @@ session_start();
 		?>
 			<tfoot>
 				<tr>
-					<td class='black'><?php echo $stickersResult["blackstickers"] - count($blackstickers) ?> unused</td>
-					<td class='grey'><?php echo $stickersResult["greystickers"] - count($greystickers) ?> unused</td>
-					<td class='white'><?php echo $stickersResult["whitestickers"] - count($whitestickers) ?> unused</td>
+					<td class='black'><?php echo $stickersResult["blackstickers"] - count($blackstickers) ?> unused black</td>
+					<td class='grey'><?php echo $stickersResult["greystickers"] - count($greystickers) ?> unused grey</td>
+					<td class='white'><?php echo $stickersResult["whitestickers"] - count($whitestickers) ?> unused white</td>
 				</tr>
 			</tfoot>
 		</table>
 		<?php
-		foreach($blackstickers as $sticker){
-			echo "<div class = " . "black" . ">" . classidToName($sticker) . "</div>";
-		}			
-
-		foreach($greystickers as $sticker){
-			echo "<div class = " . "grey" . ">" . classidToName($sticker) . "</div>";
-		}
-		
-		foreach($whitestickers as $sticker){
-			echo "<div class = " . "white" . ">" . classidToName($sticker) . "</div>";
-		}
 		}
 	 ?>
 	</p>

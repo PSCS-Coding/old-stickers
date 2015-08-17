@@ -76,11 +76,6 @@ session_start();
 		
 		?>
 		<table style="margin-top:0">
-		<colgroup>
-				<col class='blackstickers'>
-				<col class='greystickers'>
-				<col class='whitestickers'>
-			</colgroup>
 			<tr>
 				<th class='black'>Black</th>
 				<th class='grey'>Grey</th>
@@ -101,6 +96,13 @@ session_start();
 		
 		}
 		?>
+			<tfoot>
+				<tr>
+					<td class='black'><?php echo $stickersResult["blackstickers"] - count($blackstickers) ?> unused</td>
+					<td class='grey'><?php echo $stickersResult["greystickers"] - count($greystickers) ?> unused</td>
+					<td class='white'><?php echo $stickersResult["whitestickers"] - count($whitestickers) ?> unused</td>
+				</tr>
+			</tfoot>
 		</table>
 		<?php
 		foreach($blackstickers as $sticker){

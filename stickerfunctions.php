@@ -13,6 +13,16 @@ function get_teacher($url){
 	}
 }
 
+function is_block($url){
+	$text = file_get_contents($url);
+	$regex = "/<span class=block>(.*?)<\/span>/";
+	
+	if (strpos($text, '<span class="block">This is a block class.</span>')) {
+		return "1";
+	} else {
+		return "0";
+	}
+}
 
 function classidToName($id)
 {

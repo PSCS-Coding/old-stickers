@@ -36,8 +36,9 @@ foreach($feed as &$k){
 $zero = "0";
 foreach ($feed as $class) {
     $facilitator = get_teacher($class['link']);
-	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,facilitator,category,description,link,image,blackstickers,greystickers,whitestickers) VALUES (?,?,?,?,?,?,?,?,?)");
-    $stmt->bind_param('sssssssss', $class['title'], $facilitator, $class['category'], $class['desc'],$class['link'], $class['content'], $zero, $zero, $zero);
+    $block = is_block($class['link']);
+	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,facilitator,category,description,link,image,block,blackstickers,greystickers,whitestickers) VALUES (?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param('ssssssssss', $class['title'], $facilitator, $class['category'], $class['desc'],$class['link'], $class['content'], $block, $zero, $zero, $zero);
     $stmt->execute();
     $stmt->close();
 

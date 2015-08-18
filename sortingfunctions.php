@@ -17,4 +17,56 @@
 	function byBlock($a, $b) {
 		return strnatcmp($a["block"],$b["block"]);
 	}
+	
+	function byBlackStickers($a, $b) {
+		$aStickers = explode(',', $a["blackstickers"]);
+		if (in_array($_SESSION['id'], $aStickers)) {
+			$astr = "a";
+		} else {
+			$astr = "b";
+		}
+		
+		$bStickers = explode(',', $b["blackstickers"]);
+		if (in_array($_SESSION['id'], $bStickers)) {
+			$bstr = "a";
+		} else {
+			$bstr = "b";
+		}
+		
+		return strnatcmp($astr,$bstr);
+	}
+	function byGreyStickers($a, $b) {
+		$aStickers = explode(',', $a["greystickers"]);
+		if (in_array($_SESSION['id'], $aStickers)) {
+			$astr = "a";
+		} else {
+			$astr = "b";
+		}
+		
+		$bStickers = explode(',', $b["greystickers"]);
+		if (in_array($_SESSION['id'], $bStickers)) {
+			$bstr = "a";
+		} else {
+			$bstr = "b";
+		}
+		
+		return strnatcmp($astr,$bstr);
+	}
+	function byWhiteStickers($a, $b) {
+		$aStickers = explode(',', $a["whitestickers"]);
+		if (in_array($_SESSION['id'], $aStickers)) {
+			$astr = "a";
+		} else {
+			$astr = "b";
+		}
+		
+		$bStickers = explode(',', $b["whitestickers"]);
+		if (in_array($_SESSION['id'], $bStickers)) {
+			$bstr = "a";
+		} else {
+			$bstr = "b";
+		}
+		
+		return strnatcmp($astr,$bstr);
+	}
 ?>

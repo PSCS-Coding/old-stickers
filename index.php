@@ -205,6 +205,16 @@
 			case "block":
 				usort($classesresult, 'byBlock');
 				break;
+			
+			case "black":
+				usort($classesresult, 'byBlackStickers');
+				break;
+			case "grey":
+				usort($classesresult, 'byGreyStickers');
+				break;
+			case "white":
+				usort($classesresult, 'byWhiteStickers');
+				break;
 		}
 		
 		

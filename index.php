@@ -193,7 +193,7 @@
 		//sorting
 		
 		if ($_COOKIE['sort'] == "title") {
-			
+			usort($classesresult, 'byAlpha');
 		}
 		
 		

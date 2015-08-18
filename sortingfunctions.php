@@ -6,6 +6,6 @@
   }
   
   function byAlpha($a, $b) {
-    return strnatcmp($a, $b);
+    return strnatcmp($a["classname"],$b["classname"]);
   }
 ?>

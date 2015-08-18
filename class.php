@@ -36,6 +36,7 @@ while ($data_result = $classquery->fetch_assoc()) {
 <body>
 
 <div class="classdata">
+<br>
 <a class="back" href="index.php">Back</a>
 <h3><?php echo $classresult[0]['classname'] . ", taught by " . $classresult[0]['facilitator']; ?></h3>
 <p>
@@ -44,12 +45,12 @@ while ($data_result = $classquery->fetch_assoc()) {
 <?php echo $classresult[0]['description'];
 if (preg_match('/<p/',$classresult[0]["image"])){
 } else {
-	?><img src='<?php echo $classresult[0]["image"]; ?>'>
+	?>
 <?php	
 }
 ?>
 </p>
-<h3> Stickers on this class </h3>
+<img id="classimage" src='<?php echo $classresult[0]["image"]; ?>'>
 <p>
 <?php 
 //render students that have stickered this class
@@ -60,6 +61,14 @@ $whitestickers = getstudents($classid,"whitestickers");
 $blackstickers = explode(",", $blackstickers[0]);
 $greystickers = explode(",", $greystickers[0]);
 $whitestickers = explode(",", $whitestickers[0]);
+
+if ($blackstickers[0] == 0 && $greystickers[0] == 0 && $whitestickers[0] == 0) {
+	?>
+		<h3> No Stickers on this class </h3>
+	<?php
+} else {
+	?> <h3> Stickers on this class: </h3> <?php
+}
 
 foreach($blackstickers as $sticker){
 	echo "<div class = " . "black" . ">" . idToName($sticker) . "</div>";
@@ -79,3 +88,12 @@ foreach($whitestickers as $sticker){
 
 </body>
 </html>
+<style>
+
+#classimage {
+	display:block;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+</style>

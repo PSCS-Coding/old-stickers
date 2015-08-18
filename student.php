@@ -23,6 +23,7 @@ session_start();
 	
 	if(!empty($_POST['studentselect'])){
 		$_SESSION['id'] = $_POST['studentselect'];
+		header("Location: index.php"); //redirect
 	}
 	?>
 	<div class='classdata'>

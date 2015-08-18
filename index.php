@@ -63,6 +63,11 @@
 				}
 				//console.log(remainingStickers.item(1).id);
 			}
+			function sortBy (item) {
+				document.cookie = "sort=".concat(item);
+				
+				location.reload();
+			}
 		</script>
     </head>
     <body>
@@ -171,15 +176,16 @@
 		}
 	?>
 	<!-- RENDER TABLE -->
+	<?php echo $_COOKIE["sort"]?>
 	<table align="center">
 		<tr>
-			<th><a href="index.php">Title</a></th>
-			<th><a href="index.php">Facilitator</a></th>
-			<th><a href="index.php">Catagories</a></th>
-			<th><a href="index.php">Block</a></th>
-			<th class="stickerheader"><a href="index.php">Black Stickers</a></th>
-			<th class="stickerheader"><a href="index.php">Grey Stickers</a></th>
-			<th class="stickerheader"><a href="index.php">White Stickers</a></th>
+			<th onclick="sortBy('title')">Title</th>
+			<th onclick="sortBy('facilitator')">Facilitator</th>
+			<th onclick="sortBy('category')">Catagory</th>
+			<th onclick="sortBy('block')">Block</th>
+			<th onclick="sortBy('black')" class="stickerheader">Black Stickers</th>
+			<th onclick="sortBy('grey')" class="stickerheader">Grey Stickers</th>
+			<th onclick="sortBy('white')" class="stickerheader">White Stickers</th>
 		</tr>
 		<?php
 			foreach($classesresult as $class) {

@@ -177,7 +177,7 @@
 		}
 	?>
 	<!-- RENDER TABLE -->
-	<?php echo $_COOKIE["sort"]?>
+	<?php if (!empty($_COOKIE["sort"])) { echo $_COOKIE["sort"]; }?>
 	<table align="center">
 		<tr>
 			<th onclick="sortBy('title')">Title</th>
@@ -191,7 +191,7 @@
 		<?php
 		
 		//sorting
-		
+		if (!empty($_COOKIE['sort'])) {
 		switch($_COOKIE['sort']) {
 			case "title":
 				usort($classesresult, 'byAlpha');
@@ -215,6 +215,7 @@
 			case "white":
 				usort($classesresult, 'byWhiteStickers');
 				break;
+		}
 		}
 		
 		

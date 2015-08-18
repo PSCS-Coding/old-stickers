@@ -82,7 +82,8 @@
             include_once("connection.php");
             include_once("function.php");
 			include_once("stickerfunctions.php");
-            
+            include_once("sortingfunctions.php");
+			
 			//get id from session
             if(!empty($_SESSION['id'])) {
                 echo "<a class='name'>". idToName($_SESSION['id']) . "</a>";
@@ -188,6 +189,17 @@
 			<th onclick="sortBy('white')" class="stickerheader">White Stickers</th>
 		</tr>
 		<?php
+		
+		//sorting
+		
+		if ($_COOKIE['sort'] == "title") {
+			
+		}
+		
+		
+		
+		
+		
 			foreach($classesresult as $class) {
 		?>
 		<tr>

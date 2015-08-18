@@ -192,12 +192,14 @@
 		
 		//sorting
 		
-		if ($_COOKIE['sort'] == "title") {
-			usort($classesresult, 'byAlpha');
+		switch($_COOKIE['sort']) {
+			case "title":
+				usort($classesresult, 'byAlpha');
+				break;
+			case "facilitator":
+				usort($classesresult, 'byFacil');
+				break;
 		}
-		
-		
-		
 		
 		
 			foreach($classesresult as $class) {

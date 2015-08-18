@@ -204,6 +204,7 @@
 				break;
 			case "block":
 				usort($classesresult, 'byBlock');
+				$classesresult = array_reverse($classesresult);
 				break;
 			
 			case "black":

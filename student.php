@@ -76,9 +76,9 @@ session_start();
 			?>
 			
 			<tr>
-				<td> <?php if (!empty($blackstickers[$i])) echo "<div>" . classidToName($blackstickers[$i]) . "</div>"; ?> </td>
-				<td> <?php if (!empty($greystickers[$i]))  echo "<div>" . classidToName($greystickers[$i]) . "</div>";  ?> </td>
-				<td> <?php if (!empty($whitestickers[$i])) echo "<div>" . classidToName($whitestickers[$i]) . "</div>"; ?> </td> 
+				<td> <?php if (!empty($blackstickers[$i])) echo "<div><a href='class.php?classid=" . $blackstickers[$i] . "'>" . classidToName($blackstickers[$i]) . "</a></div>"; ?> </td>
+				<td> <?php if (!empty($greystickers[$i]))  echo "<div><a href='class.php?classid=" . $greystickers[$i] . "'>" . classidToName($greystickers[$i]) . "</a></div>";  ?> </td>
+				<td> <?php if (!empty($whitestickers[$i])) echo "<div><a href='class.php?classid=" . $whitestickers[$i] . "'>" . classidToName($whitestickers[$i]) . "</a></div>"; ?> </td> 
 			</tr>
 			
 			<?php

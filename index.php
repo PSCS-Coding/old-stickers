@@ -182,7 +182,7 @@
 		<tr>
 			<th onclick="sortBy('title')">Title</th>
 			<th onclick="sortBy('facilitator')">Facilitator</th>
-			<th onclick="sortBy('category')">Catagory</th>
+			<th onclick="sortBy('category')">Category</th>
 			<th onclick="sortBy('block')">Block</th>
 			<th onclick="sortBy('black')" class="stickerheader">Black Stickers</th>
 			<th onclick="sortBy('grey')" class="stickerheader">Grey Stickers</th>
@@ -198,6 +198,12 @@
 				break;
 			case "facilitator":
 				usort($classesresult, 'byFacil');
+				break;
+			case "category":
+				usort($classesresult, 'byCategory');
+				break;
+			case "block":
+				usort($classesresult, 'byBlock');
 				break;
 		}
 		

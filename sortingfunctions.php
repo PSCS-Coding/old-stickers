@@ -11,4 +11,10 @@
 	function byFacil($a, $b) {
 		return strnatcmp($a["facilitator"],$b["facilitator"]);
 	}
+	function byCategory($a, $b) {
+		return strnatcmp($a["category"],$b["category"]);
+	}
+	function byBlock($a, $b) {
+		return strnatcmp($a["block"],$b["block"]);
+	}
 ?>

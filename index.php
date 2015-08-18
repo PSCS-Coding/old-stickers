@@ -12,8 +12,6 @@
 					}
 				</style>
 		<script>
-			
-					
 			function updateStickers (studentid, classid, color) {
 				if (color == 1) {
 					stickercolor = "black";
@@ -175,13 +173,13 @@
 	<!-- RENDER TABLE -->
 	<table align="center">
 		<tr>
-			<th>Title</th>
-			<th>Facilitator</th>
-			<th>Catagories</th>
-			<th>Block</th>
-			<th class="stickerheader">Black Stickers</th>
-			<th class="stickerheader">Grey Stickers</th>
-			<th class="stickerheader">White Stickers</th>
+			<th><a href="index.php">Title</a></th>
+			<th><a href="index.php">Facilitator</a></th>
+			<th><a href="index.php">Catagories</a></th>
+			<th><a href="index.php">Block</a></th>
+			<th class="stickerheader"><a href="index.php">Black Stickers</a></th>
+			<th class="stickerheader"><a href="index.php">Grey Stickers</a></th>
+			<th class="stickerheader"><a href="index.php">White Stickers</a></th>
 		</tr>
 		<?php
 			foreach($classesresult as $class) {

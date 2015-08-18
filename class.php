@@ -50,7 +50,6 @@ if (preg_match('/<p/',$classresult[0]["image"])){
 ?>
 </p>
 <img id="classimage" src='<?php echo $classresult[0]["image"]; ?>'>
-<h3> Stickers on this class </h3>
 <p>
 <?php 
 //render students that have stickered this class
@@ -61,6 +60,14 @@ $whitestickers = getstudents($classid,"whitestickers");
 $blackstickers = explode(",", $blackstickers[0]);
 $greystickers = explode(",", $greystickers[0]);
 $whitestickers = explode(",", $whitestickers[0]);
+
+if ($blackstickers[0] == 0 && $greystickers[0] == 0 && $whitestickers[0] == 0) {
+	?>
+		<h3> No Stickers on this class </h3>
+	<?php
+} else {
+	?> <h3> Stickers on this class: </h3> <?php
+}
 
 foreach($blackstickers as $sticker){
 	echo "<div class = " . "black" . ">" . idToName($sticker) . "</div>";

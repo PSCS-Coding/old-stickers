@@ -36,6 +36,7 @@ while ($data_result = $classquery->fetch_assoc()) {
 <body>
 
 <div class="classdata">
+<br>
 <a class="back" href="index.php">Back</a>
 <h3><?php echo $classresult[0]['classname'] . ", taught by " . $classresult[0]['facilitator']; ?></h3>
 <p>

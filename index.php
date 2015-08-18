@@ -177,7 +177,7 @@
 		}
 	?>
 	<!-- RENDER TABLE -->
-	<?php if (!empty($_COOKIE["sort"])) { echo $_COOKIE["sort"]; }?>
+	<?php if (!empty($_COOKIE["sort"])) { echo "<br /><span style='color:white;font-weight:bold;'>Sorting by " . ucfirst($_COOKIE["sort"]) . "</span>"; }?>
 	<table align="center">
 		<tr>
 			<th onclick="sortBy('title')">Title</th>

@@ -12,8 +12,6 @@
 					}
 				</style>
 		<script>
-			
-					
 			function updateStickers (studentid, classid, color) {
 				if (color == 1) {
 					stickercolor = "black";
@@ -65,6 +63,11 @@
 				}
 				//console.log(remainingStickers.item(1).id);
 			}
+			function sortBy (item) {
+				document.cookie = "sort=".concat(item);
+				
+				location.reload();
+			}
 		</script>
     </head>
     <body>
@@ -79,13 +82,12 @@
             include_once("connection.php");
             include_once("function.php");
 			include_once("stickerfunctions.php");
-            
+            include_once("sortingfunctions.php");
+			
 			//get id from session
             if(!empty($_SESSION['id'])) {
                 echo "<a class='name'>". idToName($_SESSION['id']) . "</a>";
-            } else {
-				echo "<a class='name'>Please Sign In</a>";
-	    	}
+           
 		
 		//if reset is true
 		if(!empty($_GET['reset'])) {
@@ -173,17 +175,49 @@
 		}
 	?>
 	<!-- RENDER TABLE -->
+	<?php if (!empty($_COOKIE["sort"])) { echo "<br /><span style='color:white;font-weight:bold;'>Sorting by " . ucfirst($_COOKIE["sort"]) . "</span>"; }?>
 	<table align="center">
 		<tr>
-			<th>Title</th>
-			<th>Facilitator</th>
-			<th>Catagories</th>
-			<th>Block</th>
-			<th class="stickerheader">Black Stickers</th>
-			<th class="stickerheader">Grey Stickers</th>
-			<th class="stickerheader">White Stickers</th>
+			<th onclick="sortBy('title')">Title</th>
+			<th onclick="sortBy('facilitator')">Facilitator</th>
+			<th onclick="sortBy('category')">Category</th>
+			<th onclick="sortBy('block')">Block</th>
+			<th onclick="sortBy('black')" class="stickerheader">Black Stickers</th>
+			<th onclick="sortBy('grey')" class="stickerheader">Grey Stickers</th>
+			<th onclick="sortBy('white')" class="stickerheader">White Stickers</th>
 		</tr>
 		<?php
+		
+		//sorting
+		if (!empty($_COOKIE['sort'])) {
+		switch($_COOKIE['sort']) {
+			case "title":
+				usort($classesresult, 'byAlpha');
+				break;
+			case "facilitator":
+				usort($classesresult, 'byFacil');
+				break;
+			case "category":
+				usort($classesresult, 'byCategory');
+				break;
+			case "block":
+				usort($classesresult, 'byBlock');
+				$classesresult = array_reverse($classesresult);
+				break;
+			
+			case "black":
+				usort($classesresult, 'byBlackStickers');
+				break;
+			case "grey":
+				usort($classesresult, 'byGreyStickers');
+				break;
+			case "white":
+				usort($classesresult, 'byWhiteStickers');
+				break;
+		}
+		}
+		
+		
 			foreach($classesresult as $class) {
 		?>
 		<tr>
@@ -232,6 +266,9 @@
 		</tr>
 		<?php
 			}
+			} else {
+				echo "<a class='name'>Please Sign In</a>";
+	    	}
 		?>
 	</form>
 	</table>

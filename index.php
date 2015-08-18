@@ -87,9 +87,7 @@
 			//get id from session
             if(!empty($_SESSION['id'])) {
                 echo "<a class='name'>". idToName($_SESSION['id']) . "</a>";
-            } else {
-				echo "<a class='name'>Please Sign In</a>";
-	    	}
+           
 		
 		//if reset is true
 		if(!empty($_GET['reset'])) {
@@ -268,6 +266,9 @@
 		</tr>
 		<?php
 			}
+			} else {
+				echo "<a class='name'>Please Sign In</a>";
+	    	}
 		?>
 	</form>
 	</table>

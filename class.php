@@ -44,11 +44,12 @@ while ($data_result = $classquery->fetch_assoc()) {
 <?php echo $classresult[0]['description'];
 if (preg_match('/<p/',$classresult[0]["image"])){
 } else {
-	?><img src='<?php echo $classresult[0]["image"]; ?>'>
+	?>
 <?php	
 }
 ?>
 </p>
+<img id="classimage" src='<?php echo $classresult[0]["image"]; ?>'>
 <h3> Stickers on this class </h3>
 <p>
 <?php 
@@ -79,3 +80,12 @@ foreach($whitestickers as $sticker){
 
 </body>
 </html>
+<style>
+
+#classimage {
+	display:block;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+</style>

@@ -16,7 +16,7 @@ width:8%;
 
 table {
 margin-left:10%;
-margin-top:-27%;
+margin-top:-17.5%;
 width:80%;
 font-size:20px;
 opacity: 0.9;
@@ -101,6 +101,8 @@ margin-right:20%;
 float:left;
 margin-top:-35px;
 margin-left:20%;
+font-weight:bold;
+font-size:14pt;
 }
 
 h2,h3 {

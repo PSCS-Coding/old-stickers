@@ -11,6 +11,14 @@
 						src: url(CODE2000.TTF);
 					}
 				</style>
+		<?php
+		
+		include_once("connection.php");
+        include_once("function.php");
+		include_once("stickerfunctions.php");
+        include_once("sortingfunctions.php");
+		
+		?>
 		<script>
 			function updateStickers (studentid, classid, color) {
 				if (color == 1) {
@@ -75,18 +83,14 @@
         <header>
             <h2>PSCS Class Offerings</h2>
             <a class="start" href="student.php">change user / login</a>
-			<br />
+			<?php if(!empty($_SESSION['id'])) echo "<a class='name'>". idToName($_SESSION['id']) . "</a>"; ?>
+			<br />	
         </header>
         <?php
-		
-            include_once("connection.php");
-            include_once("function.php");
-			include_once("stickerfunctions.php");
-            include_once("sortingfunctions.php");
+			
 			
 			//get id from session
             if(!empty($_SESSION['id'])) {
-                echo "<a class='name'>". idToName($_SESSION['id']) . "</a>";
            
 		
 		//if reset is true

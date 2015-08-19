@@ -238,7 +238,7 @@
 					}
 				?> 
 			</td>
-			<td>
+			<td class="block">
 				<?php
 					if($class['block'] == 0) {
 						echo "";

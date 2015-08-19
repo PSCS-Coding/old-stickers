@@ -105,6 +105,10 @@ font-weight:bold;
 font-size:14pt;
 }
 
+.block {
+text-align:center;
+}
+
 h2,h3 {
 text-align:center;
 margin-bottom: 15px;

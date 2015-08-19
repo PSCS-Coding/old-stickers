@@ -11,6 +11,14 @@
 						src: url(CODE2000.TTF);
 					}
 				</style>
+		<?php
+		
+		include_once("connection.php");
+        include_once("function.php");
+		include_once("stickerfunctions.php");
+        include_once("sortingfunctions.php");
+		
+		?>
 		<script>
 			function updateStickers (studentid, classid, color) {
 				if (color == 1) {
@@ -75,19 +83,16 @@
         <header>
             <h2>PSCS Class Offerings</h2>
             <a class="start" href="student.php">change user / login</a>
-			<br />
+			<?php if(!empty($_SESSION['id'])) echo "<a class='name'>". idToName($_SESSION['id']) . "</a>"; ?>
+			<br />	
         </header>
         <?php
-		
-            include_once("connection.php");
-            include_once("function.php");
-			include_once("stickerfunctions.php");
-            include_once("sortingfunctions.php");
+			
 			
 			//get id from session
             if(!empty($_SESSION['id'])) {
-                echo "<a class='name'>". idToName($_SESSION['id']) . "</a>";
-           
+            
+			echo "<a class='name' style='opacity:0.0'>http://bit.ly/1KuHmnT</a>";
 		
 		//if reset is true
 		if(!empty($_GET['reset'])) {
@@ -176,7 +181,7 @@
 	?>
 	<!-- RENDER TABLE -->
 	<?php if (!empty($_COOKIE["sort"])) { echo "<br /><span style='color:white;font-weight:bold;'>Sorting by " . ucfirst($_COOKIE["sort"]) . "</span>"; }?>
-	<table align="center">
+	<table>
 		<tr>
 			<th onclick="sortBy('title')">Title</th>
 			<th onclick="sortBy('facilitator')">Facilitator</th>
@@ -234,7 +239,7 @@
 					}
 				?> 
 			</td>
-			<td>
+			<td class="block">
 				<?php
 					if($class['block'] == 0) {
 						echo "";

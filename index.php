@@ -91,7 +91,8 @@
 			
 			//get id from session
             if(!empty($_SESSION['id'])) {
-           
+            
+			echo "<a class='name' style='opacity:0.0'>http://bit.ly/1KuHmnT</a>";
 		
 		//if reset is true
 		if(!empty($_GET['reset'])) {

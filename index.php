@@ -120,6 +120,7 @@
 		$usedstickers = $usedstickers[0];
 		
 		if ($usedstickers[1] != 0 || $usedstickers[2] != 0 || $usedstickers[3] != 0) {
+        echo "<div id='remaining-container'>";
 		echo "<div id = 'remaining'>Remaining:</div>";
 		} else {
 		echo "<div id = 'remaining'>No Remaining Stickers</div>";
@@ -144,6 +145,7 @@
 				echo "<div class = " . $stickervalue . ">" . $stickervalue . "sticker" . "</div>";
 			}
 			echo ("</span>");
+            
 		}
 		
 		// QUERY OFFERINGS
@@ -178,6 +180,7 @@
 		while($data_result = $result->fetch_assoc()) {
 			array_push($classesresult, $data_result);
 		}
+        echo "</div>";
 	?>
 	<!-- RENDER TABLE -->
 	<?php if (!empty($_COOKIE["sort"])) { echo "<br /><span style='color:white;font-weight:bold;'>Sorting by " . ucfirst($_COOKIE["sort"]) . "</span>"; }?>

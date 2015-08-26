@@ -180,10 +180,11 @@
 		while($data_result = $result->fetch_assoc()) {
 			array_push($classesresult, $data_result);
 		}
-        echo "</div>";
+        
 	?>
 	<!-- RENDER TABLE -->
-	<?php if (!empty($_COOKIE["sort"])) { echo "<br /><span style='color:white;font-weight:bold;'>Sorting by " . ucfirst($_COOKIE["sort"]) . "</span>"; }?>
+	<?php if (!empty($_COOKIE["sort"])) { echo "<br /><span class='sortbytext' style='color:white;font-weight:bold;'>Sorting by " . ucfirst($_COOKIE["sort"]) . "</span>"; }?>
+        </div>
 	<table>
 		<tr>
 			<th onclick="sortBy('title')">Title</th>

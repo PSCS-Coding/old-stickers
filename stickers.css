@@ -130,6 +130,12 @@ margin-bottom: 15px;
     padding-left: 5px;
 }
 
+.sortbytext {
+    padding-top: 100px;
+    font-size: 0.8em;
+    padding-left: 5px;
+}
+
 .remaining {
 	margin:5px;
 	width:8%;
@@ -145,7 +151,7 @@ margin-bottom: 15px;
 .black {
 	color: black;
     padding: 3px 0;
-    width: 100%;
+    width: 100px;
 	margin:5px;
 	text-align: center;
     border-radius: 4px;

@@ -23,8 +23,17 @@ function selectSlot (classid) {
 	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.open("GET","getclasses.php?slot=" + document.getElementById(classid).id,false);
 	xmlHttp.send(null);
-	document.getElementById("classes").innerHTML = xmlHttp.responseText;
 	
+	if (xmlHttp.responseText != "") {
+		var classes = xmlHttp.responseText.split(",");
+		
+		document.getElementById("classes").innerHTML = "";
+		for (var i = 0; i < classes.length; i++) {
+			document.getElementById("classes").innerHTML += idToName(classes[i]).concat("<br />");
+		}
+	} else {
+		document.getElementById("classes").innerHTML = "";
+	}
 }
 function reset () {
 	console.log("connecting...");

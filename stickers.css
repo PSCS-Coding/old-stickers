@@ -15,8 +15,8 @@ width:8%;
 }
 
 table {
-margin:auto;
-margin-top:-27%;
+margin-left:10%;
+margin-top:-16%;
 width:80%;
 font-size:20px;
 opacity: 0.9;
@@ -29,7 +29,7 @@ font-size: 0.8em;
 }
 
 tr a, tr a:visited {
-color: #424242;
+color: black;
 }
 
 tr a:hover {
@@ -65,7 +65,14 @@ background-attachment: fixed;
 }
 
 
-
+#login {
+	margin-left:10%;
+	margin-right:10%;
+}
+#name {
+	margin-left:5%;
+	font-weight:bold;
+}
 
 .classdata {
 width:50%;
@@ -81,6 +88,7 @@ padding-bottom:20px;
 .back {
 float:right;
 margin:5px;
+margin-right:3%;
 }
 
 .start {
@@ -93,6 +101,12 @@ margin-right:20%;
 float:left;
 margin-top:-35px;
 margin-left:20%;
+font-weight:bold;
+font-size:14pt;
+}
+
+.block {
+text-align:center;
 }
 
 h2,h3 {

@@ -23,9 +23,12 @@ session_start();
 	
 	if(!empty($_POST['studentselect'])){
 		$_SESSION['id'] = $_POST['studentselect'];
+		header("Location: index.php"); //redirect
 	}
 	?>
 	<div class='classdata'>
+	<div id='login'>
+	<br />
 	<a class="back" href="index.php">Back</a>
 	<form method='post' action='<?php echo basename($_SERVER['PHP_SELF']); ?>' id='main'>
 	<select name='studentselect'>
@@ -38,32 +41,64 @@ session_start();
 	<input type="submit" value="Sign In" name="submit"> 
 	<?php 
 		if (!empty($_SESSION['id'])){
-			echo "Currently signed in as " . idToName($_SESSION['id']); 
+			echo "<span id='name'>" . idToName($_SESSION['id']) . "</span>"; 
 		} else {
-			echo "Please sign in";
+			echo "<span id='name'>Please sign in</span>";
 		}
 		?>
+	</div>
 	<br>
-	
-	<h3> Currently Stickered Classes </h3>
 	<p>
 	<?php
-		if(!empty($_SESSION['id'])){
+	if(!empty($_SESSION['id'])){
 		$blackstickers = getclasses($_SESSION['id'], "blackstickers");
 		$greystickers = getclasses($_SESSION['id'], "greystickers");
 		$whitestickers = getclasses($_SESSION['id'], "whitestickers");
 		
-		foreach($blackstickers as $sticker){
-			echo "<div class = " . "black" . ">" . classidToName($sticker) . "</div>";
-		}			
-
-		foreach($greystickers as $sticker){
-			echo "<div class = " . "grey" . ">" . classidToName($sticker) . "</div>";
-		}
+		if (!(empty($blackstickers) && empty($greystickers) && empty($whitestickers))) {
+		?> <h3> Currently Stickered Classes </h3> <?php
+			
+		$stickersQuery = $db_stickers->query("SELECT * FROM allottedstickers LIMIT 1");
+		$stickersResult = $stickersQuery->fetch_array();
 		
-		foreach($whitestickers as $sticker){
-			echo "<div class = " . "white" . ">" . classidToName($sticker) . "</div>";
+		$highest = max(count($blackstickers),count($greystickers),count($whitestickers));		
+		
+		?>
+		<table style="margin-top:0">
+			<tr>
+				<th class='black'>Black</th>
+				<th class='grey'>Grey</th>
+				<th class='white'>White</th>
+			</tr>
+		<?php
+		for ($i = 0; $i < $highest; $i++) {
+			
+			?>
+			
+			<tr>
+				<td> <?php if (!empty($blackstickers[$i])) echo "<div><a href='class.php?classid=" . $blackstickers[$i] . "'>" . classidToName($blackstickers[$i]) . "</a></div>"; ?> </td>
+				<td> <?php if (!empty($greystickers[$i]))  echo "<div><a href='class.php?classid=" . $greystickers[$i] . "'>" . classidToName($greystickers[$i]) . "</a></div>";  ?> </td>
+				<td> <?php if (!empty($whitestickers[$i])) echo "<div><a href='class.php?classid=" . $whitestickers[$i] . "'>" . classidToName($whitestickers[$i]) . "</a></div>"; ?> </td> 
+			</tr>
+			
+			<?php
+		
 		}
+		?>
+			<tfoot>
+				<tr>
+					<td class='black'><?php echo $stickersResult["blackstickers"] - count($blackstickers) ?> unused black</td>
+					<td class='grey'><?php echo $stickersResult["greystickers"] - count($greystickers) ?> unused grey</td>
+					<td class='white'><?php echo $stickersResult["whitestickers"] - count($whitestickers) ?> unused white</td>
+				</tr>
+			</tfoot>
+		</table>
+		<?php
+			} else {
+				?> <h3> No Stickered Classes! </h3> <?php
+			}
+		} else {
+			?> <h3> Please Sign In! </h3> <?php
 		}
 	 ?>
 	</p>

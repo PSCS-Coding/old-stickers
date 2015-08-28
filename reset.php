@@ -7,6 +7,7 @@
 <?php
 
 include_once("connection.php");
+include_once("stickerfunctions.php");
 
 $db_stickers->query("truncate offerings");
 
@@ -34,8 +35,10 @@ foreach($feed as &$k){
 }
 $zero = "0";
 foreach ($feed as $class) {
-	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,facilitator,category,description,image,blackstickers,greystickers,whitestickers) VALUES (?,?,?,?,?,?,?,?)");
-    $stmt->bind_param('ssssssss', $class['title'], $class['creator'], $class['category'], $class['desc'], $class['content'], $zero, $zero, $zero);
+    $facilitator = get_teacher($class['link']);
+    $block = is_block($class['link']);
+	$stmt = $db_stickers->prepare("INSERT INTO offerings (classname,facilitator,category,description,link,image,block,blackstickers,greystickers,whitestickers) VALUES (?,?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param('ssssssssss', $class['title'], $facilitator, $class['category'], $class['desc'],$class['link'], $class['content'], $block, $zero, $zero, $zero);
     $stmt->execute();
     $stmt->close();
 
@@ -47,10 +50,6 @@ $db_stickers->query("truncate usedstickers");
 
 $getallottedstickers = $db_stickers->query("SELECT * FROM allottedstickers");
 $allottedstickers = $getallottedstickers->fetch_row();
-
-echo "<pre>";;
-print_r($allottedstickers);
-echo "</pre>";
 
 $getstudents = $db_attendance->query("SELECT * FROM studentdata WHERE current=1");
 $studentinfo = array();
@@ -68,6 +67,7 @@ foreach($studentinfo as $student){
     
 }
 
+echo "Reset complete!";
 ?>
 
 </html>

@@ -1,5 +1,5 @@
 <DOCTYPE HTML>
-<html>
+<html> 
 <head>
 	<title>Edit Schedule</title>
 	<!--<link rel="stylesheet" type="text/css" href="stickers.css">-->
@@ -8,13 +8,23 @@
 var prev;
 var suffixes = [' initial','st','nd','rd','th','th','th','th','th','th','th','th','th'];
 function selectSlot (classid) {
-	var split = classid.split("-");
-	document.getElementById("name").innerHTML = capitalize(split[0]).concat(" ",split[1],suffixes[split[1]], " slot") ;
+	//border select
 	document.getElementById(classid).style.border = "2px solid red";
 	if (prev != null) {
 		document.getElementById(prev).style.border = "initial";
 	}
 	prev = classid;
+	
+	//left
+	var split = classid.split("-");
+	document.getElementById("name").innerHTML = capitalize(split[0]).concat(" ",split[1],suffixes[split[1]], " slot");
+	
+	//right
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open("GET","getclasses.php?slot=" + document.getElementById(classid).id,false);
+	xmlHttp.send(null);
+	document.getElementById("classes").innerHTML = xmlHttp.responseText;
+	
 }
 function reset () {
 	console.log("connecting...");
@@ -83,6 +93,7 @@ Array.prototype.contains = function(obj) {
     </div>
 	<div id="rightsidebar">
         <h1 id="title">Classes</h1>
+		<p id="classes">Select a slot</p>
     </div>
 	<div id="schedule">
 	<?php

@@ -33,6 +33,12 @@ function reset () {
 	xmlHttp.send( null );
 	console.log(xmlHttp.responseText);
 }
+function idToName (id) {
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open("GET", "classconvert.php?id=" + id, false);
+	xmlHttp.send(null);
+	return xmlHttp.responseText;
+}
 function updateTimes () {
 	var classSlots = document.getElementsByClassName("class");
 	var days = [];

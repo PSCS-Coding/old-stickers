@@ -36,6 +36,10 @@ function selectSlot (classid) {
 		document.getElementById("classes").innerHTML = "";
 	}
 }
+function addclass (id) {
+	
+
+}
 function reset () {
 	console.log("connecting...");
 	var xmlHttp = new XMLHttpRequest();
@@ -116,7 +120,7 @@ Array.prototype.contains = function(obj) {
 			<?php		
 			$query = $db_stickers->query("SELECT classid FROM offerings");
 			while ($row = $query->fetch_assoc()) {
-				echo "<option>" . classidToName($row['classid'])	 . "</option>";
+				echo "<option value=" . $row['classid'] . ">" . classidToName($row['classid'])	 . "</option>";
 			}
 			?>
 		</select>

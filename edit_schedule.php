@@ -109,6 +109,11 @@ Array.prototype.contains = function(obj) {
 	<div id="rightsidebar">
         <h1 id="title">Classes</h1>
 		<p id="classes">Select a slot</p>
+		
+		<button onclick="addclass()">Add Class</button>
+		<select id="classselect">
+			<option selected>Select a Class</option>
+		</select>
     </div>
 	<div id="schedule">
 	<?php

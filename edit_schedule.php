@@ -7,6 +7,7 @@
 <script>
 var prev;
 var suffixes = [' initial','st','nd','rd','th','th','th','th','th','th','th','th','th'];
+
 function selectSlot (classid) {
 	//border select
 	document.getElementById(classid).style.border = "2px solid red";
@@ -110,10 +111,17 @@ Array.prototype.contains = function(obj) {
         <h1 id="title">Classes</h1>
 		<p id="classes">Select a slot</p>
 		
-		<button onclick="addclass()">Add Class</button>
-		<select id="classselect">
+		<select id="classselect"  style="width:60%;overflow-x:scroll">
 			<option selected>Select a Class</option>
+			<?php		
+			$query = $db_stickers->query("SELECT classid FROM offerings");
+			while ($row = $query->fetch_assoc()) {
+				echo "<option>" . classidToName($row['classid'])	 . "</option>";
+			}
+			?>
 		</select>
+		<br /><br />
+		<button onclick="addclass()">Add Class</button>
     </div>
 	<div id="schedule">
 	<?php

@@ -25,7 +25,7 @@ opacity: 0.9;
 tr {
 width:auto;
 margin:auto;
-font-size: 0.8em;
+font-size: 0.7em;
 }
 
 tr a, tr a:visited {
@@ -159,10 +159,12 @@ margin-bottom: 15px;
 
 .white {
     background-color: white;
+	color: black;
 }
 
 .grey {
 	background-color: gray;
+	color: #424242;
 }
 
 .black {

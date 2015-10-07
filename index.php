@@ -254,19 +254,19 @@
 				?>
 			</td>
 			<!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
-			<?php echo '<td id="' . $class["classid"] . '-1" style="background-color:#5F5959; text-align:center; font-family:CODE2000;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',1)">';
+			<?php echo '<td id="' . $class["classid"] . '-1" style="background-color:#5F5959; text-align:center; font-family:CODE2000; color: white" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',1)">';
 			if (strpos($class["blackstickers"],$_SESSION["id"]	) !== false) {
 				//true
 				echo "✓";
 			}
 			echo '</td>'; ?>
-			<?php echo '<td id="' . $class["classid"] . '-2" style="background-color:#A69E9E; text-align:center; font-family:CODE2000;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',2)">';
+			<?php echo '<td id="' . $class["classid"] . '-2" style="background-color:#A69E9E; text-align:center; font-family:CODE2000; color: #424242" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',2)">';
 			if (strpos($class["greystickers"],$_SESSION["id"]	) !== false) {
 				//true
 				echo "✓";
 			}
 			echo '</td>'; ?>
-			<?php echo '<td id="' . $class["classid"] . '-3" style="background-color:#FFFFFF; text-align:center; font-family:CODE2000;" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',3)">';
+			<?php echo '<td id="' . $class["classid"] . '-3" style="background-color:#FFFFFF; text-align:center; font-family:CODE2000; color: black" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',3)">';
 			if (strpos($class["whitestickers"],$_SESSION["id"]	) !== false) {
 				//true
 				echo "✓";

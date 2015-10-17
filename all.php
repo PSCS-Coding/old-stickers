@@ -133,7 +133,7 @@ caption {
     height: 2%;
 	padding-top:1%;
 	padding-bottom:2%;
-	max-width:186px;
+	max-width:100%;
 }
 .stickercell {
 	height:30px;

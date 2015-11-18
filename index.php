@@ -12,7 +12,10 @@
 					}
 				</style>
 		<?php
-		
+		if (empty($_SESSION['id'])){
+			header("Location: student.php"); /* Redirect browser */
+			exit();
+		}
 		include_once("connection.php");
         include_once("function.php");
 		include_once("stickerfunctions.php");
@@ -277,6 +280,7 @@
 			}
 			} else {
 				echo "<a class='name'>Please Sign In</a>";
+				
 	    	}
 		?>
 	</form>

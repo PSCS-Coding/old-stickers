@@ -92,9 +92,13 @@ margin-right:3%;
 }
 
 .start {
-float:right;
-margin-top:-35px;
-margin-right:20%;
+margin-right: 20%;
+float: right;
+margin-top: -35px;
+font-weight: bold;
+font-size: 14pt;
+text-decoration: none;
+color: black;
 }
 
 .name {
@@ -133,7 +137,6 @@ margin-bottom: 15px;
 .sortbytext {
     padding-top: 100px;
     font-size: 0.8em;
-    padding-left: 5px;
 }
 
 .remaining {
@@ -143,7 +146,8 @@ margin-bottom: 15px;
 }
 
 #remaining {
-    padding-left: 5px;  
+	padding-left: 13px;
+    font-weight: bold;
 }
 
 .white,

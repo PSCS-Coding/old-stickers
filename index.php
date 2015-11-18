@@ -85,7 +85,7 @@
 		<form method='post' action='<?php echo basename($_SERVER['PHP_SELF']); ?>' id='main'>
         <header>
             <h2>PSCS Class Offerings</h2>
-            <a class="start" href="student.php">change user / login</a>
+            <a class="start" href="student.php">Login</a>
 			<?php if(!empty($_SESSION['id'])) echo "<a class='name'>". idToName($_SESSION['id']) . "</a>"; ?>
 			<br />	
         </header>
@@ -186,7 +186,7 @@
         
 	?>
 	<!-- RENDER TABLE -->
-	<?php if (!empty($_COOKIE["sort"])) { echo "<br /><span class='sortbytext' style='color:white;font-weight:bold;'>Sorting by " . ucfirst($_COOKIE["sort"]) . "</span>"; }?>
+	<?php if (!empty($_COOKIE["sort"])) { echo "<br /><span class='sortbytext' style='color:white;font-weight:bold;'>Sorting by: <br>" . ucfirst($_COOKIE["sort"]) . "</span>"; }?>
         </div>
 	<table>
 		<tr>

@@ -252,7 +252,7 @@
 						echo "";
 					}
 					else {
-						echo "Block";
+						echo "&#9733;";
 					}
 				?>
 			</td>

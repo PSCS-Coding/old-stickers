@@ -16,4 +16,9 @@
 		}
 		
 	}
+	
+	$loginResult = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT * FROM login"));
+	
+	
+	
 ?>

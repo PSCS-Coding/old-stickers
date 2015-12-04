@@ -1,9 +1,14 @@
 <?php
 	require_once("connection.php");
 	
-	session_start();
 	
-	if (!empty($_SESSION["login"])) {
+	$loginResult = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT * FROM login"));
+	
+	if (!isset($_COOKIE["slogin"])) {
+		setcookie("slogin","value");
+	}
+	
+	if ($_COOKIE["slogin"] == "student" || $_COOKIE["slogin"] == "admin") {
 		
 		if (!empty($_SERVER['HTTP_REFERER'])) {
 			
@@ -16,9 +21,20 @@
 		}
 		
 	}
+?>
 	
-	$loginResult = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT * FROM login"));
+	<form method="post">
+		<input type="password" name="pass">
+	</form>
 	
-	
-	
+<?php
+if (!empty($_POST["pass"])) {
+	if ($_POST["pass"] == $loginResult["student"]) {
+		setcookie("slogin", "student");
+		echo "student";
+	} else if ($_POST["pass"] == $loginResult["admin"]) {
+		setcookie("slogin", "admin");
+		echo "admin";
+	}
+}
 ?>

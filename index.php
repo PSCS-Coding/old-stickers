@@ -23,7 +23,7 @@
 		
 		?>
 		<script>
-			function updateStickers (studentid, classid, color) {
+			function updateStickers (studentid, classid, color, block) {
 				if (color == 1) {
 					stickercolor = "black";
 				} else if (color == 2) {
@@ -31,8 +31,13 @@
 				} else  if (color == 3){
 					stickercolor = "white";
 				}
+				if (block == 1){
+					block = 1;
+				} else {
+					block = 0;
+				}
 					var xmlHttp = new XMLHttpRequest();
-					xmlHttp.open( "GET", "jsget.php?studentid=" + studentid + "&classid=" + classid + "&stickercolor=" + stickercolor, false );
+					xmlHttp.open( "GET", "jsget.php?studentid=" + studentid + "&classid=" + classid + "&stickercolor=" + stickercolor + "&block=" + block, false );
 					xmlHttp.send( null );
 					console.log(xmlHttp.responseText);
 				if (xmlHttp.responseText.indexOf("unstickered")>=0){
@@ -66,7 +71,6 @@
 						document.getElementById(stickercolor.concat("list")).appendChild(sticker);
 					} else {
 						//nothing to clone, must insert
-						console.log("fooo");
 						document.getElementById(stickercolor.concat("list")).innerHTML = "<div class='".concat(stickercolor,"'>",stickercolor,"sticker</div>");
 						}
 				} else if (state == "not") {
@@ -254,22 +258,27 @@
 					else {
 						echo "&#9733;";
 					}
+					if ($class['block'] == 0){
+						$blockstate = 0;
+					} else {
+						$blockstate = 1;
+					}
 				?>
 			</td>
 			<!-- <td style="width:auto"> <?php echo $class['description']; ?> </td> -->
-			<?php echo '<td id="' . $class["classid"] . '-1" style="background-color:#5F5959; text-align:center; font-family:CODE2000; color: white" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',1)">';
+			<?php echo '<td id="' . $class["classid"] . '-1" style="background-color:#5F5959; text-align:center; font-family:CODE2000; color: white" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',1,' . $blockstate . ')">';
 			if (strpos($class["blackstickers"],$_SESSION["id"]	) !== false) {
 				//true
 				echo "✓";
 			}
 			echo '</td>'; ?>
-			<?php echo '<td id="' . $class["classid"] . '-2" style="background-color:#A69E9E; text-align:center; font-family:CODE2000; color: #424242" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',2)">';
+			<?php echo '<td id="' . $class["classid"] . '-2" style="background-color:#A69E9E; text-align:center; font-family:CODE2000; color: #424242" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',2,' . $blockstate . ')">';
 			if (strpos($class["greystickers"],$_SESSION["id"]	) !== false) {
 				//true
 				echo "✓";
 			}
 			echo '</td>'; ?>
-			<?php echo '<td id="' . $class["classid"] . '-3" style="background-color:#FFFFFF; text-align:center; font-family:CODE2000; color: black" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',3)">';
+			<?php echo '<td id="' . $class["classid"] . '-3" style="background-color:#FFFFFF; text-align:center; font-family:CODE2000; color: black" onclick="updateStickers(' . $_SESSION["id"] . ',' . $class["classid"] . ',3,' . $blockstate . ')">';
 			if (strpos($class["whitestickers"],$_SESSION["id"]	) !== false) {
 				//true
 				echo "✓";

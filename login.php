@@ -31,10 +31,20 @@
 if (!empty($_POST["pass"])) {
 	if ($_POST["pass"] == $loginResult["student"]) {
 		setcookie("slogin", "student");
-		echo "student";
+		//redirect
+		if (!empty($_SERVER['HTTP_REFERER'])) {
+			header("Location:" . $_SERVER['HTTP_REFERER'],true);
+		} else {
+			header('Location:index.php',true);	
+		}
 	} else if ($_POST["pass"] == $loginResult["admin"]) {
 		setcookie("slogin", "admin");
-		echo "admin";
+		//redirect
+		if (!empty($_SERVER['HTTP_REFERER'])) {
+			header("Location:" . $_SERVER['HTTP_REFERER'],true);
+		} else {
+			header('Location:index.php',true);	
+		}
 	}
 }
 ?>

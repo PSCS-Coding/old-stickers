@@ -4,6 +4,13 @@
 		<link rel="stylesheet" type="text/css" href="stickers.css"> 
 	</head>
 	
+	<script>
+		function triggerAnimation() {
+			console.log("triggered");
+			document.getElementById("sjw").innerHTML = "<div class='spinner'><div class='rect1'></div><div class='rect2'></div><div class='rect3'></div><div class='rect4'></div><div class='rect5'></div></div>";
+		}
+	</script>
+	
 	<body>
 	<?php
 	require_once("connection.php");
@@ -33,11 +40,15 @@
 	}
 	?>
 	<div id="loginbox">
-	
+		<p style="padding:0;margin:5%">Please Log In</p>
 		<form method="post">
-			<input type="password" name="pass">
+			<input type="password" name="pass" id="logininput">
 		</form>
-	
+		
+		<div id="sjw">
+			<button id="submitlogin" onclick="triggerAnimation()" style="margin-top:2%">Submit</button>
+		</div>
+		
 	</div>
 	
 <?php

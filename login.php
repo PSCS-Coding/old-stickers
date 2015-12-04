@@ -1,4 +1,11 @@
-<?php
+<DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="stickers.css"> 
+	</head>
+	
+	<body>
+	<?php
 	require_once("connection.php");
 	
 	
@@ -24,11 +31,14 @@
 		}
 		
 	}
-?>
+	?>
+	<div id="loginbox">
 	
-	<form method="post">
-		<input type="password" name="pass">
-	</form>
+		<form method="post">
+			<input type="password" name="pass">
+		</form>
+	
+	</div>
 	
 <?php
 if (!empty($_POST["pass"])) {
@@ -51,3 +61,5 @@ if (!empty($_POST["pass"])) {
 	}
 }
 ?>
+</body>
+</html>

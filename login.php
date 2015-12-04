@@ -6,9 +6,12 @@
 	
 	if (!isset($_COOKIE["slogin"])) {
 		setcookie("slogin","value");
+		$slogin = "value";
+	} else {
+		$slogin = $_COOKIE["slogin"];
 	}
 	
-	if ($_COOKIE["slogin"] == "student" || $_COOKIE["slogin"] == "admin") {
+	if ($slogin == "student" || $slogin == "admin") {
 		
 		if (!empty($_SERVER['HTTP_REFERER'])) {
 			

@@ -234,7 +234,7 @@
 		?>
 		<tr>
 			<td>
-				<a href="class.php?classid=<?php echo $class['classid'];?>"> <?php echo $class['classname']; ?> </a>
+				<a href="class.php?classid=<?php echo $class['classid'];?>" target="_blank"> <?php echo $class['classname']; ?> </a>
 			</td>
 			<td><?php echo $class['facilitator']; ?></td>
 			<td><?php 

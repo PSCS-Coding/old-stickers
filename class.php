@@ -94,6 +94,7 @@ foreach($whitestickers as $sticker){
 	display:block;
 	margin-right:auto;
 	margin-left:auto;
+	width:30%;
 }
 
 </style>

@@ -1,8 +1,13 @@
 <?php
 include_once("function.php");
+include_once("connection.php");
+global $db_attendance;
+global $db_stickers;
 
 function resetstickers(){
-	$db_stickers->query("truncate offerings");
+	global $db_attendance;
+	global $db_stickers;
+	$db_stickers->query("TRUNCATE `offerings`");
 	$rss = new DOMDocument();
 	$rss->load('http://classes.pscs.org/feed/');
 	$feed = array();
@@ -271,4 +276,8 @@ function addsticker($studentid,$classid,$stickertype){ // adds / removes sticker
 
 }
 	
+// thing to call reset must be after reset function
+if (!empty($_GET['reset'])){
+	resetstickers();
+}
 ?>

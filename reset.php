@@ -51,8 +51,62 @@
   }
 }
 </style>
-
+<script>
+    function resetbutton () {
+				if (color == 1) {
+					stickercolor = "black";
+				} else if (color == 2) {
+					stickercolor = "grey";
+				} else  if (color == 3){
+					stickercolor = "white";
+				}
+					var xmlHttp = new XMLHttpRequest();
+					xmlHttp.open( "GET", "jsget.php?studentid=" + studentid + "&classid=" + classid + "&stickercolor=" + stickercolor, false );
+					xmlHttp.send( null );
+					console.log(xmlHttp.responseText);
+				if (xmlHttp.responseText.indexOf("unstickered")>=0){
+					document.getElementById(classid + "-" + color).innerHTML = '';
+					state = "unstickered";
+				} else if (xmlHttp.responseText.indexOf("stickered")>=0) {
+					document.getElementById(classid + "-" + color).innerHTML = '✓';
+					state = "stickered";
+				} else {
+					state = "not";
+					
+				}
+				//using XML DOM NodeLists http://www.w3schools.com/dom/met_nodelist_item.asp
+				if (state == "stickered") {
+					//remove last remainingsticker element
+					console.log(stickercolor);
+					var remainingStickers = document.getElementsByClassName(stickercolor);
+					
+					//if no remaining stickers change remaining text
+					if (remainingStickers.item(0).id == stickercolor.concat("-1")) {
+						document.getElementById("remaining").innerHTML = "No Remaining Stickers";
+					}
+					remainingStickers.item(0).remove();
+					//use 0 because element 0 in the NodeList is actually the highest ID because it goes from top to bottom http://i.imgur.com/ioGmnEr.png
+				} else if (state == "unstickered") {
+					//add remainingsticker element
+					var sticker = document.getElementById(stickercolor.concat("list")).firstChild;
+					if (sticker != null) {
+						//if can clone
+						sticker = sticker.cloneNode(true);
+						document.getElementById(stickercolor.concat("list")).appendChild(sticker);
+					} else {
+						//nothing to clone, must insert
+						console.log("fooo");
+						document.getElementById(stickercolor.concat("list")).innerHTML = "<div class='".concat(stickercolor,"'>",stickercolor,"sticker</div>");
+						}
+				} else if (state == "not") {
+					console.log("error");
+				}
+				//console.log(remainingStickers.item(1).id);
+			}  
+</script>
 </head>
+<body>
+    <button onclick="resetstickers()"> Reset </button>
 <div id="reset">
     <p> Reset in progress </p>
         <div class="spinner">

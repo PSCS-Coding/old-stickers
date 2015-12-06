@@ -28,7 +28,6 @@ include_once("stickerfunctions.php");
         table, th, td {
             border: 1px solid black;
             width: 75%;
-            height: 50%;
             border-collapse: collapse;
             text-align:center;
         }
@@ -36,9 +35,14 @@ include_once("stickerfunctions.php");
             width:25%;
         }
         th {
-            height:10%;
+            height:5%;
         }
-        
+        @page {
+            size: 9.5in 11in;
+        }
+        table {
+            height: 5in;
+        }
         
     </style>
 </head>

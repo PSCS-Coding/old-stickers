@@ -51,6 +51,13 @@
   }
 }
 </style>
+<?php
+if (!isset($_COOKIE['slogin'])) {
+			header('Location:login.php',true);
+} else if ($_COOKIE['slogin'] != "admin") {
+			header('Location:login.php?admin=true',true);
+} 
+?>
 <script>
     function reset() {
       var xmlHttp = new XMLHttpRequest();

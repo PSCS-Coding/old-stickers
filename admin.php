@@ -3,11 +3,9 @@
 <?php
 require_once("connection.php");
 
-$loginResult = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT * FROM login"));
-	
 if (!isset($_COOKIE['slogin'])) {
 			header('Location:login.php',true);
-} else if ($_COOKIE['slogin'] != $loginResult['admin']) {
+} else if ($_COOKIE['slogin'] != "admin") {
 			header('Location:login.php?admin=true',true);
 } 
 ?>

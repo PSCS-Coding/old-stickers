@@ -12,9 +12,8 @@
 					}
 				</style>
 		<?php
-		if (empty($_SESSION['id'])){
-			header("Location: student.php"); /* Redirect browser */
-			exit();
+		if (!isset($_COOKIE['slogin'])) {
+			header('Location:login.php',true);
 		}
 		include_once("connection.php");
         include_once("function.php");

@@ -8,7 +8,7 @@ $loginResult = mysqli_fetch_assoc(mysqli_query($db_stickers, "SELECT * FROM logi
 if (!isset($_COOKIE['slogin'])) {
 			header('Location:login.php',true);
 } else if ($_COOKIE['slogin'] != $loginResult['admin']) {
-			header('Location:login.php',true);
+			header('Location:login.php?admin=true',true);
 } 
 ?>
 <head>

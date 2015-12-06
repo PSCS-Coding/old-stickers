@@ -31,14 +31,18 @@ function func() {
 		$slogin = $_COOKIE["slogin"];
 	}
 	
-	if ($slogin == "student" || $slogin == "admin") {
-		
-			header('Location:index.php',true);	
-		
+	if ($_GET["admin"] != true) {
+		if ($slogin == "student" || $slogin == "admin") {
+				header('Location:index.php',true);	
+		}
 	}
 	?>
 	<div id="loginbox">
+		<?php if ($_GET['admin'] != true) { ?>
 		<p style="padding:0;margin:5%">Please Log In</p>
+		<?php } else if ($_GET['admin'] == true) { ?>
+		<p style="padding:0;margin:5%">Please Enter Admin Password</p>
+		<?php } ?>
 		<form method="post" id="loginform">
 			<input type="password" name="pass" id="logininput">
 		</form>

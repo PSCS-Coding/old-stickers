@@ -9,24 +9,25 @@ include_once("stickerfunctions.php");
     <title> print stickersheets</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript">
-        $("#btnPrint").live("click", function () {
-            var divContents = $("#dvContainer").html();
-            var printWindow = window.open('', '', 'height=400,width=800');
-            printWindow.document.write('<html><head><title>DIV Contents</title>');
-            printWindow.document.write('</head><body >');
-            printWindow.document.write(divContents);
-            printWindow.document.write('</body></html>');
-            printWindow.document.close();
-            printWindow.print();
-        });
+function myFunction() {
+    window.print();
+}
     </script>
-    <style> 
+    <style>
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+} 
         th {
             font-weight: normal;
         }
 
         table, th, td {
-            border: 1px solid black;
             width: 75%;
             border-collapse: collapse;
             text-align:center;
@@ -36,14 +37,28 @@ include_once("stickerfunctions.php");
         }
         th {
             height:5%;
+             border: 1px solid black;
         }
         @page {
             size: 9.5in 11in;
         }
         table {
-            height: 5in;
+            height: 4in;
+            page-break-inside: avoid;
+             border: 1px solid black;
         }
-        
+        td {
+            border-bottom:0 none;
+            border-right:1px solid black;
+        }
+@media print
+{
+  table { page-break-after:auto }
+  tr    { page-break-inside:avoid; page-break-after:auto }
+  td    { page-break-inside:avoid; page-break-after:auto }
+  thead { display:table-header-group }
+  tfoot { display:table-footer-group }
+}
     </style>
 </head>
 <body>
@@ -92,8 +107,9 @@ include_once("stickerfunctions.php");
         }
 			?>
 		 </table>
+         <br />
     </div>
-    <input type="button" value="Print Div Contents" id="btnPrint" />
+    <button onclick="myFunction()">Print this page</button>
     </form>
 </body>
 </html>

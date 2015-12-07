@@ -24,7 +24,6 @@ if(!empty($_GET)){
 				array_push($usedstickers, $data_result);
 			}
 		$usedstickers = $usedstickers[0][0];
-		echo "used stickers:" . $usedstickers . " end";
 		if($usedstickers < 0){
 				$returninfo = addsticker($_GET['studentid'],$_GET['classid'],$_GET['stickercolor']);
 			

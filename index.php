@@ -16,6 +16,15 @@
 			header("Location: student.php"); /* Redirect browser */
 			exit();
 		}
+		if (!isset($_COOKIE["slogin"])) {
+		
+			header('Location:login.php',true);	
+		
+		} else if ($_COOKIE["slogin"] == "value") {
+			
+			header('Location:login.php',true);
+			
+		}
 		include_once("connection.php");
         include_once("function.php");
 		include_once("stickerfunctions.php");
@@ -238,7 +247,7 @@
 		?>
 		<tr>
 			<td>
-				<a href="class.php?classid=<?php echo $class['classid'];?>" target="_blank"> <?php echo $class['classname']; ?> </a>
+				<a href="class.php?classid=<?php echo $class['classid'];?>"> <?php echo $class['classname']; ?> </a>
 			</td>
 			<td><?php echo $class['facilitator']; ?></td>
 			<td><?php 

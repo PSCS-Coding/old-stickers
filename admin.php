@@ -2,6 +2,12 @@
 <html>
 <?php
 require_once("connection.php");
+
+if (!isset($_COOKIE['slogin'])) {
+			header('Location:login.php',true);
+} else if ($_COOKIE['slogin'] != "admin" || $_COOKIE['slogin'] == "value") {
+			header('Location:login.php?admin=true',true);
+}
 ?>
 <head>
 	<title>Admin Console</title>

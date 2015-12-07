@@ -14,6 +14,16 @@ session_start();
 	include_once("function.php");
 	include_once("stickerfunctions.php");
 	
+	if (!isset($_COOKIE["slogin"])) {
+		
+			header('Location:login.php',true);	
+		
+		} else if ($_COOKIE["slogin"] == "value") {
+			
+			header('Location:login.php',true);
+			
+		}
+		
 	$studentquery = $db_attendance->query("SELECT studentid,firstname,lastname FROM studentdata WHERE current=1 ORDER BY firstname ASC");
 	
 	$studentinfo = array();

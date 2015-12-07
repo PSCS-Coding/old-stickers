@@ -5,10 +5,11 @@
 	</head>
 	
 	<script>
-		setTimeout(func, 4000);
+		
 		function triggerAnimation() {
 			console.log("triggered");
 			document.getElementById("sjw").innerHTML = "<div class='spinner'><div class='rect1'></div><div class='rect2'></div><div class='rect3'></div><div class='rect4'></div><div class='rect5'></div></div>";
+			setTimeout(func, 4000);
 		}
 		
 function func() {
@@ -30,14 +31,18 @@ function func() {
 		$slogin = $_COOKIE["slogin"];
 	}
 	
-	if ($slogin == "student" || $slogin == "admin") {
-		
-			header('Location:index.php',true);	
-		
+	if ($_GET["admin"] != true) {
+		if ($slogin == "student" || $slogin == "admin") {
+				header('Location:index.php',true);	
+		}
 	}
 	?>
 	<div id="loginbox">
+		<?php if (!isset($_GET['admin'])) { ?>
 		<p style="padding:0;margin:5%">Please Log In</p>
+		<?php } else if ($_GET['admin'] == true) { ?>
+		<p style="padding:0;margin:5%">Please Enter Admin Password</p>
+		<?php } ?>
 		<form method="post" id="loginform">
 			<input type="password" name="pass" id="logininput">
 		</form>

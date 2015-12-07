@@ -62,7 +62,7 @@ if (!empty($_POST["pass"])) {
 	} else if ($_POST["pass"] == $loginResult["admin"]) {
 		setcookie("slogin", "admin");
 		//redirect
-			header('Location:index.php',true);	
+			header('Location:admin.php',true);	
 	}
 }
 ?>

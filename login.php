@@ -38,7 +38,7 @@ function func() {
 	}
 	?>
 	<div id="loginbox">
-		<?php if ($_GET['admin'] != true) { ?>
+		<?php if (!isset($_GET['admin'])) { ?>
 		<p style="padding:0;margin:5%">Please Log In</p>
 		<?php } else if ($_GET['admin'] == true) { ?>
 		<p style="padding:0;margin:5%">Please Enter Admin Password</p>

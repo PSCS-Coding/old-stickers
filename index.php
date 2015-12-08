@@ -128,6 +128,7 @@
 		// render stickers for the side
 		
 		$id = $_SESSION['id'];
+		
 		$getused  =  $db_stickers->query("SELECT * FROM usedstickers WHERE studentid=$id");
 		$usedstickers = array();
 		while($data_result = $getused->fetch_row()) {
@@ -135,11 +136,18 @@
 		}
 		$usedstickers = $usedstickers[0];
 		
+		$getusedblock  =  $db_stickers->query("SELECT * FROM usedstickers WHERE studentid=$id");
+		$usedblockstickers = array();
+		while($data_result = $getusedblock->fetch_row()) {
+			array_push($usedblockstickers, $data_result);
+		}
+		$usedblockstickers = $usedblockstickers[0];
+		
 		if ($usedstickers[1] != 0 || $usedstickers[2] != 0 || $usedstickers[3] != 0) {
         echo "<div id='remaining-container'>";
-		echo "<div id = 'remaining'>Remaining:</div>";
+		echo "<div id = 'remainingblock'>Remaining Stickers:</div>";
 		} else {
-		echo "<div id = 'remaining'>No Remaining Stickers</div>";
+		echo "<div id = 'remainingblock'>No Remaining Stickers</div>";
 		}
 		for($i=1; $i<4; $i++){
 			switch ($i){
@@ -161,8 +169,39 @@
 				echo "<div class = " . $stickervalue . ">" . $stickervalue . "sticker" . "</div>";
 			}
 			echo ("</span>");
+			
+		}
+		?></div><?php
+		
+		if ($usedblockstickers[1] != 0 || $usedblockstickers[2] != 0 || $usedblockstickers[3] != 0) {
+        echo "<div id='remaining-block-container' style='float:right'>";
+		echo "<div id = 'remainingblock'>Remaining Blocks:</div>";
+		} else {
+		echo "<div id = 'remainingblock'>No Remaining Block Stickers</div>";
+		}
+		for($i=1; $i<4; $i++){
+			switch ($i){
+				case 1:	
+					$stickervalue = "black";
+					break;
+				case 2:
+					$stickervalue = "grey";
+					break;
+				case 3:
+					$stickervalue = "white";
+					break;
+				default:
+					echo "error";
+			}
+			
+			echo ("<span id='" . $stickervalue . "list'>");
+			for($k=$usedstickers[$i]; $k>0; $k--){
+				echo "<div class = " . $stickervalue . ">" . $stickervalue . "sticker" . "</div>";
+			}
+			echo ("</span>");
             
 		}
+		?></div><?php
 		
 		// QUERY OFFERINGS
 		$result = $db_stickers->query("SELECT * FROM offerings");
@@ -200,7 +239,7 @@
 	?>
 	<!-- RENDER TABLE -->
 	<?php if (!empty($_COOKIE["sort"])) { echo "<br /><span class='sortbytext' style='color:white;font-weight:bold;'>Sorting by: <br>" . ucfirst($_COOKIE["sort"]) . "</span>"; }?>
-        </div>
+        
 	<table>
 		<tr>
 			<th onclick="sortBy('title')">Title</th>

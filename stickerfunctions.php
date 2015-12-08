@@ -30,7 +30,7 @@ function resetstickers(){
 				$src = $matches[1];
 				$k['content'] = $src;
 		}
-	
+		
 	}
 	
 	$zero = "0";

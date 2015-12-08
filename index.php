@@ -136,7 +136,7 @@
 		}
 		$usedstickers = $usedstickers[0];
 		
-		$getusedblock  =  $db_stickers->query("SELECT * FROM usedstickers WHERE studentid=$id");
+		$getusedblock  =  $db_stickers->query("SELECT studentid,blockblackstickers,blockgreystickers,blockwhitestickers FROM usedstickers WHERE studentid=$id");
 		$usedblockstickers = array();
 		while($data_result = $getusedblock->fetch_row()) {
 			array_push($usedblockstickers, $data_result);
@@ -195,7 +195,7 @@
 			}
 			
 			echo ("<span id='" . $stickervalue . "list'>");
-			for($k=$usedstickers[$i]; $k>0; $k--){
+			for($k=$usedblockstickers[$i]; $k>0; $k--){
 				echo "<div class = " . $stickervalue . ">" . $stickervalue . "sticker" . "</div>";
 			}
 			echo ("</span>");

@@ -28,7 +28,7 @@ function myFunction() {
         }
 
         table, th, td {
-            width: 75%;
+            width: 100%;
             border-collapse: collapse;
             text-align:center;
         }
@@ -37,27 +37,55 @@ function myFunction() {
         }
         th {
             height:5%;
-             border: 1px solid black;
         }
         @page {
             size: 9.5in 11in;
         }
         table {
-            height: 4in;
-            page-break-inside: avoid;
-             border: 1px solid black;
+            height: 4.25in;
         }
         td {
             border-bottom:0 none;
             border-right:1px solid black;
         }
+        h3 {
+            font-size:32px;
+        }
+        th {
+            border-bottom:1px solid black;
+        }
 @media print
 {
-  table { page-break-after:auto }
+  table { page-break-after:always }
   tr    { page-break-inside:avoid; page-break-after:auto }
   td    { page-break-inside:avoid; page-break-after:auto }
   thead { display:table-header-group }
   tfoot { display:table-footer-group }
+}
+.white,
+.grey,
+.black {
+	color: black;
+    width: 100px;
+	text-align: center;
+    border-radius: 4px;
+    margin:auto;
+    float:left;
+}
+
+.white {
+    background-color: white;
+	color: black;
+}
+
+.grey {
+	background-color: gray;
+	color: #424242;
+}
+
+.black {
+	background-color: black;
+	color:white;
 }
     </style>
 </head>
@@ -83,29 +111,30 @@ function myFunction() {
             $highestVal = max(count($blackstickers), count ($greystickers), count($whitestickers));
             
 	?>	<table name= <?php echo $sub["classid"] ?> align="center">
-			<caption > <b> <?php echo $sub["classname"] ?> </b> </caption>
+			<caption > <b> <h3> <?php echo $sub["classname"] ?> <h3> </b> </caption>
+            <caption > <b> <?php echo $sub["facilitator"] ?></b> </caption>
 			<colgroup>
 				<col class='blackstickers'>
 				<col class='greystickers'>
 				<col class='whitestickers'>
 			</colgroup>
 			<tr>
-				<th class='black'>Black</th>
-				<th class='grey'>Grey</th>
-				<th class='white'>White</th>
+				<th></th>
+				<th></th>
+				<th></th>
 			</tr>
 			<?php 
 			for ($i = 0; $i < $highestVal; $i++) {
 			?>
 			<tr>
-				<td class="stickercell"> <?php if (!empty($blackstickers[$i])) echo "<div class='blackstickers'>" . idToName($blackstickers[$i]) . "</div>"; ?> </td>
-				<td class="stickercell"> <?php if (!empty($greystickers[$i]))  echo "<div class='greystickers'>" . idToName($greystickers[$i]) . "</div>";  ?> </td>
-				<td class="stickercell"> <?php if (!empty($whitestickers[$i])) echo "<div class='whitestickers'>" . idToName($whitestickers[$i]) . "</div>"; ?> </td> 
+				<td> <?php if (!empty($blackstickers[$i])) echo "<div class='black'>" . idToName($blackstickers[$i]) . "</div>"; ?> </td>
+				<td> <?php if (!empty($greystickers[$i]))  echo "<div class='grey'>" . idToName($greystickers[$i]) . "</div>";  ?> </td>
+				<td> <?php if (!empty($whitestickers[$i])) echo "<div class='white'>" . idToName($whitestickers[$i]) . "</div>"; ?> </td> 
 			</tr>
-			<?php
-			}
+            <?php
+			}      
         }
-			?>
+        ?>
 		 </table>
          <br />
     </div>

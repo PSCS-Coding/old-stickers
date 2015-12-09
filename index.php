@@ -270,7 +270,7 @@
         
 	?>
 	<!-- RENDER TABLE -->
-	<?php if (!empty($_COOKIE["sort"])) { echo "<br /><span class='sortbytext' style='color:white;font-weight:bold;'>Sorting by: <br>" . ucfirst($_COOKIE["sort"]) . "</span>"; }?>
+	<?php if (!empty($_COOKIE["sort"])) { /*echo "<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><span class='sortbytext' style='color:white;font-weight:bold;'>Sorting by: <br>" . ucfirst($_COOKIE["sort"]) . "</span>";*/ }?>
         
 	<table>
 		<tr>

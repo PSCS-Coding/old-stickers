@@ -218,7 +218,10 @@ margin-bottom: 15px;
 
 .white,
 .grey,
-.black {
+.black,
+.blockblack,
+.blockgrey,
+.blockwhite {
 	color: black;
     padding: 3px 0;
     width: 100px;
@@ -227,17 +230,17 @@ margin-bottom: 15px;
     border-radius: 4px;
 }
 
-.white {
+.white, .blockwhite {
     background-color: white;
 	color: black;
 }
 
-.grey {
+.grey, .blockgrey {
 	background-color: gray;
 	color: #424242;
 }
 
-.black {
+.black, .blockblack {
 	background-color: black;
 	color:white;
 }

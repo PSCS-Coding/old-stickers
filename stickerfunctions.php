@@ -30,7 +30,7 @@ function resetstickers(){
 				$src = $matches[1];
 				$k['content'] = $src;
 		}
-	
+		
 	}
 	
 	$zero = "0";
@@ -151,9 +151,13 @@ function getclasses($studentid,$stickercolor){
 }
 	
 	
-function updateused($studentid,$stickertype,$update){ // updates used stickers
+function updateused($studentid,$stickertype,$update,$block){ // updates used stickers
 	global $db_attendance;
 	global $db_stickers;
+	
+	if ($block == 1){
+		$stickertype = "block" . $stickertype;
+	}
 	
 	$getused  =  $db_stickers->query("SELECT $stickertype FROM usedstickers WHERE studentid=$studentid");
 	$usedstickers = array();

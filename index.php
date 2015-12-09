@@ -110,7 +110,7 @@
 						document.getElementById("block" + stickercolor.concat("list")).appendChild(sticker);
 					} else {
 						//nothing to clone, must insert
-						document.getElementById("block" + stickercolor.concat("list")).innerHTML = "<div class='".concat(stickercolor,"'>",stickercolor,"sticker</div>");
+						document.getElementById("block" + stickercolor.concat("list")).innerHTML = "<div class='block".concat(stickercolor,"'>",stickercolor,"sticker</div>");
 					}
 				} else if (state == "not") {
 					console.log("error");

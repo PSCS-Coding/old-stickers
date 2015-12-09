@@ -89,7 +89,7 @@
 					} else {
 						//nothing to clone, must insert
 						document.getElementById(stickercolor.concat("list")).innerHTML = "<div class='".concat(stickercolor,"'>",stickercolor,"sticker</div>");
-						}
+					}
 				} else if (state == "blockstickered") {
 					//remove last remainingsticker element
 					console.log(stickercolor);
@@ -101,6 +101,17 @@
 					}
 					remainingStickers.item(0).remove();
 					//use 0 because element 0 in the NodeList is actually the highest ID because it goes from top to bottom http://i.imgur.com/ioGmnEr.png
+				} else if (state == "blockunstickered") {
+					//add remainingsticker element
+					var sticker = document.getElementById("block" + stickercolor.concat("list")).firstChild;
+					if (sticker != null) {
+						//if can clone
+						sticker = sticker.cloneNode(true);
+						document.getElementById("block" + stickercolor.concat("list")).appendChild(sticker);
+					} else {
+						//nothing to clone, must insert
+						document.getElementById("block" + stickercolor.concat("list")).innerHTML = "<div class='".concat(stickercolor,"'>",stickercolor,"sticker</div>");
+					}
 				} else if (state == "not") {
 					console.log("error");
 				}

@@ -97,7 +97,7 @@
 					
 					//if no remaining stickers change remaining text
 					if (remainingStickers.item(0).id == stickercolor.concat("-1")) {
-						document.getElementById("remaining").innerHTML = "No Remaining Stickers";
+						document.getElementById("remainingblock").innerHTML = "No Remaining Stickers";
 					}
 					remainingStickers.item(0).remove();
 					//use 0 because element 0 in the NodeList is actually the highest ID because it goes from top to bottom http://i.imgur.com/ioGmnEr.png
@@ -201,13 +201,15 @@
 			echo ("</span>");
 			
 		}
-		?></div><?php
+		?></div>
+		<span style="float:right">
+		<?php
 		
 		if ($usedblockstickers[1] != 0 || $usedblockstickers[2] != 0 || $usedblockstickers[3] != 0) {
-        echo "<div id='remaining-block-container' style='float:right'>";
-		echo "<div id = 'remainingblock'>Remaining Blocks:</div>";
+        echo "<div id='remaining-block-container' style='float:right;'>";
+		echo "<div id = 'remainingblock' style='float:right'>Remaining Blocks:</div><br/>";
 		} else {
-		echo "<div id = 'remainingblock'>No Remaining Block Stickers</div>";
+		echo "<div id = 'remainingblock' style='float:right'>No Remaining Block Stickers</div><br/>";
 		}
 		for($i=1; $i<4; $i++){
 			switch ($i){
@@ -231,7 +233,7 @@
 			echo ("</span>");
             
 		}
-		?></div><?php
+		?></div></span><?php
 		
 		// QUERY OFFERINGS
 		$result = $db_stickers->query("SELECT * FROM offerings");

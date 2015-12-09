@@ -51,10 +51,18 @@
 					console.log(xmlHttp.responseText);
 				if (xmlHttp.responseText.indexOf("unstickered")>=0){
 					document.getElementById(classid + "-" + color).innerHTML = '';
-					state = "unstickered";
+					if (xmlHttp.responseText.indexOf("blockunstickered")>=0) {
+						state = "blockunstickered";
+					} else {
+						state = "unstickered";
+					}
 				} else if (xmlHttp.responseText.indexOf("stickered")>=0) {
 					document.getElementById(classid + "-" + color).innerHTML = '✓';
-					state = "stickered";
+					if (xmlHttp.responseText.indexOf("blockstickered")>=0) {
+						state = "blockstickered";
+					} else {
+						state = "stickered";
+					}
 				} else {
 					state = "not";
 					
@@ -82,6 +90,17 @@
 						//nothing to clone, must insert
 						document.getElementById(stickercolor.concat("list")).innerHTML = "<div class='".concat(stickercolor,"'>",stickercolor,"sticker</div>");
 						}
+				} else if (state == "blockstickered") {
+					//remove last remainingsticker element
+					console.log(stickercolor);
+					var remainingStickers = document.getElementsByClassName("block" + stickercolor);
+					
+					//if no remaining stickers change remaining text
+					if (remainingStickers.item(0).id == stickercolor.concat("-1")) {
+						document.getElementById("remaining").innerHTML = "No Remaining Stickers";
+					}
+					remainingStickers.item(0).remove();
+					//use 0 because element 0 in the NodeList is actually the highest ID because it goes from top to bottom http://i.imgur.com/ioGmnEr.png
 				} else if (state == "not") {
 					console.log("error");
 				}
@@ -182,13 +201,13 @@
 		for($i=1; $i<4; $i++){
 			switch ($i){
 				case 1:	
-					$stickervalue = "black";
+					$stickervalue = "blockblack";
 					break;
 				case 2:
-					$stickervalue = "grey";
+					$stickervalue = "blockgrey";
 					break;
 				case 3:
-					$stickervalue = "white";
+					$stickervalue = "blockwhite";
 					break;
 				default:
 					echo "error";
@@ -196,7 +215,7 @@
 			
 			echo ("<span id='" . $stickervalue . "list'>");
 			for($k=$usedblockstickers[$i]; $k>0; $k--){
-				echo "<div class = " . $stickervalue . ">" . $stickervalue . "sticker" . "</div>";
+				echo "<div class = " . $stickervalue . ">" . explode("block",$stickervalue)[1] . "sticker" . "</div>";
 			}
 			echo ("</span>");
             

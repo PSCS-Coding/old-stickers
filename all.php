@@ -8,11 +8,7 @@ include_once("function.php");
 <head>
 	<title>All Classes</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="stickers.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-	<script src="js/masonry.js"></script>
-	
+	<link rel="stylesheet" type="text/css" href="stickers.css">  
 </head>
 <script>
 setInterval(function () {
@@ -79,7 +75,7 @@ while($class = $classesQuery->fetch_assoc()) {
   // sort alphabetically by name
   usort($classesResult, 'byHighest');
   $classesResult = array_reverse($classesResult);//reverse
-  ?> <div class="table_grid"> <?php
+  
 foreach($classesResult as $sub) {
 	$blackstickers = getstudents($sub["classid"],"blackstickers");
 	$greystickers = getstudents($sub["classid"],"greystickers");
@@ -91,9 +87,7 @@ foreach($classesResult as $sub) {
 
 	$highestVal = max(count($blackstickers), count ($greystickers), count($whitestickers));
 	
-	?>
-	
-	<table class="table" name= <?php echo $sub["classid"] ?> >
+	?>	<table name= <?php echo $sub["classid"] ?> >
 			<caption> <?php echo $sub["classname"] ?> </caption>
 			<colgroup>
 				<col class='blackstickers'>
@@ -117,26 +111,9 @@ foreach($classesResult as $sub) {
 			}
 			?>
 		 </table>
-	
 	<?php
 }
-
 ?>
-
-</div>
-
-<script>
-	$(function() {
-		$('.table_grid').masonry({
-			//options
-			itemSelector: '.table',
-			columnWidth: 200
-		});
-	});
-	
-</script>
-
-
 </body>
 </html>
 <style>
@@ -146,7 +123,7 @@ table, th, td, caption {
 table {
 	float:left;
 	margin:1%;
-	width:100px;
+	width:10%;
 }
 caption {
 	opacity: 0.5;

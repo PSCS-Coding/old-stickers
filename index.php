@@ -4,7 +4,8 @@
     <head>
 		<title> PSCS Offerings </title>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="stickers.css">    
+        <link rel="stylesheet" type="text/css" href="stickers.css">
+		<link rel="stylesheet" href="octicons.css">
 				<style>
 					@font-face {
 						font-family:CODE2000;
@@ -84,8 +85,12 @@
     <body>
 		<form method='post' action='<?php echo basename($_SERVER['PHP_SELF']); ?>' id='main'>
         <header>
-            <h2>PSCS Class Offerings</h2>
-            <a class="start" href="student.php">Login</a>
+            <h2><span class="mega-octicon octicon-lock"></span>
+			PSCS Class Offerings
+			<span class="mega-octicon octicon-lock"></span>
+          </h2>
+			<a class="start" href="student.php">Login</a>
+			
 			<?php if(!empty($_SESSION['id'])) echo "<a class='name'>". idToName($_SESSION['id']) . "</a>"; ?>
 			<br />	
         </header>
